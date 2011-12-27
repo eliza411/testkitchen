@@ -1,0 +1,15 @@
+div.figure {
+  overflow: hidden;
+  border: 1px dotted #ddd;
+  padding: 10px;
+}
+
+.figure img {
+  float: right;
+}
+
+.figure p.caption {
+  font-weight: bold;
+  margin: 0;
+}
+

@@ -1,0 +1,32 @@
+\BOOKMARK [0][-]{chapter.1}{Ingredients}{}
+\BOOKMARK [1][-]{section.1.1}{Staple}{chapter.1}
+\BOOKMARK [1][-]{section.1.2}{Specialty}{chapter.1}
+\BOOKMARK [0][-]{chapter.2}{Part 1: Build a way to create events}{}
+\BOOKMARK [1][-]{section.2.1}{Step 1.1: Add a new content type called Event}{chapter.2}
+\BOOKMARK [1][-]{section.2.2}{Step 1.2: Configure Region and Language Settings}{chapter.2}
+\BOOKMARK [1][-]{section.2.3}{1.3 Configure Date and Time}{chapter.2}
+\BOOKMARK [1][-]{section.2.4}{Step 1.4: Add a date field}{chapter.2}
+\BOOKMARK [1][-]{section.2.5}{Step 1.5: Rarrange the items in a way that makes sense}{chapter.2}
+\BOOKMARK [1][-]{section.2.6}{Step 1.6: Create proper paths}{chapter.2}
+\BOOKMARK [1][-]{section.2.7}{Step 1.7: Create an event}{chapter.2}
+\BOOKMARK [0][-]{chapter.3}{Part 2: Create the calendar}{}
+\BOOKMARK [1][-]{section.3.1}{2.1: Add a calendar view}{chapter.3}
+\BOOKMARK [0][-]{chapter.4}{Part 3: Create and place an Upcoming events block}{}
+\BOOKMARK [1][-]{section.4.1}{3.1: Create the block}{chapter.4}
+\BOOKMARK [1][-]{section.4.2}{3.3 Place the block}{chapter.4}
+\BOOKMARK [0][-]{chapter.5}{Part 4: Categorize events by terms}{}
+\BOOKMARK [1][-]{section.5.1}{4.1 Create the vocabulary and add terms to it}{chapter.5}
+\BOOKMARK [1][-]{section.5.2}{4.2 Add the term to the Event content type}{chapter.5}
+\BOOKMARK [1][-]{section.5.3}{4.3 Create and tag events}{chapter.5}
+\BOOKMARK [0][-]{chapter.6}{Part 5: Color code events}{}
+\BOOKMARK [1][-]{section.6.1}{5.1 Set the default color}{chapter.6}
+\BOOKMARK [1][-]{section.6.2}{5.2 Set the colors for the taxonomy terms}{chapter.6}
+\BOOKMARK [1][-]{section.6.3}{5.3 Check out the colors. Try dragging. Try dropping.}{chapter.6}
+\BOOKMARK [0][-]{chapter.7}{Part 6: Create filters based on your categories}{}
+\BOOKMARK [1][-]{section.7.1}{6.1: Add drop down filter to the existing calendar}{chapter.7}
+\BOOKMARK [1][-]{section.7.2}{6.2 Create a pre-filtered option}{chapter.7}
+\BOOKMARK [1][-]{section.7.3}{6.3 Add our filtered views to the main menu}{chapter.7}
+\BOOKMARK [0][-]{chapter.8}{Part 7: Set and test permissions}{}
+\BOOKMARK [1][-]{section.8.1}{7.1 Set permissions}{chapter.8}
+\BOOKMARK [1][-]{section.8.2}{7.2 Test Author privileges}{chapter.8}
+\BOOKMARK [1][-]{section.8.3}{7.3 Test Editor privileges}{chapter.8}
