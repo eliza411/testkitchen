@@ -8,6 +8,7 @@ div.figure {
 
 .figure img {
   float: right;
+  padding-left: 15px;
 }
 
 .figure p.caption {
@@ -16,3 +17,7 @@ div.figure {
 }
 
 /* next */
+
+#set-permissions table {
+  font-size: 9pt;
+}

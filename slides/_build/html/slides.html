@@ -48,6 +48,8 @@
             
   <div class="section" id="build-image-galleries-and-slideshows">
 <h1>Build Image Galleries and Slideshows</h1>
+<p>Create photo galleries that elegantly display photos and titles with optional slide show viewing controls. Upload an image just once and have a variety of high quality sizes created without ever opening a graphics program. Then, bring them all together into a beautiful index that groups them by category!</p>
+<img alt="A completed gallery" src="_images/slides.png" />
 <div class="section" id="ingredients">
 <h2>Ingredients</h2>
 <div class="section" id="staple">
@@ -74,7 +76,7 @@ drush en ctools views views_ui libraries views_slideshow views_slideshow_cycle -
 <li>In your browser, choose File &gt; Save as &gt; jquery.cycle.all.js</li>
 <li>Place in sites/all/libraries/jquery.cycle (you&#8217;ll have to create that folder) so that the final path looks like sites/all/libraries/jquery.cycle/jquery.cycle.all.js</li>
 </ol>
-<p>Recommended for advanced features:</p>
+<p>Recommended for advanced features, which includes setting the speed of the slide show:</p>
 <ol class="arabic simple">
 <li>Visit <a class="reference external" href="https://github.com/douglascrockford/JSON-js/downloads">https://github.com/douglascrockford/JSON-js/downloads</a> and download the appropriate format, .zip or .tar.gz, for your environment.</li>
 <li>Extract it</li>
@@ -94,8 +96,8 @@ drush en ctools views views_ui libraries views_slideshow views_slideshow_cycle -
 </div>
 <div class="section" id="part-1-build-the-form-for-creating-galleries">
 <h2>Part 1: Build the form for creating galleries</h2>
-<div class="section" id="step-1-1-add-a-new-content-type-called-gallery">
-<h3>Step 1.1: Add a new content type called Gallery</h3>
+<div class="section" id="add-a-new-content-type-called-gallery">
+<h3>1.1: Add a new content type called Gallery</h3>
 <p><em>Structure &gt; Content types &gt; +Add new content type</em></p>
 <p>Name: Gallery</p>
 <p>Description: Create an image gallery with slide show controls.</p>
@@ -123,8 +125,8 @@ drush en ctools views views_ui libraries views_slideshow views_slideshow_cycle -
 </tbody>
 </table>
 </div>
-<div class="section" id="step-1-2-add-an-image-field">
-<h3>Step 1.2: Add an image field</h3>
+<div class="section" id="add-an-image-field">
+<h3>1.2: Add an image field</h3>
 <p><em>Structure &gt; Content types &gt; Gallery &gt; Manage fields</em></p>
 <div class="section" id="add-new-field">
 <h4>Add new field</h4>
@@ -132,35 +134,36 @@ drush en ctools views views_ui libraries views_slideshow views_slideshow_cycle -
 <li>Label: Gallery Image</li>
 <li>Field name: gallery_image</li>
 <li>Type of data to store: Image</li>
-<li>Form element to edit the data: Image</li>
+<li>Form element to edit the data: Image &lt;- the defaulti</li>
+<li>Save</li>
 </ol>
 </div>
 <div class="section" id="field-settings">
 <h4>Field Settings</h4>
-<p>Leave as is. Public files selected, no default image</p>
+<p>Leave as is: Public files selected, no default image</p>
 </div>
 <div class="section" id="gallery-settings">
 <h4>GALLERY Settings</h4>
 <p>There are a lot of settings here! Accept the defaults EXCEPT the following:</p>
-<p>File directory: gallery</p>
+<p>File directory: galleries</p>
 <p>Minimum image resolution: 640 x 480</p>
 <p>We’re building our gallery around a common 640 x 480 resolution. By requiring images to be at least that large here, we can prevent jarring changes in size and eliminate white space between main images and thumbnails.</p>
 <p>[√] Enable Title field</p>
 </div>
 <div class="section" id="gallery-image-field-settings">
 <h4>GALLERY IMAGE Field Settings</h4>
-<p>Number of values: 10</p>
+<p>Number of values: Unlimited</p>
 </div>
 </div>
-<div class="section" id="step-1-3-create-proper-paths">
-<h3>Step 1.3: Create proper paths</h3>
+<div class="section" id="create-proper-paths">
+<h3>1.3: Create proper paths</h3>
 <p><em>Configuration &gt; Search and Metadata: URL aliases &gt; Patterns</em></p>
 <p>Later on, we’ll be creating a landing page at /galleries, so we’re adding that to the path now.</p>
 <p>Pattern for all Gallery paths: galleries/[node:title]</p>
 </div>
-<div class="section" id="step-1-4-create-a-test-gallery">
-<h3>Step 1.4: Create a test gallery</h3>
-<p><em>Content &gt; Add content &gt; Gallery</em></p>
+<div class="section" id="create-a-test-gallery">
+<h3>1.4: Create a test gallery</h3>
+<p><em>Content &gt; +Add content &gt; Gallery</em></p>
 <ol class="arabic simple">
 <li>Gallery name: Test Gallery</li>
 <li>Body text: Optional</li>
@@ -168,29 +171,29 @@ drush en ctools views views_ui libraries views_slideshow views_slideshow_cycle -
 <li>Check the URL pattern is what you expect, something like: <a class="reference external" href="http://tests.l/galleries/test-gallery">http://tests.l/galleries/test-gallery</a></li>
 </ol>
 </div>
-<div class="section" id="step-1-5-hide-the-default-display-of-images">
-<h3>Step 1.5: Hide the default display of images</h3>
+<div class="section" id="hide-the-default-display-of-images">
+<h3>1.5: Hide the default display of images</h3>
 <p><em>Structure &gt; Content types &gt; Gallery &gt; Manage display</em></p>
 <ol class="arabic simple">
 <li>Set the Default display setting format for Image to Hidden.</li>
 <li>Verify the Teaser display format is hidden. It should already be set that way.</li>
-<li>Go to Content and view the gallery you created in step 1.4</li>
+<li>Go to Content and view the gallery you created in 1.4</li>
 <li>You should see nothing but body text you entered.</li>
 </ol>
 </div>
 </div>
-<div class="section" id="step-2-create-custom-image-sizes">
-<h2>Step 2: Create custom image sizes</h2>
+<div class="section" id="part-2-create-custom-image-sizes">
+<h2>Part 2: Create custom image sizes</h2>
 <div class="section" id="main-gallery-image">
 <h3>Main gallery image</h3>
 <p><em>Configuration &gt; Media &gt; Image styles &gt; +Add style</em></p>
 <p>We set a minimum resolution for uploading the image, but users can upload higher resolution as they with. This size ensures uniform presentation within the gallery.</p>
 <ol class="arabic simple">
 <li>Image style name: gallery_main</li>
-<li>In Effect, choose Scale and crop, then click Add</li>
+<li>In Effect, select the new effect Scale and crop from the drop down, then click Add</li>
 <li>Width: 640</li>
 <li>Height: 480</li>
-<li>Click the Add effect button (Your changes are saved; the button on the next page is just for reordering the effects)</li>
+<li>Click the Add effect button (Your changes are saved; the button on the next page is just for reordering the effects if there is more than one.)</li>
 </ol>
 </div>
 <div class="section" id="gallery-thumbnails">
@@ -205,29 +208,29 @@ drush en ctools views views_ui libraries views_slideshow views_slideshow_cycle -
 <li>Click the Add effect button</li>
 </ol>
 </div>
-<div class="section" id="index-thumbnails">
-<h3>Index thumbnails</h3>
+<div class="section" id="gallery-index-thumbnails">
+<h3>Gallery index thumbnails</h3>
 <p><em>Configuration &gt; Media &gt; Image styles &gt; +Add style</em></p>
-<p>Add a second style for the index of galleries on the site.</p>
+<p>Add a third style for the index of galleries on the site.</p>
 <ol class="arabic simple">
 <li>Click +Add style again</li>
 <li>Image style name: gallery_index</li>
 <li>In Effect, choose Scale and crop, then click Add</li>
-<li>Width: 180</li>
-<li>Height: 140</li>
+<li>Width: 160</li>
+<li>Height: 120</li>
 <li>Click the Add effect button</li>
 </ol>
 </div>
 </div>
-<div class="section" id="step-3-create-the-galleries">
-<h2>Step 3: Create the galleries</h2>
+<div class="section" id="part-3-create-the-galleries">
+<h2>Part 3: Create the galleries</h2>
 <p>Views delivers extraordinary power to the non-programmer, and the price is a densely-packed interface. We describe the steps below, but there&#8217;s a place where the screen cast is worth a thousand words!</p>
 <div class="section" id="create-the-actual-gallery-display">
 <h3>3.1: Create the actual gallery display</h3>
 <p><em>Structure &gt; Views &gt; +Add new view</em></p>
 <p>On the introductory Views page:</p>
 <div class="figure">
-<img alt="Image of the Views Intro Screen" src="_images/slideshow-3.1-412x328.png" />
+<img alt="Image of the Views Intro Screen" src="_images/slideshow-3.1-412x328.png" style="width: 65%;" />
 <div class="legend">
 <ol class="arabic simple">
 <li>View name: Gallery</li>
@@ -236,14 +239,13 @@ drush en ctools views views_ui libraries views_slideshow views_slideshow_cycle -
 <li>[√]  Check Block</li>
 <li>Block title: Gallery</li>
 <li>Display fomat: Slideshow of fields</li>
-<li>Items per page: (Leave this blank)</li>
+<li>Items per page: (Make this blank)</li>
 <li>Continue &amp; Edit</li>
-<li>Save</li>
 </ol>
 </div>
 </div>
 <div class="figure">
-<img alt="An image of the Main Views Interface" src="_images/slideshow-3.1-main.png" />
+<img alt="An image of the Main Views Interface" src="_images/slideshow-3.1-main.png" style="width: 65%;" />
 <div class="legend">
 <p>In main Views interface, we&#8217;ll configure three areas:</p>
 <div class="line-block">
@@ -261,11 +263,11 @@ drush en ctools views views_ui libraries views_slideshow views_slideshow_cycle -
 <li>Fields: add</li>
 <li>From the popup, select: Content: Gallery image</li>
 <li>[ ] Remove the check in the box Create a label</li>
-<li>Set the Image style to large.</li>
+<li>Set the Image style to gallery_main.</li>
 <li>Multiple Field Values: [ ] Uncheck Display all values in the same row</li>
 <li>Apply (All displays)</li>
 </ol>
-<p>Second, add the thumnail gallery images. Much like the first step:</p>
+<p>Second, add the thumbnail gallery images. Much like the first step:</p>
 <ol class="arabic simple">
 <li>Fields: add</li>
 <li>From the popup, select: Content: Gallery image</li>
@@ -284,10 +286,10 @@ drush en ctools views views_ui libraries views_slideshow views_slideshow_cycle -
 <li>Multiple Field Values: [ ] Uncheck Display all values in the same row</li>
 <li>Expand Rewrite Results</li>
 <li>[√] Rewrite the output of this field</li>
-<li>In the text field, enter [field_gallery_image_2-title] (View the available patterns by expanding Rep lacement patterns.)</li>
+<li>In the text field, enter [field_gallery_image_2-title] (View the available patterns by expanding REPLACEMENT PATTERNS.)</li>
 <li>Apply (all displays)</li>
 </ol>
-<p>You now have three fields, all named the same thing but configured differently, the main image, the thumbnails, and the image titles.</p>
+<p>You now have three fields, all named the same thing but configured differently: the main image, the thumbnails, and the image titles.</p>
 <p>Finally, remove the Content Title since it redundantly displays the name of the gallery.</p>
 <ol class="arabic simple">
 <li>Click the link Content: Title</li>
@@ -299,10 +301,8 @@ drush en ctools views views_ui libraries views_slideshow views_slideshow_cycle -
 <ol class="arabic simple">
 <li>Format: Settings</li>
 <li>In the Top Widgets section, check Controls.</li>
-<li>In the Bottom Widgets section, check Pager and choose the middle instance of</li>
-<li>Content: Gallery Image</li>
+<li>In the Bottom Widgets section, check Pager and choose the middle instance of Content: Gallery Image. This will provide the thumbnail images for the pager.</li>
 <li>Apply (All displays)</li>
-<li>Save</li>
 </ol>
 </div>
 <div class="section" id="advanced">
@@ -310,7 +310,7 @@ drush en ctools views views_ui libraries views_slideshow views_slideshow_cycle -
 <ol class="arabic simple">
 <li>Contextual Filter (Add)</li>
 <li>Content: Nid</li>
-<li>Choose Provide a default value &gt; Type: Content ID from URL</li>
+<li>◉ Provide a default value &gt; Type: Content ID from URL</li>
 <li>Apply (All displays)</li>
 </ol>
 <p>Be sure to save the view!</p>
@@ -320,11 +320,12 @@ drush en ctools views views_ui libraries views_slideshow views_slideshow_cycle -
 <h3>3.2: Place and configure the block</h3>
 <p><em>Structure &gt; Blocks &gt; Views: Galleries &gt; Configure</em></p>
 <p>By configuring the block to display only on Gallery content types we prevent it from being called on a view, and by listing it only on specific pages we prevent it from appearing on the Edit tab.</p>
-<p>Block title:  &lt;none&gt;
-Region Settings
-Bartik (default theme)
-Content
-Visibility Settings</p>
+<p>Block title:  &lt;none&gt;</p>
+<p>Region Settings</p>
+<blockquote>
+<div>Footheme (default theme)
+Content</div></blockquote>
+<p><strong>Visibility Settings</strong></p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />
@@ -348,8 +349,8 @@ galleries*</td>
 </table>
 </div>
 </div>
-<div class="section" id="step-4-create-an-index-of-all-galleries">
-<h2>Step 4: Create an index of all galleries</h2>
+<div class="section" id="part-4-create-an-index-of-all-galleries">
+<h2>Part 4: Create an index of all galleries</h2>
 <p><em>Structure &gt; Views &gt; +Add new view</em></p>
 <p>You could create the gallery index page in the same view as the gallery block by adding a Page display, but the settings are different enough that they don’t gain a lot by sharing defaults, so we’ll create this as a separate view.</p>
 <div class="section" id="add-a-new-view">
@@ -362,10 +363,10 @@ galleries*</td>
 <li>[√]  Create a page</li>
 <li>Page title: Galleries</li>
 <li>Display format: Grid of fields</li>
-<li>[√]  Create a menu link</li>
-<li>Menu: Main menu</li>
+<li>Items to display: 24</li>
+<li>[√]  Create a menu link &gt; Menu: Main menu, Weight: 1</li>
 <li>Menu link title: Galleries</li>
-<li>Save and continue</li>
+<li>Continue &amp; edit</li>
 </ol>
 </div>
 <div class="section" id="fields">
@@ -373,70 +374,130 @@ galleries*</td>
 <p>Add</p>
 <ol class="arabic simple">
 <li>Gallery image</li>
-<li>[ ]   Uncheck Create a label</li>
+<li>[ ] Uncheck Create a label</li>
 <li>Formatter: Image (no change)</li>
 <li>Image style: gallery_index</li>
 <li>Link image to: Content</li>
 <li>Apply (all displays)</li>
-<li>Save</li>
 </ol>
 <p>Be sure to save the view!</p>
 </div>
 </div>
+<div class="section" id="a-brief-detour">
+<h3>4.2 A brief detour</h3>
+<p><em>Structure &gt; Blocks &gt; Main menu: configure</em></p>
+<p>Footheme uses the block system to place menus, and we&#8217;ve not enabled our main menu. Do so now.</p>
+<p>REGION SETTINGS</p>
+<ol class="arabic simple">
+<li>Footheme (default theme). Select Menu Bar.</li>
+<li>Save block</li>
+</ol>
+</div>
+<div class="section" id="auto-generate-galleries">
+<h3>4.3 Auto-generate galleries</h3>
+<p><em>Configuration &gt; Development: Generate content</em></p>
+<ol class="arabic simple">
+<li>[√] Gallery (Uncheck others)</li>
+<li>Accept the rest of the defaults</li>
+<li>Generate</li>
+</ol>
+</div>
 </div>
 <div class="section" id="part-5-style-the-gallery">
 <h2>Part 5: Style the Gallery</h2>
-<div class="section" id="open-custom-css">
-<h3>5.1 Open custom.css</h3>
+<p>We&#8217;ll apply some basic formatting to the galleries.</p>
+<div class="section" id="open-footheme-css">
+<h3>5.1 Open footheme.css</h3>
 <p>You can edit your style sheet any way that is comfortable for you. If you need more support than the username and password for your sandbox, see Connecting to your sandbox with sFTP at <a class="reference external" href="http://training.opensourcery.com/basics/sftp">http://training.opensourcery.com/basics/sftp</a></p>
 </div>
-<div class="section" id="add-gallery-styling">
-<h3>5.2 Add gallery styling</h3>
-<p>Add the following CSS to /sites/all/themes/custom/css/custom.css</p>
-<div class="highlight-python"><pre>#block-views-galleries-block-1 {
-  background: #eee;
-  width: 500px;
-  padding: 20px 0 20px 20px;
+<div class="section" id="arrange-thumbnails-beneath-the-main-image">
+<h3>5.1 Arrange thumbnails beneath the main image</h3>
+<div class="highlight-python"><pre>/* Arrange the thumbnails beneath the main image */
+.views-content-field-gallery-image {
+  float: left;
+  padding-right: 13px;
 }
 
-.views-field-field-gallery-image-2,
+.views-slideshow-cycle-main-frame-row-item {
+  padding: 5px 20px;
+}
+
 .views-slideshow-controls-bottom {
-  width: 480px;
-}
-
-.views-slideshow-controls-bottom  {
-  background: #eee;
-  width: 500px;
-  padding: 20px 0 20px 20px;
-}
-
-.views-field-field-gallery-image-2,
-.views-slideshow-controls-bottom {
-  width: 480px;
-}
-
-.views-slideshow-controls-bottom div {
-  display: inline;
-}
-
-.views-slideshow-controls-text-pause,
-.views-slideshow-controls-text-previous {
-  padding-right: 4px;
-  border-right: 1px solid ;
-} {
-  display: inline;
-}
-
-.views-slideshow-controls-text-pause,
-.views-slideshow-controls-text-previous {
-  padding-right: 4px;
-  border-right: 1px solid ;
+  padding: 0 0 0 20px;
 }</pre>
 </div>
 </div>
+<div class="section" id="format-the-controls">
+<h3>5.2 Format the controls</h3>
+<div class="highlight-python"><pre>/* Format the controls */
+.views-slideshow-controls-text {
+  padding-left: 20px;
+}
+
+.views-slideshow-controls-text span {
+  display:  block;
+  float: left;
+}
+
+.views_slideshow_controls_text_resume,
+.views_slideshow_controls_text_pause{
+  text-align: center;
+  width: 55px;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  padding: 0 5px;
+  margin: 0 5px;
+}</pre>
 </div>
-<div class="section" id="step-6-set-and-test-permissions">
-<h2>Step 6: Set and test permissions</h2>
+</div>
+<div class="section" id="place-title-text-over-the-main-image">
+<h3>5.3 Place title text over the main image</h3>
+<p><em>Structure &gt; Views &gt; Gallery: edit</em></p>
+<p>Placing opaque text on a transparent background requires some special setup. If the text is placed inside the transparent container, it will inherit the transparency. Instead, it must be placed parallel to the container and positioned.</p>
+<ol class="arabic">
+<li><p class="first">Edit the third instance of the filed content: Galley image</p>
+</li>
+<li><p class="first">Expand REWRITE RESULTS and edit to match:</p>
+<div class="highlight-python"><pre>&lt;div class="transparency"&gt;&lt;/div&gt;
+&lt;div class="overlay"&gt;[field_gallery_image_2-title]&lt;/div&gt;</pre>
+</div>
+</li>
+<li><p class="first">Apply (all displays)</p>
+</li>
+<li><p class="first">Add the styling to footheme.css:</p>
+<div class="highlight-python"><pre>/* Overlay the text on the main image */
+.views-field-field-gallery-image {
+  position: relative;
+}
+
+.transparency {
+  position: absolute;
+  bottom: -10px;
+  left: 0px;
+  width: 640px;
+  height: 75px;
+  background: black;
+  margin: 20px;
+  filter:alpha(opacity=70);
+  opacity: 0.7;
+  -moz-opacity:0.7;
+}
+
+.overlay {
+  color: white;
+  position: absolute;
+  bottom : 0px;
+  left: 0px;
+  height: 75px;
+  padding: 0 30px 0 30px;
+}</pre>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="part-6-set-and-test-permissions">
+<h2>Part 6: Set and test permissions</h2>
 <p><em>People &gt; Permissions</em></p>
 <p>If you are not using the Test Kitchen Install Profile or if you are new to the idea of users, roles, permissions or masquerade, see <a class="reference external" href="http://training.opensourcery.com/basics">http://training.opensourcery.com/basics</a></p>
 <div class="section" id="set-permissions">
@@ -523,26 +584,26 @@ galleries*</td>
 </ul>
 </li>
 <li><a class="reference internal" href="#part-1-build-the-form-for-creating-galleries">Part 1: Build the form for creating galleries</a><ul>
-<li><a class="reference internal" href="#step-1-1-add-a-new-content-type-called-gallery">Step 1.1: Add a new content type called Gallery</a></li>
-<li><a class="reference internal" href="#step-1-2-add-an-image-field">Step 1.2: Add an image field</a><ul>
+<li><a class="reference internal" href="#add-a-new-content-type-called-gallery">1.1: Add a new content type called Gallery</a></li>
+<li><a class="reference internal" href="#add-an-image-field">1.2: Add an image field</a><ul>
 <li><a class="reference internal" href="#add-new-field">Add new field</a></li>
 <li><a class="reference internal" href="#field-settings">Field Settings</a></li>
 <li><a class="reference internal" href="#gallery-settings">GALLERY Settings</a></li>
 <li><a class="reference internal" href="#gallery-image-field-settings">GALLERY IMAGE Field Settings</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#step-1-3-create-proper-paths">Step 1.3: Create proper paths</a></li>
-<li><a class="reference internal" href="#step-1-4-create-a-test-gallery">Step 1.4: Create a test gallery</a></li>
-<li><a class="reference internal" href="#step-1-5-hide-the-default-display-of-images">Step 1.5: Hide the default display of images</a></li>
+<li><a class="reference internal" href="#create-proper-paths">1.3: Create proper paths</a></li>
+<li><a class="reference internal" href="#create-a-test-gallery">1.4: Create a test gallery</a></li>
+<li><a class="reference internal" href="#hide-the-default-display-of-images">1.5: Hide the default display of images</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#step-2-create-custom-image-sizes">Step 2: Create custom image sizes</a><ul>
+<li><a class="reference internal" href="#part-2-create-custom-image-sizes">Part 2: Create custom image sizes</a><ul>
 <li><a class="reference internal" href="#main-gallery-image">Main gallery image</a></li>
 <li><a class="reference internal" href="#gallery-thumbnails">Gallery thumbnails</a></li>
-<li><a class="reference internal" href="#index-thumbnails">Index thumbnails</a></li>
+<li><a class="reference internal" href="#gallery-index-thumbnails">Gallery index thumbnails</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#step-3-create-the-galleries">Step 3: Create the galleries</a><ul>
+<li><a class="reference internal" href="#part-3-create-the-galleries">Part 3: Create the galleries</a><ul>
 <li><a class="reference internal" href="#create-the-actual-gallery-display">3.1: Create the actual gallery display</a><ul>
 <li><a class="reference internal" href="#add-fields">3.1.1 Add Fields</a></li>
 <li><a class="reference internal" href="#format">3.1.2 Format</a></li>
@@ -552,20 +613,24 @@ galleries*</td>
 <li><a class="reference internal" href="#place-and-configure-the-block">3.2: Place and configure the block</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#step-4-create-an-index-of-all-galleries">Step 4: Create an index of all galleries</a><ul>
+<li><a class="reference internal" href="#part-4-create-an-index-of-all-galleries">Part 4: Create an index of all galleries</a><ul>
 <li><a class="reference internal" href="#add-a-new-view">4.1 Add a new view</a><ul>
 <li><a class="reference internal" href="#intro-screen">Intro screen</a></li>
 <li><a class="reference internal" href="#fields">Fields</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#a-brief-detour">4.2 A brief detour</a></li>
+<li><a class="reference internal" href="#auto-generate-galleries">4.3 Auto-generate galleries</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#part-5-style-the-gallery">Part 5: Style the Gallery</a><ul>
-<li><a class="reference internal" href="#open-custom-css">5.1 Open custom.css</a></li>
-<li><a class="reference internal" href="#add-gallery-styling">5.2 Add gallery styling</a></li>
+<li><a class="reference internal" href="#open-footheme-css">5.1 Open footheme.css</a></li>
+<li><a class="reference internal" href="#arrange-thumbnails-beneath-the-main-image">5.1 Arrange thumbnails beneath the main image</a></li>
+<li><a class="reference internal" href="#format-the-controls">5.2 Format the controls</a></li>
+<li><a class="reference internal" href="#place-title-text-over-the-main-image">5.3 Place title text over the main image</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#step-6-set-and-test-permissions">Step 6: Set and test permissions</a><ul>
+<li><a class="reference internal" href="#part-6-set-and-test-permissions">Part 6: Set and test permissions</a><ul>
 <li><a class="reference internal" href="#set-permissions">6.1 Set permissions</a></li>
 <li><a class="reference internal" href="#test-author-privileges">6.2 Test Author privileges</a></li>
 <li><a class="reference internal" href="#test-editor-privileges">6.3 Test Editor privileges</a></li>

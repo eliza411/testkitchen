@@ -543,10 +543,6 @@ span.eqno {
     page-break-before: always;
     }
 
-    #ingredients h2 {
-    page-break-before: avoid;
-    }
-  
     p {
     orphans: 10;
     widows: 10;
@@ -555,13 +551,10 @@ span.eqno {
 
 body {
   font-size: 10pt;
-  margin-left: 50px;
 }
 
 h2 {
  font-size: 170%;
- margin-left: -50px;
-
 }
 
 h3 {
@@ -573,4 +566,6 @@ h2, h3, h4, h5, h6 {
 
 }
 
-
+pre {
+  font-size: 9pt;
+}

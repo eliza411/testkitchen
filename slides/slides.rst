@@ -1,6 +1,11 @@
 Build Image Galleries and Slideshows
 ####################################
 
+Create photo galleries that elegantly display photos and titles with optional slide show viewing controls. Upload an image just once and have a variety of high quality sizes created without ever opening a graphics program. Then, bring them all together into a beautiful index that groups them by category!
+
+.. image:: slides.png
+   :alt: A completed gallery
+
 Ingredients
 ***********
 
@@ -33,7 +38,7 @@ This is a weird one to download because it's a single file, and how you work wit
 #. In your browser, choose File > Save as > jquery.cycle.all.js
 #. Place in sites/all/libraries/jquery.cycle (you'll have to create that folder) so that the final path looks like sites/all/libraries/jquery.cycle/jquery.cycle.all.js
 
-Recommended for advanced features:
+Recommended for advanced features, which includes setting the speed of the slide show:
 
 #. Visit https://github.com/douglascrockford/JSON-js/downloads and download the appropriate format, .zip or .tar.gz, for your environment.
 #. Extract it
@@ -79,19 +84,20 @@ Add new field
 #. Label: Gallery Image
 #. Field name: gallery_image
 #. Type of data to store: Image
-#. Form element to edit the data: Image
+#. Form element to edit the data: Image <- the defaulti
+#. Save
 
 Field Settings
 --------------
 
-Leave as is. Public files selected, no default image
+Leave as is: Public files selected, no default image
 
 GALLERY Settings
 ----------------
 
 There are a lot of settings here! Accept the defaults EXCEPT the following:
 
-File directory: gallery
+File directory: galleries
 
 Minimum image resolution: 640 x 480
 
@@ -102,7 +108,7 @@ We’re building our gallery around a common 640 x 480 resolution. By requiring 
 GALLERY IMAGE Field Settings
 ----------------------------
 
-Number of values: 10
+Number of values: Unlimited
 
 1.3: Create proper paths
 =============================
@@ -116,7 +122,7 @@ Pattern for all Gallery paths: galleries/[node:title]
  
 1.4: Create a test gallery
 ===============================
-*Content > Add content > Gallery*
+*Content > +Add content > Gallery*
 
 #. Gallery name: Test Gallery
 #. Body text: Optional
@@ -129,7 +135,7 @@ Pattern for all Gallery paths: galleries/[node:title]
 
 #. Set the Default display setting format for Image to Hidden.
 #. Verify the Teaser display format is hidden. It should already be set that way.
-#. Go to Content and view the gallery you created in Part 1.4
+#. Go to Content and view the gallery you created in 1.4
 #. You should see nothing but body text you entered.
 
 Part 2: Create custom image sizes
@@ -142,10 +148,10 @@ Main gallery image
 We set a minimum resolution for uploading the image, but users can upload higher resolution as they with. This size ensures uniform presentation within the gallery.
 
 #. Image style name: gallery_main
-#. In Effect, choose Scale and crop, then click Add
+#. In Effect, select the new effect Scale and crop from the drop down, then click Add
 #. Width: 640
 #. Height: 480
-#. Click the Add effect button (Your changes are saved; the button on the next page is just for reordering the effects)
+#. Click the Add effect button (Your changes are saved; the button on the next page is just for reordering the effects if there is more than one.)
 
 Gallery thumbnails
 ==================
@@ -159,17 +165,17 @@ The thumbnail settings are chosen so the images stay proportional to an 640 x 48
 #. Height: 60
 #. Click the Add effect button 
 
-Index thumbnails
-================
+Gallery index thumbnails
+========================
 *Configuration > Media > Image styles > +Add style*
 
-Add a second style for the index of galleries on the site.
+Add a third style for the index of galleries on the site.
 
 #. Click +Add style again
 #. Image style name: gallery_index
 #. In Effect, choose Scale and crop, then click Add
-#. Width: 180
-#. Height: 140
+#. Width: 160
+#. Height: 120
 #. Click the Add effect button 
 
 Part 3: Create the galleries
@@ -185,6 +191,7 @@ On the introductory Views page:
 
 .. figure:: slideshow-3.1-412x328.png
    :alt: Image of the Views Intro Screen
+   :width: 65%
 
    ..
      
@@ -194,12 +201,12 @@ On the introductory Views page:
    #. [√]  Check Block
    #. Block title: Gallery
    #. Display fomat: Slideshow of fields
-   #. Items per page: (Leave this blank)
+   #. Items per page: (Make this blank)
    #. Continue & Edit
-   #. Save
 
 .. figure:: slideshow-3.1-main.png
    :alt: An image of the Main Views Interface
+   :width: 65%
 
    ..
      
@@ -220,11 +227,11 @@ First, add the main gallery image:
 #. Fields: add
 #. From the popup, select: Content: Gallery image
 #. [ ] Remove the check in the box Create a label
-#. Set the Image style to large.
+#. Set the Image style to gallery_main.
 #. Multiple Field Values: [ ] Uncheck Display all values in the same row
 #. Apply (All displays)
 
-Second, add the thumnail gallery images. Much like the first step:
+Second, add the thumbnail gallery images. Much like the first step:
 
 #. Fields: add
 #. From the popup, select: Content: Gallery image
@@ -243,10 +250,10 @@ Next, add the title.
 #. Multiple Field Values: [ ] Uncheck Display all values in the same row
 #. Expand Rewrite Results
 #. [√] Rewrite the output of this field
-#. In the text field, enter [field_gallery_image_2-title] (View the available patterns by expanding Rep lacement patterns.)
+#. In the text field, enter [field_gallery_image_2-title] (View the available patterns by expanding REPLACEMENT PATTERNS.)
 #. Apply (all displays)
 
-You now have three fields, all named the same thing but configured differently, the main image, the thumbnails, and the image titles.
+You now have three fields, all named the same thing but configured differently: the main image, the thumbnails, and the image titles.
 
 Finally, remove the Content Title since it redundantly displays the name of the gallery.
 
@@ -258,17 +265,15 @@ Finally, remove the Content Title since it redundantly displays the name of the 
  
 #. Format: Settings
 #. In the Top Widgets section, check Controls.
-#. In the Bottom Widgets section, check Pager and choose the middle instance of
-#. Content: Gallery Image
+#. In the Bottom Widgets section, check Pager and choose the middle instance of Content: Gallery Image. This will provide the thumbnail images for the pager.
 #. Apply (All displays)
-#. Save
 
 3.1.3 Advanced
 --------------
 
 #. Contextual Filter (Add)
 #. Content: Nid
-#. Choose Provide a default value > Type: Content ID from URL
+#. ◉ Provide a default value > Type: Content ID from URL
 #. Apply (All displays)
 
 Be sure to save the view!
@@ -280,10 +285,13 @@ Be sure to save the view!
 By configuring the block to display only on Gallery content types we prevent it from being called on a view, and by listing it only on specific pages we prevent it from appearing on the Edit tab.
 
 Block title:  <none>
+
 Region Settings
-Bartik (default theme)
-Content
-Visibility Settings
+
+  Footheme (default theme)
+  Content
+
+**Visibility Settings**
 
 ================== ==============================================================
 Pages              ◉ Only the listed pages (Select this and enter the text below) 
@@ -310,10 +318,10 @@ Intro screen
 #. [√]  Create a page
 #. Page title: Galleries
 #. Display format: Grid of fields
-#. [√]  Create a menu link
-#. Menu: Main menu
+#. Items to display: 24
+#. [√]  Create a menu link > Menu: Main menu, Weight: 1
 #. Menu link title: Galleries
-#. Save and continue
+#. Continue & edit
 
 Fields
 ------
@@ -321,69 +329,136 @@ Fields
 Add
 
 #. Gallery image
-#. [ ]   Uncheck Create a label
+#. [ ] Uncheck Create a label
 #. Formatter: Image (no change)
 #. Image style: gallery_index
 #. Link image to: Content
 #. Apply (all displays)
-#. Save
 
 Be sure to save the view!
+
+4.2 A brief detour
+==================
+*Structure > Blocks > Main menu: configure*
+
+Footheme uses the block system to place menus, and we've not enabled our main menu. Do so now.
+
+REGION SETTINGS
+
+#. Footheme (default theme). Select Menu Bar.
+#. Save block
+
+
+4.3 Auto-generate galleries
+===========================
+*Configuration > Development: Generate content*
+
+#. [√] Gallery (Uncheck others)
+#. Accept the rest of the defaults
+#. Generate
+
+
 
 Part 5: Style the Gallery
 *************************
 
-5.1 Open custom.css
-===================
+We'll apply some basic formatting to the galleries.
+
+5.1 Open footheme.css
+=====================
 
 You can edit your style sheet any way that is comfortable for you. If you need more support than the username and password for your sandbox, see Connecting to your sandbox with sFTP at http://training.opensourcery.com/basics/sftp
 
-5.2 Add gallery styling
-=======================
-
-Add the following CSS to /sites/all/themes/custom/css/custom.css
+5.1 Arrange thumbnails beneath the main image
+=============================================
 
 ::
 
- #block-views-galleries-block-1 {
-   background: #eee;
-   width: 500px;
-   padding: 20px 0 20px 20px;
- }
+  /* Arrange the thumbnails beneath the main image */
+  .views-content-field-gallery-image {
+    float: left;
+    padding-right: 13px;
+  }
+  
+  .views-slideshow-cycle-main-frame-row-item {  
+    padding: 5px 20px;
+  }
+
+  .views-slideshow-controls-bottom {
+    padding: 0 0 0 20px;
+  }
+
+5.2 Format the controls 
+=======================
+
+::
+
+  /* Format the controls */ 
+  .views-slideshow-controls-text {
+    padding-left: 20px;
+  }
+
+  .views-slideshow-controls-text span {
+    display:  block;
+    float: left;
+  } 
+
+  .views_slideshow_controls_text_resume,
+  .views_slideshow_controls_text_pause{
+    text-align: center;
+    width: 55px;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    padding: 0 5px;
+    margin: 0 5px;
+  }
+
+5.3 Place title text over the main image
+========================================
+*Structure > Views > Gallery: edit*
+
+Placing opaque text on a transparent background requires some special setup. If the text is placed inside the transparent container, it will inherit the transparency. Instead, it must be placed parallel to the container and positioned.
+
+#. Edit the third instance of the filed content: Galley image
+#. Expand REWRITE RESULTS and edit to match:
+
+   :: 
  
- .views-field-field-gallery-image-2,
- .views-slideshow-controls-bottom {
-   width: 480px;
- }
- 
- .views-slideshow-controls-bottom  {
-   background: #eee;
-   width: 500px;
-   padding: 20px 0 20px 20px;
- }
- 
- .views-field-field-gallery-image-2,
- .views-slideshow-controls-bottom {
-   width: 480px;
- }
- 
- .views-slideshow-controls-bottom div {
-   display: inline;
- }
- 
- .views-slideshow-controls-text-pause,
- .views-slideshow-controls-text-previous {
-   padding-right: 4px;
-   border-right: 1px solid ;
- } {
-   display: inline;
- }
- 
- .views-slideshow-controls-text-pause,
- .views-slideshow-controls-text-previous {
-   padding-right: 4px;
-   border-right: 1px solid ;
- }
+   <div class="transparency"></div>
+   <div class="overlay">[field_gallery_image_2-title]</div>
+
+#. Apply (all displays)
+#. Add the styling to footheme.css:
+
+   ::
+
+     /* Overlay the text on the main image */
+     .views-field-field-gallery-image {
+       position: relative;
+     }
+
+     .transparency {
+       position: absolute;
+       bottom: -10px;
+       left: 0px;
+       width: 640px;
+       height: 75px;
+       background: black;  
+       margin: 20px;
+       filter:alpha(opacity=70);
+       opacity: 0.7;
+       -moz-opacity:0.7;
+     }
+
+     .overlay {
+       color: white;
+       position: absolute;
+       bottom : 0px;
+       left: 0px;
+       height: 75px;
+       padding: 0 30px 0 30px;
+     }
+
 
 Part 6: Set and test permissions
 ********************************
