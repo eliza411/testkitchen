@@ -53,7 +53,7 @@ This triad of themes works together to provide you with an easily customized, co
 Part 1: Build the form for creating galleries
 *********************************************
 
-Step 1.1: Add a new content type called Gallery
+1.1: Add a new content type called Gallery
 ===============================================
 *Structure > Content types > +Add new content type*
 
@@ -69,7 +69,7 @@ Comment Settings               Closed (Select Closed)
 Menu Settings                  [ ]  Uncheck all menus
 ============================== ======================================================
 
-Step 1.2: Add an image field
+1.2: Add an image field
 ============================
 *Structure > Content types > Gallery > Manage fields*
 
@@ -104,7 +104,7 @@ GALLERY IMAGE Field Settings
 
 Number of values: 10
 
-Step 1.3: Create proper paths
+1.3: Create proper paths
 =============================
 *Configuration > Search and Metadata: URL aliases > Patterns*
  
@@ -114,7 +114,7 @@ Later on, we’ll be creating a landing page at /galleries, so we’re adding th
 Pattern for all Gallery paths: galleries/[node:title]
 
  
-Step 1.4: Create a test gallery
+1.4: Create a test gallery
 ===============================
 *Content > Add content > Gallery*
 
@@ -123,16 +123,16 @@ Step 1.4: Create a test gallery
 #. Browse and upload at least 4 images, giving each one a title.
 #. Check the URL pattern is what you expect, something like: http://tests.l/galleries/test-gallery
 
-Step 1.5: Hide the default display of images
+1.5: Hide the default display of images
 ============================================
 *Structure > Content types > Gallery > Manage display*
 
 #. Set the Default display setting format for Image to Hidden.
 #. Verify the Teaser display format is hidden. It should already be set that way.
-#. Go to Content and view the gallery you created in step 1.4
+#. Go to Content and view the gallery you created in Part 1.4
 #. You should see nothing but body text you entered.
 
-Step 2: Create custom image sizes
+Part 2: Create custom image sizes
 *********************************
 
 Main gallery image
@@ -172,7 +172,7 @@ Add a second style for the index of galleries on the site.
 #. Height: 140
 #. Click the Add effect button 
 
-Step 3: Create the galleries
+Part 3: Create the galleries
 ****************************
 
 Views delivers extraordinary power to the non-programmer, and the price is a densely-packed interface. We describe the steps below, but there's a place where the screen cast is worth a thousand words!
@@ -293,7 +293,7 @@ Roles              (Leave as is)
 Users              (Leave as is)
 ================== ==============================================================
 
-Step 4: Create an index of all galleries
+Part 4: Create an index of all galleries
 ****************************************
 *Structure > Views > +Add new view*
 
@@ -385,7 +385,7 @@ Add the following CSS to /sites/all/themes/custom/css/custom.css
    border-right: 1px solid ;
  }
 
-Step 6: Set and test permissions
+Part 6: Set and test permissions
 ********************************
 *People > Permissions*
 

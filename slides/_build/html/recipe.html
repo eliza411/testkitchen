@@ -24,8 +24,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Create Image Galleries and Slide Shows 7.x-dev documentation" href="index.html" />
-    <link rel="prev" title="Welcome to Create Image Galleries and Slide Shows’s documentation!" href="index.html" /> 
+    <link rel="top" title="Create Image Galleries and Slide Shows 7.x-dev documentation" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -34,9 +33,6 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="index.html" title="Welcome to Create Image Galleries and Slide Shows’s documentation!"
-             accesskey="P">previous</a> |</li>
         <li><a href="index.html">Create Image Galleries and Slide Shows 7.x-dev documentation</a> &raquo;</li> 
       </ul>
     </div>  
@@ -60,13 +56,14 @@
 </ol>
 <p><strong>Drush users:</strong></p>
 <div class="highlight-python"><pre>drush dl ctools views libraries views_slideshow
-drush en ctools views views_ui libraries views_slideshow -y</pre>
+drush en ctools views views_ui libraries views_slideshow views_slideshow_cycle -y</pre>
 </div>
 </div>
 <div class="section" id="speciality">
 <h3>Speciality</h3>
-<p>Views Slideshow module uses two external libraries.</p>
-<p>Required for basic slide show functionality:</p>
+<p>Views Slideshow module uses two external libraries.
+.
+Required for basic slide show functionality:</p>
 <p>This is a weird one to download because it&#8217;s a single file, and how you work with it depends on what you&#8217;re used to.
 #. Visit <a class="reference external" href="http://malsup.com/jquery/cycle/download.html">http://malsup.com/jquery/cycle/download.html</a>
 #. Click the link to “Cycle Plugin”
@@ -239,7 +236,7 @@ drush en ctools views views_ui libraries views_slideshow -y</pre>
 <li>From the popup, select: Content: Gallery image</li>
 <li>[ ] Remove the check in the box Create a label</li>
 <li>Set the Image style to large.</li>
-<li>Multiple Field Values: Uncheck Display all values in the same row</li>
+<li>Multiple Field Values: [ ] Uncheck Display all values in the same row</li>
 <li>Apply (All displays)</li>
 </ol>
 <p>Second, add the thumnail gallery images. Much like the first step:</p>
@@ -249,7 +246,7 @@ drush en ctools views views_ui libraries views_slideshow -y</pre>
 <li>[ ] Remove the check in the box Create a label</li>
 <li>[√] Check Exclude from display</li>
 <li>Set the Image style to gallery_thumb.</li>
-<li>Multiple Field Values: Uncheck Display all values in the same row</li>
+<li>Multiple Field Values: [ ] Uncheck Display all values in the same row</li>
 <li>Apply (All displays)</li>
 </ol>
 <p>Next, add the title.</p>
@@ -258,14 +255,14 @@ drush en ctools views views_ui libraries views_slideshow -y</pre>
 <li>From the popup, select:Content: Gallery image</li>
 <li>[ ] Remove the check in the box Create a label</li>
 <li>Leave other visible settings at their default</li>
-<li>Multiple Field Values: Uncheck Display all values in the same row</li>
+<li>Multiple Field Values: [ ] Uncheck Display all values in the same row</li>
 <li>Expand Rewrite Results</li>
-<li>Rewrite the output of this field</li>
+<li>[√] Rewrite the output of this field</li>
 <li>In the text field, enter [field_gallery_image_2-title] (View the available patterns by expanding Rep lacement patterns.)</li>
 <li>Apply (all displays)</li>
 </ol>
 <p>You now have three fields, all named the same thing but configured differently, the main image, the thumbnails, and the image titles.</p>
-<p>Finally, remove the Content Title since it&#8217;s the name of the gallery (redundant) and not the name of the image.</p>
+<p>Finally, remove the Content Title since it redundantly displays the name of the gallery. (redundant)</p>
 <ol class="arabic simple">
 <li>Cllick the link Content: Title</li>
 <li>Scroll and click Remove</li>
@@ -279,6 +276,7 @@ drush en ctools views views_ui libraries views_slideshow -y</pre>
 <li>In the Bottom Widgets section, check Pager and choose the middle instance of</li>
 <li>Content: Gallery Image</li>
 <li>Apply (All displays)</li>
+<li>Save</li>
 </ol>
 </div>
 <div class="section" id="advanced">
@@ -298,7 +296,7 @@ drush en ctools views views_ui libraries views_slideshow -y</pre>
 <p>By configuring the block to display only on Gallery content types we prevent it from being called on a view, and by listing it only on specific pages we prevent it from appearing on the Edit tab.</p>
 <p>Block title:  &lt;none&gt;
 Region Settings
-Custom (default theme)
+Bartik (default theme)
 Content
 Visibility Settings</p>
 <table border="1" class="docutils">
@@ -342,6 +340,7 @@ galleries*</td>
 <li>Menu: Main menu</li>
 <li>Menu link title: Galleries</li>
 <li>Save and continue</li>
+<li>?? Not fields</li>
 </ol>
 </div>
 <div class="section" id="fields">
@@ -351,7 +350,7 @@ galleries*</td>
 <li>Gallery image</li>
 <li>[ ]   Uncheck Create a label</li>
 <li>Formatter: Image (no change)</li>
-<li>Image style: medium</li>
+<li>Image style: gallery_index</li>
 <li>Link image to: Content</li>
 <li>Apply (all displays)</li>
 <li>Save</li>
@@ -380,7 +379,26 @@ galleries*</td>
   width: 480px;
 }
 
+.views-slideshow-controls-bottom  {
+  background: #eee;
+  width: 500px;
+  padding: 20px 0 20px 20px;
+}
+
+.views-field-field-gallery-image-2,
+.views-slideshow-controls-bottom {
+  width: 480px;
+}
+
 .views-slideshow-controls-bottom div {
+  display: inline;
+}
+
+.views-slideshow-controls-text-pause,
+.views-slideshow-controls-text-previous {
+  padding-right: 4px;
+  border-right: 1px solid ;
+} {
   display: inline;
 }
 
@@ -530,9 +548,6 @@ galleries*</td>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Welcome to Create Image Galleries and Slide Shows&#8217;s documentation!</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/recipe.txt"
@@ -561,9 +576,6 @@ galleries*</td>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
-        <li class="right" >
-          <a href="index.html" title="Welcome to Create Image Galleries and Slide Shows’s documentation!"
-             >previous</a> |</li>
         <li><a href="index.html">Create Image Galleries and Slide Shows 7.x-dev documentation</a> &raquo;</li> 
       </ul>
     </div>

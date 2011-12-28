@@ -11,18 +11,19 @@ Staple
 #. http://drupal.org/project/libraries - Enable Libraries
 #. http://drupal.org/project/views_slideshow - Enable Views Slideshow
 
+
 **Drush users:**
 
 ::
 
   drush dl ctools views libraries views_slideshow
-  drush en ctools views views_ui libraries views_slideshow -y
+  drush en ctools views views_ui libraries views_slideshow views_slideshow_cycle -y
 
 Speciality
 ==========
 
 Views Slideshow module uses two external libraries.
-
+.
 Required for basic slide show functionality:
 
 This is a weird one to download because it's a single file, and how you work with it depends on what you're used to.
@@ -197,7 +198,7 @@ First, add the main gallery image:
 #. From the popup, select: Content: Gallery image
 #. [ ] Remove the check in the box Create a label
 #. Set the Image style to large.
-#. Multiple Field Values: Uncheck Display all values in the same row
+#. Multiple Field Values: [ ] Uncheck Display all values in the same row
 #. Apply (All displays)
 
 Second, add the thumnail gallery images. Much like the first step:
@@ -207,7 +208,7 @@ Second, add the thumnail gallery images. Much like the first step:
 #. [ ] Remove the check in the box Create a label
 #. [√] Check Exclude from display
 #. Set the Image style to gallery_thumb.
-#. Multiple Field Values: Uncheck Display all values in the same row
+#. Multiple Field Values: [ ] Uncheck Display all values in the same row
 #. Apply (All displays)
 
 Next, add the title.
@@ -216,15 +217,15 @@ Next, add the title.
 #. From the popup, select:Content: Gallery image
 #. [ ] Remove the check in the box Create a label
 #. Leave other visible settings at their default
-#. Multiple Field Values: Uncheck Display all values in the same row
+#. Multiple Field Values: [ ] Uncheck Display all values in the same row
 #. Expand Rewrite Results
-#. Rewrite the output of this field
+#. [√] Rewrite the output of this field
 #. In the text field, enter [field_gallery_image_2-title] (View the available patterns by expanding Rep lacement patterns.)
 #. Apply (all displays)
 
 You now have three fields, all named the same thing but configured differently, the main image, the thumbnails, and the image titles.
 
-Finally, remove the Content Title since it's the name of the gallery (redundant) and not the name of the image.
+Finally, remove the Content Title since it redundantly displays the name of the gallery. (redundant) 
 
 #. Cllick the link Content: Title
 #. Scroll and click Remove
@@ -237,6 +238,7 @@ Finally, remove the Content Title since it's the name of the gallery (redundant)
 #. In the Bottom Widgets section, check Pager and choose the middle instance of
 #. Content: Gallery Image
 #. Apply (All displays)
+#. Save
 
 3.1.3 Advanced
 --------------
@@ -256,7 +258,7 @@ By configuring the block to display only on Gallery content types we prevent it 
 
 Block title:  <none>
 Region Settings
-Custom (default theme)
+Bartik (default theme)
 Content
 Visibility Settings
 
@@ -289,6 +291,7 @@ Intro screen
 #. Menu: Main menu
 #. Menu link title: Galleries
 #. Save and continue
+#. ?? Not fields
 
 Fields
 ------
@@ -298,7 +301,7 @@ Add
 #. Gallery image
 #. [ ]   Uncheck Create a label
 #. Formatter: Image (no change)
-#. Image style: medium
+#. Image style: gallery_index
 #. Link image to: Content
 #. Apply (all displays)
 #. Save
@@ -331,7 +334,26 @@ Add the following CSS to /sites/all/themes/custom/css/custom.css
    width: 480px;
  }
  
+ .views-slideshow-controls-bottom  {
+   background: #eee;
+   width: 500px;
+   padding: 20px 0 20px 20px;
+ }
+ 
+ .views-field-field-gallery-image-2,
+ .views-slideshow-controls-bottom {
+   width: 480px;
+ }
+ 
  .views-slideshow-controls-bottom div {
+   display: inline;
+ }
+ 
+ .views-slideshow-controls-text-pause,
+ .views-slideshow-controls-text-previous {
+   padding-right: 4px;
+   border-right: 1px solid ;
+ } {
    display: inline;
  }
  

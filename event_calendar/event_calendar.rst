@@ -39,7 +39,7 @@ ColorBox Library
 
 Part 1: Build a way to create events
 ************************************
-Step 1.1: Add a new content type called Event
+1.1: Add a new content type called Event
 =============================================
 *Structure > Content types > +Add new content type*
 
@@ -55,7 +55,7 @@ Description: Create an event for display on the site calendar
 **Menu Settings**                [  ] Uncheck all menus
 ================================ ======================================================
 
-Step 1.2: Configure Region and Language Settings
+1.2: Configure Region and Language Settings
 ================================================
 *Configuration > Regional and language > Regional settings*
 
@@ -104,7 +104,7 @@ Add a new date format
 
    Note: If you make a mistake with the format but don't notice until later, you can edit a date format by returning to *Configuration > Regional and Language: Date and Time > Formats* and clicking the edit link for the format in question. Unfortuantely this will cause the format to be unassigned from its Date type. Visit the Types tab and re-select the format from the dropdown list where appropriate.  If you forget this last step, the date field won't be automatically updated throughout your site.
  
-Step 1.4: Add a date field
+1.4: Add a date field
 ==========================
 Structure > Content types > Event > Manage fields
 Add new field
@@ -128,7 +128,7 @@ EVENT Settings
 #. Accept the rest as is.
 #. Save settings.
 
-Step 1.5: Rarrange the items in a way that makes sense
+1.5: Rarrange the items in a way that makes sense
 ======================================================
 *Structure > Content types > Event > Manage fields*
 
@@ -141,7 +141,7 @@ Use the grabber to drag and drop the fields into order:
 
 Remember to Save.
 
-Step 1.6: Create proper paths
+1.6: Create proper paths
 =============================
 *Configuration > Search and Metadata: URL aliases > Patterns*
 
@@ -149,7 +149,7 @@ Later on, we'll be creating a landing page at /calendar, so we're adding that to
 
 #. Pattern for all Event paths: calendar/[node:title]
 
-Step 1.7: Create an event
+1.7: Create an event
 =========================
 *Content > +Add content*
 
@@ -419,7 +419,7 @@ We're going to filter the calendar so that it only shows one kind of event and t
 #. (•) Provide default value
 #. Type: Taxonomy term ID from URL <- Choose from the select list.
 #. [ ] Uncheck Load default filter from term page
-#. Click Add (This Display). Note: If the button says Apply (all displays), you missed Step 1. You can make that change now.
+#. Click Add (This Display). Note: If the button says Apply (all displays), you missed step 1. You can make that change now.
 
 .. container:: question
 

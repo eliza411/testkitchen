@@ -40,6 +40,16 @@ Recommended for advanced features:
 #. Rename the directory (which begins with douglascrockford-) to json2 
 #. Place it in sites/all/libraries so that the final path looks like: sites/all/libraries/json2/json2.js
 
+Theme
+=====
+
+This triad of themes works together to provide you with an easily customized, colorable, mobile-friendly theme. 
+
+#. http://drupal.org/project/adaptivetheme
+#. http://drupal.org/project/corolla
+#. http://drupal.org/project/footheme  Enable and set as default.
+
+
 Part 1: Build the form for creating galleries
 *********************************************
 
@@ -83,9 +93,9 @@ There are a lot of settings here! Accept the defaults EXCEPT the following:
 
 File directory: gallery
 
-Minimum image resolution: 480 x 360
+Minimum image resolution: 640 x 480
 
-We’ll be displaying Drupal’s pre-fomatted Large image size of 480 x 360. By requiring images to be at least that large here, we can prevent jarring changes in size and eliminate white space between main images and thumbnails.
+We’re building our gallery around a common 640 x 480 resolution. By requiring images to be at least that large here, we can prevent jarring changes in size and eliminate white space between main images and thumbnails.
 
 [√] Enable Title field
 
@@ -125,17 +135,29 @@ Step 1.5: Hide the default display of images
 Step 2: Create custom image sizes
 *********************************
 
+Main gallery image
+==================
+*Configuration > Media > Image styles > +Add style*
+
+We set a minimum resolution for uploading the image, but users can upload higher resolution as they with. This size ensures uniform presentation within the gallery.
+
+#. Image style name: gallery_main
+#. In Effect, choose Scale and crop, then click Add
+#. Width: 640
+#. Height: 480
+#. Click the Add effect button (Your changes are saved; the button on the next page is just for reordering the effects)
+
 Gallery thumbnails
 ==================
 *Configuration > Media > Image styles > +Add style*
 
-The thumbnail settings are chosen so the images stay mostly proportional to an 800 x 600 original and so five thumbnails fit width-wise under the 480 x 360 Large image style that comes with Drupal by default.
+The thumbnail settings are chosen so the images stay proportional to an 640 x 480 main image and so seven thumbnails fit width-wise underneath it, with an allowance for padding.
 
 #. Image style name: gallery_thumb
 #. In Effect, choose Scale and crop, then click Add
-#. Width: 90
-#. Height: 70
-#. Click the Add effect button (Your changes are saved; the button on the next page is just for reordering the effects)
+#. Width: 80
+#. Height: 60
+#. Click the Add effect button 
 
 Index thumbnails
 ================
@@ -148,7 +170,7 @@ Add a second style for the index of galleries on the site.
 #. In Effect, choose Scale and crop, then click Add
 #. Width: 180
 #. Height: 140
-#. Click the Add effect button (Your changes are saved; the button on the next page is just for reordering the effects)
+#. Click the Add effect button 
 
 Step 3: Create the galleries
 ****************************
@@ -226,9 +248,9 @@ Next, add the title.
 
 You now have three fields, all named the same thing but configured differently, the main image, the thumbnails, and the image titles.
 
-Finally, remove the Content Title since it redundantly displays the name of the gallery. (redundant) 
+Finally, remove the Content Title since it redundantly displays the name of the gallery.
 
-#. Cllick the link Content: Title
+#. Click the link Content: Title
 #. Scroll and click Remove
 
 3.1.2 Format
@@ -292,7 +314,6 @@ Intro screen
 #. Menu: Main menu
 #. Menu link title: Galleries
 #. Save and continue
-#. ?? Not fields
 
 Fields
 ------
