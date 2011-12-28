@@ -11,8 +11,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
   
-   teaser
-   recipe
+   slides 
 
 
 Indices and tables
