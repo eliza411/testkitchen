@@ -13,6 +13,8 @@ Contents:
 
    event_calendar
    slides
+   workbench
+   schedule
 
 Indices and tables
 ==================

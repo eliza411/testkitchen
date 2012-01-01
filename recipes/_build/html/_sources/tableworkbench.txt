@@ -1,0 +1,189 @@
+Perfecting Permissions: Editorial Workflow
+==========================================
+
+We're creating a simple workflow that will apply to all of our content. A site author can 
+
+Ingredients
+***********
+
+Staple
+======
+
+#. http://drupal.org/project/ctools - Enable Chaos tools
+#. http://drupal.org/project/views - Views: Enable Views and Views UI
+#. http://drupal.org/project/workbench Enable Workbench
+#. http://drupal.org/project/workbench_moderation Enable Workbench Moderation
+
+**Drush users:**
+
+::
+
+drush dl ctools views workbench workbench_access
+
+
+Part 1: Users and permissions
+*****************************
+*People > Permissions*
+
+We're working with three pre-created users, each of whom is assigned to one of the three pre-created roles that will be used in the workflow. Creating users and roles is routine, but permissions are one of the trickiest things to get right when creating a workflow, so we're working through that together.
+
+1.1: Node permissions
+=====================
+
+In the Node section:
+
+============================== =========== ====== =========
+Permission                     Contributor Editor Publisher                               
+============================== =========== ====== =========
+View own unpublished content   [√]         [√]    [√] 
+   
+View content revisions         [√]         [√]    [√] 
+
+Revert content revisions       [ ]         [√]    [√] 
+
+Delete content revisions       [ ]         [ ]    [ ]
+
+Article: Create new content    [√]         [√]    [√]
+
+Article: Edit own content      [√]         [ ]    [ ]      
+
+Article: Edit any content      [ ]         [√]    [√]   
+  
+Article: Delete own content    [ ]         [ ]    [ ] 
+
+Article: Delete any content    [ ]         [ ]    [ ]      
+
+Basic page: Create new content [√]         [√]    [√]
+
+Basic page: Edit own content   [√]         [ ] 
+
+Basic page: Edit any content   [ ]         [√]    [√] 
+
+Basic page: Delete own content [√]         [ ]    [√]
+ 
+Basic page: Delete any content [ ]         [ ]    [√]      
+============================== =========== ====== =========
+
+
+
+
+Part 2: Configure workbench moderation
+**************************************
+
+2.1 Review configuration
+========================
+*Configuration > Workbench: Workbench Moderation
+
+We will start by using the default states provided by Workbench Moderation and later add new ones. Review the settings here, but don't make changes at this time.
+
+2.2 Enable the workflow for content types
+=========================================
+*Structure > Content types > Article: edit*
+
+.. container :: note
+
+   Although we don't cover this today, it is possible to have different workflows for different content types. This gets complex very quickly! See http://drupal.org/node/1206854#comment-5241230 for how to enable this.
+
+#. Publishing options
+#. [ ] Published (Uncheck this)
+#. [√] Promoted to front page (Leave checked)
+#. [ ] Sticky at top of lists (Leave unchecked)
+#. [√] Create a new revision (Check this!)
+#. [√] Enable moderation of revisions (Can only be checked once the item above is checked. Check this).
+#. Default moderation state: Draft
+#. Save content type
+#. Repeat for the Basic page content type (although don't promote pages to the front page)
+
+2.2 Set the permissions
+=======================
+*People > Permissions*
+
+**Workbench**
+================================ =========== ====== =========
+Permission                       Contributor Editor Publisher                               
+
+Administer Workbench settings    [√]         [√]    [√] 
+   
+Access My Workbench              [√]         [√]    [√] 
+================================ =========== ====== =========
+
+**Workbench Moderation**
+================================ =========== ====== =========
+Permission                       Contributor Editor Publisher      
+
+View all unpublished content     [ ]         [√]    [√] 
+
+Administer Workbench Moderation  [ ]         [ ]    [ ]
+
+Bypass moderation restrictions   [√]         [√]    [√]
+
+View moderation history          [√]         [ ]    [ ]      
+
+View the moderation 
+messages on a node               [ ]         [√]    [√]   
+  
+Use "My Drafts" workbench tab    [ ]         [ ]    [ ] 
+
+Use "Needs Review" workbench tab [ ]         [ ]    [ ]      
+
+Moderate all content from 
+Draft to Needs Review            [√]         [√]    [√]
+
+Moderate all content from  
+Needs Review to Draft            [√]         [ ]    [√]
+
+Basic page: Edit any content     [ ]         [√]    [√] 
+
+Basic page: Delete own content   [√]         [ ]    [√]
+ 
+Moderate all content from Needs 
+Review to Published              [ ]         [ ]    [√] 
+================================ =========== ====== ========
+
+
+
+
+
+
+
+
+
+2.1: Enable Workbench and Workbench Moderation
+==============================================
+*Configuration > Workbench: Workbench Moderation*
+
+The first tab, States, defines the choices available in your workflow. We'll add two states Ready to Publish, and Unpublished.
+  
+.. container:: note_error
+
+   The first time you save, a warning will appear at the top of the screen, telling you that you may need to reconfigure Views. We'll be doing that laterd the states.
+  
+Needs Final Review: Ready for final review
+
+Unpublished: Take this content down
+  
+2.2: Add our states to the management screens
+=============================================
+
+
+
+
+Who? 
+Create roles
+Create accounts 
+
+What?
+configure workbench access
+enable sample vocabulary
+assign permissions
+
+Where?
+Enable for content types
+
+Test, yay!
+.;
+
+
+
+
+

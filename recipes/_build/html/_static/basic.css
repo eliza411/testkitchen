@@ -543,37 +543,33 @@ span.eqno {
     page-break-before: always;
     }
 
+    #build-image-galleries-and-slideshows #create-proper-paths h3,
+    #build-image-galleries-and-slideshows #place-and-configure-the-block h3, 
     #ingredients h2 {
-    page-break-before: avoid;
+    page-break-before: always;
     }
 
-    p {
+    p, ol, ul, blockquote {
     orphans: 3;
     widows: 3;
     }
-}
 
-body {
-  font-size: 10pt;
-}
+   div.user-table {
+   width: 50%;
+   float: left;
+   } 
 
-h2 {
- font-size: 170%;
-}
-
-h3 {
-  border-bottom: 1px solid #000;
-}
-
-h4 {
-  border-bottom: 1px dotted #000;
-}
-
-h2, h3, h4, h5, h6 {
- font-family: Verdana;
+  #perfecting-permissions-editorial-workflow #ingredients h2 {
+  page-break-before: avoid;
+  }
+  
+  div.page-break {
+  page-break-before: always;
+  border: none;
+  height: 0;
+  margin: 0;
+  padding: 0; 
+  }
 
 }
 
-pre {
-  font-size: 9pt;
-}

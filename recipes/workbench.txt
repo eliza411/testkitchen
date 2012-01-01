@@ -1,0 +1,425 @@
+Perfecting Permissions: Editorial Workflow
+##########################################
+
+Does your organization require content review before the content gets published? We'll build a common editorial workflow that allows an author to create and edit his or her own work and submit it for editorial review. Author and editor can collaborate until it's ready to be passed along for final approval and publication.
+
+Base Workflow
+************
+With just two roles, we make use of Workbench access out of the box.
+
+.. image :: images/workbench/workflow_simple.png
+
+
+Expanded Workflow
+*****************
+Adding a publisher lets us look at how to define new states, transitions, and views.
+
+.. image :: images/workbench/workflow.png
+   
+
+Ingredients
+***********
+
+Staple
+======
+
+#. http://drupal.org/project/ctools - Enable Chaos tools
+#. http://drupal.org/project/views - Views: Enable Views and Views UI
+#. http://drupal.org/project/workbench - Enable Workbench
+#. http://drupal.org/project/workbench_moderation - Enable Workbench Moderation
+#. http://drupal.org/project/diff - Enable Diff
+
+**Drush users:**
+
+::
+
+  drush dl ctools views workbench workbench_moderation diff
+  drush en ctools views workbench workbench_moderation -y
+
+
+Part 1: Users and permissions
+*****************************
+*People > Permissions*
+   
+We're working with three pre-created users, each of whom is assigned to one of the three pre-created roles that will be used in the workflow. Creating users and roles is routine, but permissions are one of the trickiest things to get right when creating a workflow, so we're working through that together.
+
+.. container :: user_table
+
+   .. figure:: images/user_icons/contributor.png
+      :alt: Cathy Contributor Avatar
+      
+      Cathy Contributor
+      
+      Cathy has been assigned the Contributor role so that she will be able to create and edit her own content. 
+                 
+   .. figure:: images/user_icons/editor.png
+      :alt: Eli Editor Avatar
+      
+      Eli Editor
+      
+      Eli has been assigned the Editor role so that in addition to being able to do anything a contributor can do, he will be able to edit the work of others and advance content for publication.
+      
+   .. figure:: images/user_icons/publisher.png
+      :alt: Peggy Publisher Avatar
+      
+      Peggy Publisher
+      
+      Peggy has been assigned the Publisher role. This is the only role that will be able to make content live on the site. Publishers can do everything that editors and contributors can do.
+
+1.1: Node permissions
+=====================
+
+Before setting up the second layer of permissions provided by Workbench Moderation, we'll set the basic node permissions. These settings are based on the premise that no site content is ever deleted. During development, you might choose to allow the deletion of content.
+
+============================== =========== ====== =========
+Permission                     Contributor Editor Publisher                               
+============================== =========== ====== =========
+View own unpublished content   [√]         [√]    [√] 
+   
+View content revisions         [√]         [√]    [√] 
+
+Revert content revisions       [ ]         [√]    [√] 
+
+Delete content revisions       [ ]         [ ]    [ ]
+
+Article: Create new content    [√]         [√]    [√]
+
+Article: Edit own content      [√]         [√]    [√]     
+
+Article: Edit any content      [ ]         [√]    [√]   
+  
+Article: Delete own content    [ ]         [ ]    [ ] 
+
+Article: Delete any content    [ ]         [ ]    [ ]      
+
+Basic page: Create new content [√]         [√]    [√]
+
+Basic page: Edit own content   [√]         [√]    [√]
+
+Basic page: Edit any content   [ ]         [√]    [√] 
+
+Basic page: Delete own content [√]         [ ]    [√]
+ 
+Basic page: Delete any content [ ]         [ ]    [√]      
+============================== =========== ====== =========
+   
+Part 2: Configure workbench moderation
+**************************************
+
+2.1: Review configuration
+========================
+*Configuration > Workbench: Workbench Moderation*
+
+We will start by using the default states provided by Workbench Moderation and later add new ones. The labeling of states is tricky business since the contributor chooses a state before it's been applied and everyone else sees the state afterward. In general, it's best to choose the label that makes the most sense *after* it has been applied, e.g., Published instead of Publish. 
+
+2.2: Enable the workflow for content types
+=========================================
+*Structure > Content types > Article: edit*
+
+.. container :: tip
+
+   Although we don't cover this today, it is possible to have different workflows for different content types. This gets complex very quickly! See http://drupal.org/node/1206854#comment-5241230 for how to enable this.
+
+#. Publishing options
+#. [ ] Published (Uncheck this)
+#. [√] Promoted to front page (Leave checked)
+#. [ ] Sticky at top of lists (Leave unchecked)
+#. [√] Create a new revision (Check this!)
+#. [√] Enable moderation of revisions (Can only be checked once the item above is checked. Check this).
+#. Default moderation state: Draft
+#. Save content type
+#. Repeat for the Basic page content type (although don't promote pages to the front page)
+
+2.3: Set the Workbench Moderation permissions
+=============================================
+*People > Permissions*
+
+At the bottom of the modules page:
+
+**Workbench**
+
+================================ =========== ====== =========
+Permission                       Contributor Editor Publisher
+================================ =========== ====== =========
+Administer Workbench settings    [ ]         [ ]    [ ] 
+  
+Access My Workbench              [√]         [√]    [√] 
+================================ =========== ====== =========
+
+**Workbench Moderation**
+
+=================================================== =========== ====== =========
+Permission                                          Contributor Editor Publisher 
+=================================================== =========== ====== =========  
+View all unpublished content                        [ ]         [√]    [√] 
+
+Administer Workbench Moderation                     [ ]         [ ]    [ ]
+
+Bypass moderation restrictions                      [ ]         [ ]    [ ] 
+
+View moderation history                             [√]         [√]    [√]      
+
+View the moderation messages on a node              [√]         [√]    [√]   
+  
+Use "My Drafts" workbench tab                       [√]         [√]    [√]
+
+Use "Needs Review" workbench tab                    [ ]         [√]    [√]      
+
+Moderate all content from Draft to Needs Review*    [√]         [√]    [√]
+
+Moderate all content from  Needs Review to Draft    [ ]         [√]    [√]
+
+Moderate all content from Needs Review to Published [ ]         [√]    [√] 
+=================================================== =========== ====== =========
+
+* It's oddly worded, but you must grant this permission to the Contributor. It really means "Moderate all content types to Needs review." It is limited in scope by your particular permissions for each content type. The Contributor role is only allowed to edit its own Articles and Basic Pages, so it Cathy Contributor won't be able to Moderate other peoples' work.
+
+2.4 Check your permissions 
+==========================
+*Configuration > Workbench: Workbench Moderation > Check permissions (tab)
+
+Workbench has a great feature to help ensure you've set up your transitions properly.
+
+
+
+Part 3: Watch Contributor > Editor Moderation in Action
+*******************************************************
+*Home*
+
+We're going to set up in two separate browsers, once for Cathy Contributor and one for Eli Editor so that we can watch as content progresses through the workflow.
+
+3.1: Create an article as Cathy Contributor
+===========================================
+
+.. container :: users
+
+  .. figure :: images/user_icons/contributor.png
+  
+     ..
+
+     #. In the first browser, log in as admin and masquerade as Cathy Contributor. 
+     #. Create a new article. 
+     #. Note the message that the draft will be placed in moderation. 
+
+
+3.2: View Eli Editor's Worbench
+===============================
+*My Workbench > Needs Review (tab)*
+
+.. container :: users
+
+  .. figure :: images/user_icons/editor.png
+  
+     ..
+
+     #. In the second browser, log in as admin and masquerade as Eli Editor. 
+     #. View My Workbench > Needs Review (tab)
+     #. You shouldn't see anything yet.
+
+
+3.3: Move Cathy's work to Needs Review
+=====================================
+Workbench > My Drafts*
+
+.. container :: users
+
+  .. figure :: images/user_icons/contributor.png
+  
+     ..
+
+     Cathy Contributor can move her work from Draft to Needs Review in three places:
+
+     * On the View draft tab of the node, just as soon as she's saved it
+     * On the Moderate tab, where the entire revision history is available
+     * From the My Drafts page
+
+     Her work will be visible to no one but an administrator until she moves it to the Needs Review state. 
+
+     #. Move the article created in 2.4.1 into the Needs Review state.
+     #. Note that it disappears from Drafts and reappears on the My content page in My Edits. If Cathy bookmarks the page, she can still edit this while it's in the Needs review state, good for fixing that last typo. 
+     
+.. container :: page_break
+  
+   ..
+
+3.4: Publish Cathy's article
+============================
+*My Workbench > Needs Review (tab)*
+
+.. container :: users
+
+  .. figure :: images/user_icons/editor.png
+  
+     ..
+     
+     #. Reload Eli Editor's Needs Review tab.
+     #. Locate Cathy's new article. 
+     #. Publish it.
+     
+.. container :: question
+
+   What if you'd like to return the article to Cathy because it needs work? You can send it back by setting it to Draft, but out of the box, it's difficult to add a message to the page. We'll fix that as best we can in Part 5: Adjusting the Views. There is a feature request to make it easier to add comments at http://drupal.org/node/1257650.
+
+3.5: As Cathy, review the published work
+========================================
+*My Workbench*
+
+.. container :: users
+
+  .. figure :: images/user_icons/contributor.png
+  
+     ..
+     
+     #. Take a look at Cathy's main workbench page.
+     #. Edit the Contributor FAQ
+     #. Note that the officially-approved content stays published while this draft goes into moderation.
+     
+3.6: Experiment
+===============
+
+#. Try routing the article between Cathy and Eli in ways your organization might use workflow.
+#. Try creating content as Eli. 
+#. Switch back to the admin account when you're done.
+
+Part 4: Expanding the Workflow
+******************************
+
+4.1: Add a new state
+====================
+*Configuration > Workbench: Workbench Moderation*
+
+
+.. image :: images/workbench/workflow.png
+   :align: left
+   
+#. On the main screen, add a state:
+
+   Name: Needs Final Review 
+
+   Description: Ready for Publication
+
+#. Arrange them in order by using the grabber.     
+
+   * Draft
+   
+   * Needs Review
+   
+   * Needs Final Review
+   
+   * Published
+   
+
+#. Save
+
+.. container:: note_error
+
+When you save, you'll see the following warning: Depending on the changes you have made it may be necessary to reconfigure Views that leverage Workbench Moderation such as workbench_moderation. Part 5 will address the customizations necessary to take advantage of our new state.
+      
+
+4.2: Enable the transitions
+===========================
+*Configuration > Workbench: Workbench Moderation: Transitions (tab)*
+
+Next we define the new transitions. Move to the Transitions tab and:
+
+#. Add Needs Review > Needs Final Review
+   This will let us give editors permission to advance content to publishers.
+#. Add Needs Final Review > Needs Review
+   This will allow us to give publishers the ability to send the content back to the editors.
+#. Add Needs Final Review > Published
+   This will allow us to give the publisher permission to publish.
+#. Delete Needs Review > Published
+   This will removes an editor's ability to publish without final review.
+
+4.3: Assign transition permissions
+==================================
+*People > Permissions*
+
+Set the new permissions.
+
+
+**Workbench Moderation**
+
+============================================================ =========== ====== =========
+Permission                                                   Contributor Editor Publisher
+============================================================ =========== ====== =========
+Moderate all content from Needs Review to Needs Final Review [ ]         [√]    [√] 
+Moderate all content from Needs Final Review to Needs Review [ ]         [ ]    [√] 
+Moderate all content from Needs Final Review to Published    [ ]         [ ]    [√] 
+============================================================ =========== ====== =========
+
+Part 5: Adjust the views
+************************
+*Structure > Views > workbench_moderation: edit*
+
+Since we added our own state, we'll need to create another tab that is visible to the Publisher.
+
+#. Select the display: Needs Review Page
+#. Clone it
+#. Display Name: Ready to Publish Page
+#. Title: Ready to Publish
+#. Filter Criteria > Workbench Moderation State: Needs Final Review
+#. Page Settings > Path: admin/workbench/ready-to-publish
+#. Page Settings > Menu > Title: Ready to Publish
+#. Page Settings > Access: Permissions (change to role and select Publisher)
+
+Part 6: Watch Editor > Publisher Moderation in Action
+*****************************************************
+
+6.1: Create an article as Eli Editor
+======================================
+*Home*
+
+.. container :: users
+
+   .. figure :: images/user_icons/editor.png
+  
+      ..
+
+      #. In the first browser, log in as admin and masquerade as Eli Editor. 
+      #. Create a new article
+         Title: Editorial Policies
+         Body:  Just because you *can* move your work without review by another editor may not mean you should.
+      #. Save
+      #. Move it directly to Needs Final Review
+
+6.2: View Peggy Publisher's Workbench
+=====================================
+*My Workbench > Needs Review (tab)*
+
+.. container :: users
+
+   .. figure :: images/user_icons/publisher.png
+  
+      ..
+
+      #. In the second browser, log in as adhttp://workflow.everydaydrupal.com/min and masquerade as Peggy Publisher. 
+      #. View My Workbench > Ready for Publication (tab)
+      #. Publish Eli's Editorial Policies article. 
+
+
+6.3: Move Eli's work to Needs Review
+======================================
+*My Workbench > My Drafts*
+
+Part 7: Design your own workflow
+================================
+
+Extend your understanding by working on one of the following:
+
+If this workflow is exactly what you need, consider:
+
+#. How could the workbench moderation pages do a better job of supporting the process in your organization?
+#. What additional features might you want?
+
+
+If this workflow doesn't meet your needs, design one that does.
+
+
+
+
+
+
+
+
+

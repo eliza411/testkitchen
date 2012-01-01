@@ -469,15 +469,15 @@ Set permissions as follows:
 ================================= ================================== ====================================
 Author                            Editor                             Admin                               
 ================================= ================================== ====================================
-[√] Event: Create new content     [√] Event: Create new content      [√] Event: Create new content     
+[√] Event: Create new content     [√] Event: Create new content      [√] Event: Create new content          
 
-[√]  Event: Edit own content      [ ] Event: Edit own content        [√] Event: Edit own content        
+[√]  Event: Edit own content      [ ] Event: Edit own content        [√] Event: Edit own content              
 
-[ ]  Event: Edit any content      [√] Event: Edit any content        [√] Event: Edit any content       
+[ ]  Event: Edit any content      [√] Event: Edit any content        [√] Event: Edit any content             
 
-[√]  Event: Delete own content    [ ] Event: Delete own content      [√] Event: Delete own content      
+[√]  Event: Delete own content    [ ] Event: Delete own content      [√] Event: Delete own content            
  
-[ ]  Event: Delete any content    [√]  Event: Delete any content     [√] Event: Delete any content     
+[ ]  Event: Delete any content    [√]  Event: Delete any content     [√] Event: Delete any content         
 ================================= ================================== ====================================
 
 
