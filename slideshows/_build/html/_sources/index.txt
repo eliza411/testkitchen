@@ -1,0 +1,22 @@
+.. Create Slideshows and Galleries documentation master file, created by
+   sphinx-quickstart on Wed Jan 11 08:13:00 2012.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to Create Slideshows and Galleries's documentation!
+===========================================================
+
+Contents:
+
+.. toctree::
+   :numbered: 2
+
+   slideshows.txt
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+

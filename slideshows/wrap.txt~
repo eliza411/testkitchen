@@ -1,0 +1,6 @@
+\begin{wrapfigure}{r}{8cm}  % "l" or "r" for the side on the page. And the width parameter for the width of the image space.
+\centering
+\includegraphics[height=80mm]{_static/background/note.png}
+\caption{Selbstgebaute „Bluesniper“ um Bluetooth-Geräte aus über 1 km Entfernung anzugreifen. (Stand: 2004)}
+\label{bluesniper}
+\end{wrapfigure}

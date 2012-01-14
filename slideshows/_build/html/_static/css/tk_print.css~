@@ -1,0 +1,45 @@
+@media print {
+  h1 {
+     page-break-before: always;
+  }
+
+  p, ol, ul, blockquote {
+    orphans: 3;
+    widows: 3;
+  }
+
+  div.user-table {
+    width: 50%;
+    float: left;
+  } 
+
+  div.page-break {
+    page-break-after: always;
+    width: 0;
+    border: none;
+  }
+
+  #ingredients h1 {
+    page-break-before: always;
+  } 
+
+  #build-image-galleries-and-slideshows #create-proper-paths h4,
+  #build-image-galleries-and-slideshows #place-and-configure-the-block h4 {
+    page-break-before: always;
+  }
+
+  #perfecting-permissions-editorial-workflow #ingredients h1 {
+    page-break-before: avoid;
+  }
+  
+  #figure img {
+    width: 55%;
+  }
+
+  a.recipe-step {
+    background-image: url('blank.png');
+    background: none;
+  }
+
+}
+
