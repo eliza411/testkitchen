@@ -1,0 +1,102 @@
+Ingredients
+***********
+
+|sandbox-setup|
+
+Staple
+======
+
+Theme
+=====
+
+**Drush users:**
+
+::
+
+  drush dl 
+  drush en -y
+
+Speciality
+==========
+
+Section 2
+*********
+
+Section 2.1
+===========
+
+*Structure > Content types > +Add new content type*
+
+.. raw:: html
+
+     <a href="http://www.youtube.com/v/4FynfGen1qI" class="colorbox-load recipe-step">Watch this step</a> 
+
+I'm writing this assuming that you've never used version control before and may never even have heard the words. It's likely that you've just begun working on a team that uses Git, or your site is hosted on a platform that requires you to use Git to deploy even the smallest change. Maybe you're applying for a job that requires exerience with Git and you're trying to learn enough to be intelligent about it during the interview.
+
+If you *have* used version control before, you might be better off with one of the excellent developer resources out there:
+
+Git to SVN, etc.
+DVCS vs. VCS, etc.
+
+You might like to read on to find a way to explain Git to p/eople who don't code.
+
+Why use version control?
+************************
+
+#. You don't overwrite the work of other people on the team
+#. You have a record of changes
+#. You can quickly move back in time to a known working version of software.
+
+There are additional features that distinguish Git from other systems, and you can learn about them at http://
+
+Terms
+*****
+
+It's okay to skim this part and focus on the concrete examples below, returning here as needed for expansion
+
+VCS Version Control System
+DVCS
+Clone
+Checkout
+Commit
+Push
+Pull
+
+Before you begin:
+*****************
+You need to install Git on the computer where you do your work. GitWiki has excellent directions for installing Git on your platform. 
+
+What about the tools?
+There are several graphical tools that can be used with Git, but we're going to teach the command-line for several reasons:
+
+*. The directions are the same on every platform
+*. We remove an intermediate troubleshooting layer
+*. You'll be focused on Git itself, and not some particular interpretation of it.
+*. You'll be empowered to use Git on remote servers
+
+Where is your web site?
+=======================
+We're going to assume where your Website is located on your machine. If you're on OSX using MAMP, it's likely to be:
+
+If you're running Windows and WAMP, it's likely to be:
+
+
+
+
+Use cases
+*********
+Each of the use cases below will provide concrete steps that introduce fundamental concepts.
+
+Keep your own work straight
+===========================
+
+If you keep mulitple copies of files and have ever become confused about which copy was working, etc.
+
+
+
+
+Your host requires you to use Git
+==================================
+
+
+
