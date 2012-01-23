@@ -1,0 +1,290 @@
+/* indentation and white space */
+
+ol {
+  margin-left: 50px;
+}
+
+/* image styling  */
+
+.img-right {
+  float: right;
+  margin: 10px 0 10px 10px;
+}
+
+.img-left {
+  float: left;
+  margin: 10px 10px 10px 0;
+}
+
+#block-block-4 {
+  width: 250px;
+}
+
+/* front top */
+
+#block-views-front-quote-block {
+  padding: 10px;
+  border: 1px solid #ccc;
+  height: 235px;
+  border-radius: 6px;
+  margin-left: 20px;
+  background: #eee;
+}
+
+.front h2 {
+ 1.385em;  
+}
+
+.front h3 {
+  margin-top: 0;
+  padding-top: 0; 
+}
+
+#block-block-2 {
+  margin-bottom: 20px;
+}
+
+#views_slideshow_cycle_main_front_quote-block img {
+  float: left;
+  padding-right: 20px;
+}
+ 
+#block-views-front-quote-block .views-field-field-quote .field-content {
+  font-size: 150%;
+  line-height: 2;
+  width: 280px;
+  padding: 10px 10px 0 240px;
+  background: #eee url('left-quote.png') no-repeat 200px 0;
+}
+
+#block-nodeblock-14 {
+  text-align: right;
+  margin-bottom: 0;
+}
+
+#block-nodeblock-14 h2 {
+  margin: 0 0 10px 0;
+  padding: 9px 10px;
+  border-bottom: 1px solid #eee;
+  background: #124499;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+}
+
+#block-nodeblock-14 h2 a, 
+#block-nodeblock-14 h2 a:visited, 
+#block-nodeblock-14 h2 a:link {
+  color: #fff;
+  font-size: 90%;
+  font-weight: normal;
+}
+
+#block-nodeblock-14 h2:hover {
+  background: #058a31;
+}
+
+.type-name {
+  color: #999;
+}
+
+/* level 2 navigation */ 
+
+#block-block-1 {
+  float: right;
+  text-align: right;
+  border-left: 1px solid #aaa;
+  width: 325px;
+  background: #fff;
+ 
+}
+
+#block-menu-block-1 ul.menu {
+  float: right;
+}
+
+#block-menu-block-1 ul.menu li {
+  display: inline;
+  padding-right: 30px;
+  font-size: 115%;
+}
+
+#block-menu-block-1 .block-inner {
+  padding: 0;
+  margin: 0;
+}
+
+h2, h3{
+  margin-bottom: 1px;
+}
+
+
+.article-content img {
+  border: none;
+  padding-top: 0;
+  }
+
+.field-name-field-instructor {
+  clear: both;
+}
+
+.ia-r .field-type-image {
+  float: left;
+  margin: 0 20px 0 0;
+  width: 180px;
+}
+
+.ia-r .field-type-image img {
+  margin: 0;
+  padding: 5px 0 0 0;
+}
+
+/* header layout */
+.region-header #block-system-user-menu {
+  clear: both;
+}
+
+.region-header #block-system-user-menu ul.menu li { 
+  display: inline;
+  text-align: right;
+  padding-left: 10px;
+}
+
+.region-header .block-inner {
+  margin: 0;
+}
+
+#block-search-form .form-item-search-block-form input {
+  float: none;
+}
+
+
+.region-header #block-system-user-menu ul.menu a
+ {
+ color: #033;
+}
+
+.region-header .block {
+  float: none;
+  padding-bottom: 5px;
+  text-align: right;
+}
+
+.region-header ol {
+  margin: 0;
+}
+
+.region-header {
+  margin-bottom: 10px;
+}
+
+.type {
+  color: #999;
+  float: right;
+}
+
+.rate-widget-1 {
+  float: right;
+}
+
+/* Front page teasers */
+
+.region-tertiary-content h1.article-title a {
+  font-size: 80%;
+}
+
+.region-tertiary-content .group-left {
+  width: 20%;
+}
+.region-tertiary-content .group-right {
+  width: 70%;
+  padding-left: 20px;
+}
+
+.region-tertiary-content .field {
+  padding: 0;
+}
+
+.commerce-add-to-cart input.form-submit {
+  background: #124499;
+  float: right;
+  color: white;
+  font-size: 130%;
+  margin-right: 40px;
+  position: relative;
+  top: -100px;
+}
+
+.view-recipes .group-left {
+  width: 35%;
+}
+
+.view-recipes .group-right {
+  width: 65%;
+}
+
+.article-type-session ul.links li a {
+  background: #124499;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  float: right;
+  width: auto;
+  margin: -75px 40px 10px 0;
+  padding: 10px 20px;
+  font-size: 130%;
+  color: white;
+}
+
+.commerce-add-to-cart input.form-submit:hover,
+.article-type-session ul.links li a:hover {
+  background: #058a31;
+}
+
+
+.field-name-field-date {
+  font-size: 130%;
+  margin-bottom: 10px;
+}
+/* venue address formatting */
+
+.locality:after {
+  content: ",";
+}
+
+/* session node */
+.page-type-session .group-right {
+  width: 60%;
+}
+
+.page-type-session .group-left {
+  float: left;
+  width: auto;
+  display: inline;
+}
+
+.page-type-session .field-name-field-signup-link  {
+  margin-top: -30px;
+}
+
+.group-left .field-type-image {
+  float: left;
+  margin: 4px 20px 0 0;
+}
+
+.page-type-webform label {
+  font-weight: bolder;
+}
+
+.view-sign-up th,
+.view-sign-up td {
+  padding: 6px;
+}
+
+.view-sign-up span.date-display-end {
+  float: left;
+}
+
+td.views-field-path,
+td.views-field-field-date {
+  white-space: nowrap;
+}
+

@@ -1,14 +1,13 @@
-
-.. image:: _static/images/slideshows/balloons.png
+.. image:: sites/default/files/recipes/slideshows/balloons.png
    :alt: A completed gallery
 
 
 Ingredients
 ***********
+|sandbox-setup|
 
 Staple
 ======
-
 #. http://drupal.org/project/ctools - Enable Chaos Tools (all others are not needed)
 #. http://drupal.org/project/views - Enable Views and Views UI
 #. http://drupal.org/project/libraries - Enable Libraries
@@ -16,14 +15,12 @@ Staple
 
 Theme
 =====
-
-Because this recipe requires custom theming, we're using Adaptive Themes (which makes the site mobile-friendly), Corolla (which makes it attractive), and Footheme (which provide a ready-to-customize subtheme). This choice facilitates best practices in custom theming and isn't required for any of the actual functionality.
+Because this recipe requires custom theming, we're using AdaptiveTheme (which makes the site mobile-friendly), Corolla (which makes it attractive), and Footheme (which provide our ready-to-customize subtheme). Customizing footheme means security updates and new features from our base themes can be easily applied. 
 
 #. http://drupal.org/project/adaptivetheme
 #. http://drupal.org/project/corolla
-#. http://drupal.org/project/footheme
+#. http://drupal.org/project/footheme 
 
-At Appearance, set footheme as the default.
 
 **Drush users:**
 
@@ -32,20 +29,18 @@ At Appearance, set footheme as the default.
   drush dl ctools views libraries views_slideshow adaptivetheme corolla footheme
   drush en ctools views views_ui libraries views_slideshow views_slideshow_cycle -y
 
-Speciality
+Specialty
 ==========
 
 The Views Slideshow module uses two external libraries.
 
-  Required for basic slideshow functionality:
-
+Required for basic slideshow functionality:
   #. Visit http://malsup.com/jquery/cycle/download.html
   #. Click the link to “Cycle Plugin”
   #. In your browser, choose File > Save Page as > jquery.cycle.all.js
   #. Place in sites/all/libraries/jquery.cycle (you'll have to create that folder) so that the final path looks like sites/all/libraries/jquery.cycle/jquery.cycle.all.js
 
-  Required for advanced features, which include setting the speed of the slideshow:
-
+Required for advanced features, which include setting the speed of the slideshow:
   #. Visit https://github.com/douglascrockford/JSON-js/downloads and download the appropriate format, .zip or .tar.gz, for your environment.
   #. Extract it
   #. Rename the directory (which begins with douglascrockford-) to json2 
@@ -58,25 +53,19 @@ Add a new content type called Gallery
 =====================================
 *Structure > Content types > +Add new content type*
 
-.. raw:: html
-
-     <a href="http://www.youtube.com/v/4FynfGen1qI" class="recipe-step colorbox-load"></a> 
-
 #. Name: Gallery
-
 #. Description: Create an image gallery with slideshow controls.
-
 #. Set the following values:
 
-   ============================== ======================================================
-   Submission Form Settings       Title field label: Gallery name
-   Publishing Options             [√] Published (Check only this option; uncheck others)
-   Display Settings               [ ]  Display author and date information (Uncheck this)
-   Comment Settings               Closed (Select Closed)
-   Menu Settings                  [ ]  Uncheck all menus
-   ============================== ======================================================
-   
-#. Save content type
+ ============================== ========================================
+ Submission Form Settings       Title field label: Gallery name
+ Publishing Options             [√] Published 
+ Display Settings               [ ] Display author and date information 
+ Comment Settings               Closed 
+ Menu Settings                  [ ] Uncheck all menus
+ ============================== ========================================
+
+4. Save content type
 
 Add an image field
 ==================
@@ -103,11 +92,7 @@ Gallery Settings
 There are a lot of settings here! Accept the defaults EXCEPT the following:
 
 #. File directory: galleries
-
-#. Minimum image resolution: 640 x 480
-
-   We’re building our gallery around a common 640 x 480 resolution. By requiring images to be at least that large here, we can prevent jarring changes in size and eliminate white space between main images and thumbnails.
-
+#. Minimum image resolution: 640 x 480 - We’re building our gallery around a common 640 x 480 resolution. By requiring images to be at least that large here, we can prevent jarring changes in size and eliminate white space between main images and thumbnails.
 #. [√] Enable Title field
 
 Gallery Image Field Settings
@@ -131,7 +116,7 @@ Create a test gallery
 =====================
 *Content > +Add content > Gallery*
 
-.. figure:: ../_static/images/slideshows/slideshows-test-gallery.png
+.. figure:: sites/default/files/recipes/slideshows/slideshows-test-gallery.png
    :alt: Image of the Views Intro Screen
    
    ..
@@ -142,12 +127,13 @@ Create a test gallery
    #. Body text: Optional
    #. Browse and upload at least 4 images, giving each one a title.
    #. Check the URL pattern is what you expect, something like: http://tests.l/galleries/test-gallery
+   
 
 Hide the default display of images
 ==================================
 *Structure > Content types > Gallery > Manage display*
 
-.. figure:: ../_static/images/slideshows/slideshows-hide-images.png
+.. figure:: sites/default/files/recipes/slideshows/slideshows-hide-images.png
    :alt: Image of the Views Intro Screen
    
    ..
@@ -176,7 +162,7 @@ Gallery thumbnails
 ==================
 *Configuration > Media > Image styles > +Add style*
 
-The thumbnail settings are chosen so the images stay proportional to an 640 x 480 main image and so seven thumbnails fit width-wise underneath it, with an allowance for padding.
+The thumbnail settings are chosen so the images stay proportional to a 640 x 480 main image and so seven thumbnails fit width-wise underneath it, with an allowance for padding.
 
 #. Image style name: gallery_thumb
 #. In Effect, choose Scale and crop, then click Add
@@ -209,7 +195,7 @@ Create the actual gallery display
 On the introductory Views page:
 
 
-.. figure:: ../_static/images/slideshows/slideshows-gallery-intro.png
+.. figure:: sites/default/files/recipes/slideshows/slideshows-gallery-intro.png
    :alt: Image of the Views Intro Screen
    
    ..
@@ -223,7 +209,7 @@ On the introductory Views page:
    #. Items per page: (Make this blank)
    #. Continue & Edit
 
-.. figure:: ../_static/images/slideshows/slideshows-gallery.png
+.. figure:: sites/default/files/recipes/slideshows/slideshows-gallery.png
    :alt: An image of the Main Views Interface
   
    In main Views interface, we'll configure three areas:
@@ -237,36 +223,44 @@ On the introductory Views page:
 A. Add Fields
 -------------
 
+First, add the main gallery image:
+
 .. raw:: html
 
-     <a href="http://www.youtube.com/v/4FynfGen1qI" class="colorbox-load recipe-step"></a> 
-
-First, add the main gallery image:
+     <a href="http://www.youtube.com/v/XKXVWo0_uaI" class="recipe-step colorbox-load" title="Watch this step">Watch</a> 
 
 #. Fields: add
 #. From the popup, select: Content: Gallery image
 #. [ ] Remove the check in the box Create a label
 #. Set the Image style to gallery_main.
-#. Multiple Field Values: [ ] Uncheck Display all values in the same row
+#. Multiple Field Settings: [ ] Uncheck Display all values in the same row
 #. Apply (All displays)
 
 Second, add the thumbnail gallery images. Much like the first step:
+
+.. raw:: html
+
+     <a href="http://www.youtube.com/v/WNsXVJ8Z_FY" class="colorbox-load recipe-step" title="Watch this step">Watch</a> 
 
 #. Fields: add
 #. From the popup, select: Content: Gallery image
 #. [ ] Remove the check in the box Create a label
 #. [√] Check Exclude from display
 #. Set the Image style to gallery_thumb.
-#. Multiple Field Values: [ ] Uncheck Display all values in the same row
+#. Multiple Field Settings: [ ] Uncheck Display all values in the same row
 #. Apply (All displays)
 
 Next, add the Alt title.
+
+.. raw:: html
+
+     <a href="http://www.youtube.com/v/HHqg_3v9x2A" class="colorbox-load recipe-step" title="Watch this step">Watch</a> 
 
 #. Fields: add
 #. From the popup, select:Content: Gallery image
 #. [ ] Remove the check in the box Create a label
 #. Leave other visible settings at their default
-#. Multiple Field Values: [ ] Uncheck Display all values in the same row
+#. Multiple Field Settings: [ ] Uncheck Display all values in the same row
 #. Expand Rewrite Results
 #. [√] Rewrite the output of this field
 #. In the text field, enter [field_gallery_image_2-alt] (View the available patterns by expanding Replacement Patterns.)
@@ -284,7 +278,7 @@ B. Format
 
 .. raw:: html
 
-     <a href="http://www.youtube.com/v/4FynfGen1qI" class="colorbox-load recipe-step"></a> 
+     <a href="http://www.youtube.com/v/hntqtWq3fH4" class="colorbox-load recipe-step" title="Watch this step">Watch</a> 
  
 #. Format: Settings
 #. In the Top Widgets section, check Controls.
@@ -296,7 +290,7 @@ C. Advanced
 
 .. raw:: html
 
-     <a href="http://www.youtube.com/v/4FynfGen1qI" class="colorbox-load recipe-step"></a> 
+     <a href="http://www.youtube.com/v/KmnDpv8vWKg" class="colorbox-load recipe-step" title="Watch this step">Watch</a> 
 
 #. Contextual Filter (Add)
 #. Content: Nid
@@ -311,22 +305,19 @@ Place and configure the block
 
 Configuring the block to display only on Gallery nodes prevents it from being called on a view, and listing it only on specific pages prevents it from appearing on the Edit tab.
 
-Block title:  <none>
-
-Region Settings
-
-  Footheme (default theme)
-  Content
+#. Block title:  <none>
+#. Footheme (default theme): Content <- Select from dropdown
+#. Save blcok
 
 **Visibility Settings**
 
-================== ==============================================================
-Pages              (∙) Only the listed pages (Select this and enter the text below) 
+================== ===========================================
+Pages              (∙) Only the listed pages
                    galleries*
 Content types      [√] Gallery (Check only this option)
 Roles              (Leave as is)
 Users              (Leave as is)
-================== ==============================================================
+==============================================================
 
 Create an index of all galleries
 ********************************
@@ -337,17 +328,21 @@ You could create the gallery index page in the same view as the gallery block by
 Add a new view
 ==============
 
+.. raw:: html
+
+     <a href="http://www.youtube.com/v/8RJ0l4juOZY" class="colorbox-load recipe-step" title="Watch this step">Watch</a> 
+
 Intro screen
 ------------
 
 #. View name: Galleries
 #. Show Content of type Gallery sorted by Newest first
-#. [√]  Create a page
+#. [√] Create a page
 #. Page title: Galleries
 #. Display format: Grid of fields
 #. Items to display: 24
-#. [√]  Create a menu link > Menu: Main menu, Weight: 1
-#. Menu link title: Galleries
+#. [√] Create a menu link > Menu: Main menu
+#. Link text: Galleries
 #. Continue & edit
 
 Fields
@@ -355,30 +350,44 @@ Fields
 
 .. raw:: html
 
-     <a href="http://www.youtube.com/v/4FynfGen1qI" class="colorbox-load recipe-step"></a> 
+     <a href="http://www.youtube.com/v/4FynfGen1qI" class="colorbox-load recipe-step" title="Watch this step">Watch</a> 
 
 #. add
-#. Gallery image
-#. [ ] Uncheck Create a label
+#. For: All displays
+#. [√] Conent: Gallery image
+#. [ ] Create a label 
 #. Formatter: Image (no change)
 #. Image style: gallery_index
 #. Link image to: Content
 #. Multiple Field Settings: Accept defaults EXCEPT change Display all value(s) so it reads Display 1 value(s)
 #. Apply (all displays)
-
-Be sure to save the view!
+#. Save the view
 
 A brief detour
 ==============
+Some themes, like Bartik, have the Main Menu placed in the theme's code. Others, like Sky and our sub-theme of Sky, use the block system to place the main menu. 
+
+Because we haven't placed the Main menu in a region, we can't see if our new view is appearing properly in the menu.
+
+Place the Main Menu block
+-------------------------
 *Structure > Blocks > Main menu: configure*
 
 Footheme uses the block system to place menus, and the main menu is not enabled yet. 
 
-Region Settings
+After you've located the Main menu block and clicked configure, under the Region Settings:
 
-#. Footheme (default theme). Select Menu Bar.
+#. For Footheme (default theme), select Menu Bar.
 #. Save block
+#. Verify the menu and galleries link are visible by visiting the home page.
 
+Arrange the menu links
+----------------------
+*Structure > Menus > Main Menu: edit links*
+
+Now that you can see the main menu, you'll probably want to rearrange the links so that the Home link is left-most.
+
+#. Use the grabber to drag Home to the top of the menu.
 
 Auto-generate galleries
 =======================
@@ -393,27 +402,29 @@ When you're done, visit your gallery index page to see what it looks like when i
 Style the Gallery
 *****************
 
-.. figure:: _static/images/slideshows/slideshows-before-theming.png
+.. figure:: sites/default/files/recipes/slideshows/slideshows-before-theming.png
    :alt: Arrange the thumbnails.
 
    ..
 
    We're nearly there. The thumbnails present and you can click them to change the image, but they are taking up way too much screen realestate. We have text controls, but they kind of run together. There's text, but it's below our main image.
    
-  To solve these issues, we will edit the our custom theme's css file to style the gallery.
+   To solve these issues, we will edit the our custom theme's css file to style the gallery.
 
 
 Open footheme.css
 =================
 
-You can edit your style sheet any way that is comfortable for you. If you need more support connecting than the username and password for your sandbox, see Connecting to your sandbox with sFTP at http://training.opensourcery.com/basics/sftp
+You can edit your stylesheet any way that is comfortable for you. If you need more support connecting than the username and password for your sandbox, see Connecting to your sandbox with sFTP at http://training.opensourcery.com/basics/sftp
 
 Open sites/all/modules/footheme/css/footheme.css  If you're connecting to a sandbox, it will be located inside of www/drupal. You'll find comments at the top, but it's otherwise empty. Place the CSS for each step at the bottom of this file, save, and reload a gallery page to see the changes.
 
-Arrange thumbnails beneath the main image
-=========================================
+.. cssclass:: page-break
 
-.. figure:: _static/images/slideshows/slideshows-thumbnails-arranged.png
+  Arrange thumbnails beneath the main image
+  =========================================
+
+.. figure:: sites/default/files/recipes/slideshows/slideshows-thumbnails-arranged.png
    :alt: The slideshow before theming.
 
    ..
@@ -441,7 +452,7 @@ Arrange thumbnails beneath the main image
 Format the controls
 ===================
 
-.. figure:: _static/images/slideshows/slideshows-controls-formatted.png
+.. figure:: sites/default/files/recipes/slideshows/slideshows-controls-formatted.png
    :alt: The slideshow before theming.
    
    ..
@@ -476,7 +487,7 @@ Place title text over the main image
 *Structure > Views > Gallery: edit*
 
 
-.. figure:: _static/images/slideshows/slideshows-text-overlay.png
+.. figure:: sites/default/files/recipes/slideshows/slideshows-text-overlay.png
    :alt: The text overlay.
 
    ..
@@ -484,44 +495,46 @@ Place title text over the main image
    Placing opaque text on a transparent background requires some special setup. If the text is placed inside the transparent container, it will inherit the transparency. Instead, it must be placed parallel to the container and positioned.
 
    #. Edit the third instance of the filed content: Galley image
+
    #. Expand Rewrite Results and edit to match:
 
-      :: 
-    
-      <div class="transparency"></div>
-      <div class="overlay">[field_gallery_image_2-alt]</div>
+   :: 
+       
+   <div class="transparency"></div>
+   <div class="overlay">[field_gallery_image_2-alt]</div>
 
-   #. Apply (all displays)
+   3. Apply (all displays)
+
    #. Add the styling to footheme.css:
 
-      ::
+   ::
 
-        /* Overlay the text on the main image */
-        .views-field-field-gallery-image {
-          position: relative;
-        }
+     /* Overlay the text on the main image */
+     .views-field-field-gallery-image {
+       position: relative;
+     }
 
-        .transparency {
-          position: absolute;
-          bottom: -10px;
-          left: 0px;
-          width: 640px;
-          height: 75px;
-          background: #000;  
-          margin: 20px;
-          filter:alpha(opacity=70);
-          opacity: 0.7;
-          -moz-opacity:0.7;
-        }
+     .transparency {
+       position: absolute;
+       bottom: -10px;
+       left: 0px;
+       width: 640px;
+       height: 75px;
+       background: #000;  
+       margin: 20px;
+       filter:alpha(opacity=70);
+       opacity: 0.7;
+       -moz-opacity:0.7;
+     }
 
-        .overlay {
-          color: #fff;
-          position: absolute;
-          bottom : 0px;
-          left: 0px;
-          height: 75px;
-          padding: 0 30px 0 30px;
-        }
+     .overlay {
+       color: #fff;
+       position: absolute;
+       bottom : 0px;
+       left: 0px;
+       height: 75px;
+       padding: 0 30px 0 30px;
+     }
 
 Set and test permissions
 ************************
@@ -534,20 +547,15 @@ Set permissions
 
 Set permissions as follows:
 
-================================= ================================== ====================================
-Author                            Editor                             Admin                               
-================================= ================================== ====================================
-[√] Gallery: Create new content   [√] Gallery: Create new content    [√] Gallery: Create new content     
-
-[√]  Gallery: Edit own content    [ ]  Gallery: Edit own content     [√] Gallery: Edit own content        
-
-[ ]   Gallery: Edit any content   [√] Gallery: Edit any content      [√] Gallery: Edit any content       
-
-[√]  Gallery: Delete own content  [ ]  Gallery: Delete own content   [√] Gallery: Delete own content      
- 
-[ ]   Gallery: Delete any content [√]  Gallery: Delete any content   [√] Gallery: Delete any content     
-================================= ================================== ====================================
-
+============================= =========== ====== =============
+Permission                    Contributor Editor Administrator
+============================= =========== ====== =============
+Gallery: Create new content     [√]         [√]    [√]
+Gallery: Edit own content       [√]         [ ]    [√]
+Gallery: Edit any content       [ ]         [√]    [√]
+Gallery: Delete own content     [√]         [ ]    [√]  
+Gallery: Delete any content     [ ]         [√]    [√]
+============================= =========== ====== =============
 
 Test Author privileges
 ======================

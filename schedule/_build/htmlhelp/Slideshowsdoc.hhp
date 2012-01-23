@@ -1,0 +1,77 @@
+[OPTIONS]
+Binary TOC=No
+Binary Index=No
+Compiled file=Slideshowsdoc.chm
+Contents file=Slideshowsdoc.hhc
+Default Window=Slideshowsdoc
+Default topic=index.html
+Display compile progress=No
+Full text search stop list file=Slideshowsdoc.stp
+Full-text search=Yes
+Index file=Slideshowsdoc.hhk
+Language=0x409
+Title=Create Slideshows and Galleries 7.x-1.x-dev documentation
+
+[WINDOWS]
+Slideshowsdoc="Create Slideshows and Galleries 7.x-1.x-dev documentation","Slideshowsdoc.hhc","Slideshowsdoc.hhk","index.html","index.html",,,,,0x63520,220,0x10384e,[0,0,1024,768],,,,,,,0
+
+[FILES]
+slideshows.html
+index.html
+_static\comment-bright.png
+_static\up.png
+_static\down-pressed.png
+_static\file.png
+_static\minus.png
+_static\basic.css
+_static\pygments.css
+_static\comment.png
+_static\plus.png
+_static\comment-close.png
+_static\down.png
+_static\up-pressed.png
+_static\ajax-loader.gif
+_static\logos\opensourcery.png
+_static\logos\favicon.ico
+_static\slideshows\balloons.png
+_static\slideshows\slideshows-gallery-intro.png
+_static\slideshows\slideshows-gallery.png
+_static\slideshows\slideshows-galleries-image.png
+_static\slideshows\slideshows-before-theming.png
+_static\slideshows\slideshows-controls-formatted.png
+_static\slideshows\slideshows-text-overlay.png
+_static\slideshows\slideshows-thumbnails-arranged.png
+_static\slideshows\slideshows-hide-images.png
+_static\slideshows\slideshow.png
+_static\slideshows\slideshows-test-gallery.png
+_static\user_icons\content_owner.png
+_static\user_icons\pirate.png
+_static\user_icons\shades.png
+_static\user_icons\publisher.png
+_static\user_icons\contributor.png
+_static\user_icons\authenticated.png
+_static\user_icons\unclesam.png
+_static\user_icons\admin.png
+_static\user_icons\editor.png
+_static\user_icons\publisher3.png
+_static\user_icons\everyone.png
+_static\user_icons\editor_lg.png
+_static\user_icons\security.png
+_static\user_icons\contributor_lg.png
+_static\user_icons\publisher_lg.png
+_static\user_icons\anonymous.png
+_static\background\note.png
+_static\background\dont_panic.png
+_static\background\exclamation_point.png
+_static\background\question_mark.png
+_static\css\videoicon.gif
+_static\css\tk.css
+_static\css\default.css
+_static\css\videoicon.png
+_static\css\tk_print.css
+_static\css\exclamation_point.png
+_static\css\tk.css~
+_static\css\tk_print.css~
+_static\css\default.css~
+_static\workbench\workflow_simple.png
+_static\workbench\workflow.png

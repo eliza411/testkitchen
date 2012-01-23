@@ -1,0 +1,681 @@
+
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="ingredients">
+<h1>1. Ingredients</h1>
+<p>Test kitchen recipes are based on our sandbox setup, which includes pre-installed modules used every time. See <a class="reference external" href="http://training.opensourcery.com/sandbox/setup">http://training.opensourcery.com/sandbox/setup</a> to configure your own environment to match these instructions.</p>
+<div class="section" id="staple">
+<h2>1.1. Staple</h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://drupal.org/project/ctools">http://drupal.org/project/ctools</a> - Enable Chaos Tools</li>
+<li><a class="reference external" href="http://drupal.org/project/views">http://drupal.org/project/views</a> - Enable Views and Views UI</li>
+<li><a class="reference external" href="http://drupal.org/project/date">http://drupal.org/project/date</a> - Enable Date and Date Popup</li>
+<li><a class="reference external" href="http://drupal.org/project/scheduler">http://drupal.org/project/scheduler</a> - Enable Scheduler</li>
+<li><a class="reference external" href="http://drupal.org/project/diff">http://drupal.org/project/diff</a> - Enable Diff</li>
+</ol>
+<p><strong>Drush users:</strong></p>
+<div class="highlight-python"><pre>drush dl ctools views date scheduler diff
+drush en ctools views views_ui date_api date date_popup scheduler -y</pre>
+</div>
+</div>
+</div>
+<div class="section" id="configure-the-date-module">
+<h1>2. Configure the Date module</h1>
+<div class="section" id="date-api-and-date-popup">
+<h2>2.1. Date API and Date Popup</h2>
+<p>In order to allow use of the a popup calendar for scheduling, you&#8217;ll need to enable the Date API and the Date Popup modules. Once you have, you&#8217;ll immediately see an error message warning you that you must configure the date module.</p>
+<div class="note-error container">
+The module and status pages will show warnings and display instructions for initially configuring Date module.</div>
+</div>
+<div class="section" id="configure-regional-settings">
+<h2>2.2. Configure Regional Settings</h2>
+<p><em>Configuration &gt; Regional and language: Regional settings</em></p>
+<p><strong>Locale</strong></p>
+<ol class="arabic simple">
+<li>Default country: United States</li>
+<li>First day of the week: Sunday</li>
+<li>[ ] Use ISO-8601 week numbers &lt;- Leave unchecked</li>
+</ol>
+<p><strong>Time Zones</strong></p>
+<p>For this recipe, the calendar represents events happening in a single geographical location, so we won&#8217;t be using timezone settings.</p>
+<ol class="arabic simple">
+<li>Default time zone: America/Los Angeles</li>
+<li>[ ] Users may set their own timezones &lt;- Uncheck this</li>
+</ol>
+</div>
+<div class="section" id="configure-date-and-time">
+<h2>2.3. Configure Date and Time</h2>
+<div class="section" id="initial-date-module-configuration">
+<h3>2.3.1. Initial Date Module Configuration</h3>
+<p><em>Configuration &gt; Regional and language: Date and time</em></p>
+<ol class="arabic simple">
+<li>Accept the default date formats or choose your own.</li>
+<li>Click Save configuration. This provides the initial configuration for the date module and removes the warning on the modules page.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="the-latest-content-approach">
+<h1>3. The latest content approach</h1>
+<p>Pros: Content is still visible if a user reaches it via a link from elsewhere or a search engine.</p>
+<p>Cons: The article is still visible.</p>
+<div class="section" id="create-content-to-work-with">
+<h2>3.1. Create content to work with</h2>
+<p><em>Configuration &gt; Development: Generate Content</em></p>
+<ol class="arabic simple">
+<li>[√] Check Article</li>
+<li>[ ] Uncheck Basic Page</li>
+<li>Generate 50 articles, going back in time for a year.</li>
+<li>Generate</li>
+</ol>
+</div>
+<div class="section" id="create-a-page-with-newest-articles">
+<h2>3.2. Create a page with newest articles</h2>
+<p><em>Structure &gt; Views &gt; +Add a new view</em></p>
+<div class="section" id="intro-screen">
+<h3>3.2.1. Intro screen</h3>
+<ol class="arabic simple">
+<li>View name: Articles</li>
+<li>Show: Content of type Article</li>
+<li>[√] Create a page</li>
+<li>Path: articles</li>
+<li>Display format: Unformatted list of Teasers without links without comments</li>
+<li>Items to display: 25</li>
+<li>[√] Use pager</li>
+<li>Create a menu link &gt; Menu: Main Menu</li>
+<li>Link text: Articles</li>
+<li>Include an RSS feed &lt;-usually a good idea</li>
+<li>Continue &amp; edit</li>
+</ol>
+</div>
+<div class="section" id="filter-criteria">
+<h3>3.2.2. Filter Criteria</h3>
+<ol class="arabic simple">
+<li>add &gt; Content: Post date</li>
+<li>Operator: Is greater than or equal to</li>
+<li>(*) An offset from the current time: -30 days</li>
+<li>Add (all displays)</li>
+</ol>
+</div>
+<div class="section" id="advanced">
+<h3>3.2.3. Advanced</h3>
+<ol class="arabic simple">
+<li>No results behavior: add &gt; Global: Text area</li>
+<li>No results</li>
+<li>In the unlabeled text area, enter: No articles have been published in the last 30 days.</li>
+<li>Add (all displays)</li>
+<li>Save</li>
+</ol>
+<p>It&#8217;s possible that your automatically-generated content isn&#8217;t in the r</p>
+</div>
+</div>
+<div class="section" id="create-an-archive">
+<h2>3.3. Create an archive</h2>
+<p><em>Structure &gt; Views &gt; +Add a new view</em></p>
+<div class="section" id="id1">
+<h3>3.3.1. Intro screen</h3>
+<ol class="arabic simple">
+<li>View name: Archives</li>
+<li>Show: Content of type Article</li>
+<li>[√] Create a page</li>
+<li>Path: archives</li>
+<li>Display format: Table of fields</li>
+<li>Items to display: 25</li>
+<li>[√] Use pager</li>
+<li>Create a menu link &gt; Menu: Main Menu</li>
+<li>Link text: Archives</li>
+<li>[ ] Include an RSS feed</li>
+<li>Continue &amp; edit</li>
+</ol>
+</div>
+<div class="section" id="fields">
+<h3>3.3.2. Fields</h3>
+<p>This is the visible post date. We&#8217;re accepting the default values.</p>
+<ol class="arabic simple">
+<li>add &gt; Content: Post Date</li>
+<li>[√] Create label: Posted on</li>
+<li>[ ] Exclude from display</li>
+<li>Date format: Long format</li>
+<li>Add (all displays)</li>
+</ol>
+<p>This is a hidden field that will allow us to group our results by month.</p>
+<ol class="arabic simple">
+<li>add &gt; Content: Post Date</li>
+<li>[ ] Create label: Month Year</li>
+<li>[√] Exclude from display</li>
+<li>Date format: Custom</li>
+<li>Custom Date Format: F Y</li>
+<li>Add (all displays)</li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h3>3.3.3. Filter Criteria</h3>
+<ol class="arabic simple">
+<li>add &gt; Content: Post date</li>
+<li>Operator: Is less than or equal to</li>
+<li>(*) An offseet from the current time: -31 days</li>
+<li>Apply (all displays)</li>
+</ol>
+</div>
+<div class="section" id="advanced-no-results-behavior">
+<h3>3.3.4. Advanced: No results behavior</h3>
+<ol class="arabic simple">
+<li>add &gt; Global: Text area</li>
+<li>Label: No results</li>
+<li>In the unlabeled text area enter: No articles are older than 30 days.</li>
+<li>Apply (all displays)</li>
+</ol>
+</div>
+<div class="section" id="format-settings">
+<h3>3.3.5. Format: Settings</h3>
+<ol class="arabic simple">
+<li>Make all columns sortable</li>
+<li>Grouping field: Content: Post date</li>
+<li>Apply: All displays.</li>
+<li>Save</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="explicit-content-scheduling">
+<h1>4. Explicit Content Scheduling</h1>
+<div class="section" id="configure-scheduler-module">
+<h2>4.1. Configure Scheduler Module</h2>
+<div class="section" id="let-contributors-use-a-popup-calendar-to-schedule">
+<h3>4.1.1. Let contributors use a popup calendar to schedule</h3>
+<p><em>Configuration &gt; Content Authoring &gt; Scheduler module settings: Settings</em></p>
+<p>In my experience having the calendar to verify the day of the week makes content editors much happier.</p>
+<ol class="arabic simple">
+<li>Enable the Date Popup field.</li>
+<li>Save</li>
+</ol>
+</div>
+<div class="section" id="look-at-the-lightweight-cron">
+<h3>4.1.2. Look at the Lightweight Cron</h3>
+<p><em>Configuration &gt; Content Authoring &gt; Scheduler module settings: Lightweight Cron (tab)</em></p>
+<p>An automated process called a cron job runs at fixed intervals, and it is this process that triggers the scheduling or unscheduling of content. If you schedule an article to be published at 5:00 am, but the cron job only runs once a day at midnight, your article won&#8217;t actually be published until midnight the next day.</p>
+<p>Drupal 7 has a built-in sitewide cron job. Running it indexes your site for search, clears your cache, and is definintely overkill if you want fine-grained control over schedling.</p>
+<ol class="arabic simple">
+<li>On the Lightweight Cron tab, read the text</li>
+<li>Add this page to your shortcut bar by clicking the + to the right of the title.</li>
+</ol>
+<p>We&#8217;ll use the Run Scheduler&#8217;s cron now button during our testing.</p>
+</div>
+<div class="section" id="verify-the-server-time">
+<h3>4.1.3. Verify the server time</h3>
+<p>There&#8217;s nothing to change here. It&#8217;s a place where you can verify that your server time is consistent with what you expect. Any changes to the server time must be made by a server administrator.</p>
+</div>
+<div class="section" id="optional-configure-your-crontab">
+<h3>4.1.4. Optional: Configure your crontab</h3>
+<p>Sure, why not? Using sFTP or shell.</p>
+</div>
+</div>
+<div class="section" id="configure-articles-for-publishing">
+<h2>4.2. Configure Articles for Publishing</h2>
+<p><em>Structure &gt; Content types &gt; Article:  edit</em></p>
+<div class="section" id="publishing-options">
+<h3>4.2.1. Publishing Options</h3>
+<p>The first step, ensuring that Articles are not published by default, is critical for publishing to work. Everything else can be set as you prefer.</p>
+<ol class="arabic simple">
+<li>[ ] Published &lt;- It&#8217;s critical that this is not checked</li>
+<li>[√] Promote to home page &lt;- Optional</li>
+</ol>
+<p>#. [ ] Sticky at top of lists &lt;- Optional
+3. [ ] Create new revision &lt;- Optional</p>
+</div>
+<div class="section" id="scheduler-settings">
+<h3>4.2.2. Scheduler Settings</h3>
+<p>Locate the Scheduler settings at the bottom of the vertical tabs.</p>
+<p><strong>Publishing Settings</strong></p>
+<ol class="arabic simple">
+<li>[ Enable scheduled publishing</li>
+<li>[√] Enable Alter published time</li>
+<li>[ ] Publishing date/time required &lt;- Leave unchecked</li>
+<li>[√] Create a new revision on publishing &lt;- This provides an easily located record of the actual publication time</li>
+</ol>
+<p><strong>Unpublishing Settings</strong></p>
+<ol class="arabic simple">
+<li>[√] Enable scheduled unpublishing</li>
+<li>[ ] Unpublishing date/time required &lt;- Leave unchecked</li>
+<li>[√] Create a new revision on unpublishing</li>
+<li>Save content type</li>
+</ol>
+<p>Repeat for Basic pages, if desired. Use cases for unpublishing major navigational pages vary.</p>
+</div>
+<div class="section" id="schedule-an-article-for-publishing">
+<h3>4.2.3. Schedule an article for publishing</h3>
+<p><em>Add content &gt; Article</em></p>
+<ol class="arabic simple">
+<li>Title: Publish in two minutes</li>
+<li>Scheduling options: Schedule Publish on: for 2 minutes from now.  IMPORTANT: You have to enter the hour, minute AND second for the story to be scheduled.</li>
+<li>Save</li>
+</ol>
+</div>
+<div class="section" id="run-lightweight-cron">
+<h3>4.2.4. Run Lightweight Cron</h3>
+<p><em>Configuration &gt; Content Authoring: Scheduler module settings &gt; Lightweight Cron</em></p>
+<ol class="arabic simple">
+<li>Click the button</li>
+</ol>
+<p>Your article should stay unpublished. If you didn&#8217;t add the Lightweight Cron page to your shortcut bar, it&#8217;s at Configure &gt; Content Authoring: Schedular Module settings &gt; Lightweight cron (tab).</p>
+<ol class="arabic simple">
+<li>When two minutes has passed, run lightweight cron again.</li>
+<li>Verify that your article was published.</li>
+</ol>
+</div>
+<div class="section" id="id3">
+<h3>4.2.5. Schedule an article for publishing</h3>
+<p><em>Add content &gt; Article</em></p>
+<ol class="arabic simple">
+<li>Title: Unpublish in two minutes</li>
+<li>Scheduling options: Schedule Unpublish on: for 2 minutes from now.  IMPORTANT: You have to enter the hour, minute AND second for the story to be scheduled.</li>
+<li>Save</li>
+</ol>
+</div>
+<div class="section" id="id4">
+<h3>4.2.6. Run Lightweight Cron</h3>
+<p><em>Configuration &gt; Content Authoring: Scheduler module settings &gt; Lightweight Cron</em>
+#. Your Article should stay published.
+#. When two minutes has passed, run lightweight cron again.
+#. Verify that your article was unpublished.</p>
+</div>
+</div>
+</div>
+<div class="section" id="create-admininstrative-views-for-authors">
+<h1>5. Create admininstrative views for authors</h1>
+<p>Give your content editors the ability to track the flow of publishing can increase confidence in what you&#8217;ve built, reduce support, and ensure that if something does go wrong, people will notice!</p>
+<div class="section" id="create-the-next-to-be-published-block">
+<h2>5.1. Create the Next to be published block</h2>
+<p><em>Structure &gt; Views &gt; +Add a new view</em></p>
+<div class="section" id="id5">
+<h3>5.1.1. Intro Screen</h3>
+<ol class="arabic simple">
+<li>View name: Scheduling for Authors</li>
+<li>Show: Content of type Article</li>
+<li>[ ] Create a page</li>
+<li>[√] Create a block</li>
+<li>Title: Next to be published</li>
+<li>Display format: Table of fields</li>
+<li>Items per page: 5</li>
+<li>[ ] Use pager</li>
+<li>Continue &amp; edit</li>
+</ol>
+</div>
+<div class="section" id="block-details">
+<h3>5.1.2. Block details</h3>
+<ol class="arabic simple">
+<li>Click Block</li>
+<li>Display name: Next to be published</li>
+<li>Apply (this display)</li>
+</ol>
+</div>
+<div class="section" id="advanced-relationships">
+<h3>5.1.3. Advanced: Relationships</h3>
+<p>Because we want to work with information about content authors, we&#8217;ll add this relationship. That will make the data available when we add fields and filter critera.</p>
+<ol class="arabic simple">
+<li>add &gt; Content: Author</li>
+<li>Apply (all displays) &lt;-We&#8217;re accepting the default configuration</li>
+<li>Apply (all displays)</li>
+</ol>
+</div>
+<div class="section" id="id6">
+<h3>5.1.4. Fields</h3>
+<div class="section" id="edit-the-title">
+<h4>Edit the title</h4>
+<ol class="arabic simple">
+<li>Click Content: Title (Title)</li>
+<li>Apply (all displays)</li>
+<li>[√] Create label</li>
+<li>Label: Title</li>
+<li>Apply (all displays)</li>
+</ol>
+</div>
+<div class="section" id="add-the-user-name">
+<h4>Add the user name</h4>
+<ol class="arabic simple">
+<li>add &gt; User: Name</li>
+<li>Apply (all displays)  &lt;- We&#8217;re accepting the defaults here.</li>
+<li>Apply (all displays)</li>
+</ol>
+</div>
+<div class="section" id="add-the-scheduled-publishing-date">
+<h4>Add the scheduled publishing date</h4>
+<ol class="arabic simple">
+<li>add &gt; Scheduler: Publish on</li>
+<li>Apply (all displays)  &lt;- We&#8217;re accepting the defaults here.</li>
+<li>Apply (all displays)</li>
+</ol>
+</div>
+<div class="section" id="add-the-current-publication-status">
+<h4>Add the current publication status</h4>
+<ol class="arabic simple">
+<li>add &gt; Content: Published</li>
+<li>Apply (all displays)</li>
+<li>Label: Status (change from the default, Published)</li>
+<li>Output format: Published/Not published &lt;- I consider this an important kind of redundancy. Just because we build a view and we think it displays unpublished work doesn&#8217;t mean our filter is correct.</li>
+<li>Apply (all displays)</li>
+</ol>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>5.1.5. Filter Criteria</h3>
+<div class="section" id="remove-the-default-filter">
+<h4>Remove the default filter</h4>
+<ol class="arabic simple">
+<li>Click Published (Yes)</li>
+<li>Remove</li>
+<li>Apply (all displays)</li>
+</ol>
+</div>
+<div class="section" id="make-sure-the-content-is-scheduled-at-all">
+<h4>Make sure the content is scheduled at all</h4>
+<ol class="arabic simple">
+<li>add &gt; Scheduler: Publish on</li>
+<li>Apply (all displays)</li>
+<li>Operator: Is not empty (NOT NULL)</li>
+<li>Apply (all displays)</li>
+</ol>
+</div>
+<div class="section" id="make-sure-the-publish-date-is-in-the-future">
+<h4>Make sure the publish date is in the future</h4>
+<ol class="arabic simple">
+<li>add &gt; Scheduler: Publish on</li>
+<li>Apply (all displays)</li>
+<li>Operator: Is greater than or equal to</li>
+<li>(*) An offset from the current time: +0 days</li>
+<li>Apply (all displays)</li>
+</ol>
+</div>
+<div class="section" id="limit-to-content-authored-by-the-currently-logged-in-user">
+<h4>Limit to content authored by the currently logged in user</h4>
+<ol class="arabic simple">
+<li>add &gt; User: Current</li>
+<li>Apply (all displays)</li>
+<li>Is logged in user: (*) Yes &lt;- Select this.</li>
+<li>Apply (all displays)</li>
+</ol>
+</div>
+</div>
+<div class="section" id="format">
+<h3>5.1.6. Format</h3>
+<ol class="arabic simple">
+<li>Click Settings</li>
+<li>Make all columns sortable</li>
+<li>Set Publish on to to be the default sort.</li>
+<li>Leave its default order set to Ascending</li>
+<li>Apply (all displays)</li>
+</ol>
+</div>
+<div class="section" id="advanced-no-results">
+<h3>5.1.7. Advanced: No Results</h3>
+<ol class="arabic simple">
+<li>add</li>
+<li>[√] Global: Text area</li>
+<li>Apply (all displays)</li>
+<li>Label: No results</li>
+<li>Text: No content is scheduled for publishing.</li>
+<li>Apply: (all displays)</li>
+</ol>
+</div>
+<div class="section" id="sort-criteria">
+<h3>5.1.8. Sort Criteria</h3>
+<ol class="arabic simple">
+<li>CLick Content: Post date (desc)</li>
+<li>Remove</li>
+<li>Apply (all displays)</li>
+</ol>
+</div>
+<div class="section" id="block-settings">
+<h3>5.1.9. Block settings</h3>
+<ol class="arabic simple">
+<li>Click View published content</li>
+<li>For: All displays</li>
+<li>Permissions View own unpublished content</li>
+</ol>
+<p>You must explicitly grant one or more roles the right to view their own unpublished content; otherwise they won&#8217;t be able to see anything that&#8217;s on this block. We&#8217;ve given that role to our contributors. We&#8217;ll base the permissions for this block on a user having that permission. Then, if you add more roles in the future, they&#8217;ll automatically be allowed to see this block.</p>
+</div>
+</div>
+<div class="section" id="place-the-block">
+<h2>5.2. Place the block</h2>
+<p><em>Structure &gt; Blocks &gt; View: Scheduling for Authors: configure</em></p>
+<ol class="arabic simple">
+<li>Region settings for Seven (administration theme)</li>
+<li>Dashboard (main)</li>
+<li>Save block</li>
+</ol>
+</div>
+<div class="section" id="id8">
+<h2>5.3. Schedule an article for publishing</h2>
+<p><em>Content &gt; +add Content &gt; Article</em></p>
+<ol class="arabic simple">
+<li>Title: Publish in one day</li>
+<li>Scheduling options: Publish on: for tomorrow.  IMPORTANT: You have to enter the hour, minute AND second for the story to be scheduled.</li>
+<li>Save.</li>
+<li>Visit your dashboard again to verify the article appears.</li>
+</ol>
+</div>
+<div class="section" id="create-the-next-content-to-be-unpublished-block">
+<h2>5.4. Create the Next Content to be Unpublished block</h2>
+<div class="section" id="id9">
+<h3>5.4.1. Block details</h3>
+<ol class="arabic simple">
+<li>Clone the block you just made, Next to be unpublished</li>
+<li>Display name: Next to be unpublished</li>
+<li>Apply</li>
+</ol>
+</div>
+<div class="section" id="title">
+<h3>5.4.2. Title</h3>
+<ol class="arabic simple">
+<li>Click Next to be published</li>
+<li>For: This block (override) &lt; DON&#8217;T MISS THIS STEP</li>
+<li>Title: Next to be unpublished</li>
+<li>Apply (this display)</li>
+</ol>
+</div>
+<div class="section" id="id10">
+<h3>5.4.3. Fields</h3>
+<div class="section" id="remove-publish-on">
+<h4>Remove Publish on</h4>
+<ol class="arabic simple">
+<li>Click Scheduler: Publish on (Publish on)</li>
+<li>For: this block (override)</li>
+<li>Remove</li>
+</ol>
+</div>
+<div class="section" id="add-the-unpublish-date">
+<h4>Add the Unpublish date</h4>
+<ol class="arabic simple">
+<li>add &gt; Scheduler: Unpublish on</li>
+<li>Apply (this display)</li>
+<li>For: this block (override)</li>
+<li>Apply (this display)</li>
+</ol>
+</div>
+</div>
+<div class="section" id="id11">
+<h3>5.4.4. Filter Criteria</h3>
+<p>Leave both the Content type and User: Current filters as they are and make the change from when content will be published to when it will be unpublished.</p>
+<div class="section" id="remove-the-publish-on-filter">
+<h4>Remove the Publish on filter</h4>
+<ol class="arabic simple">
+<li>Click on Scheduler: Publish on (&gt;= +0 days)</li>
+<li>For: This block (override)</li>
+<li>Remove</li>
+<li>Apply (this display)</li>
+</ol>
+</div>
+<div class="section" id="filter-by-the-scheduled-unpublish-date">
+<h4>Filter by the scheduled Unpublish date</h4>
+<ol class="arabic simple">
+<li>Add Scheduler: Unpublish on</li>
+<li>For: This block (override)</li>
+<li>Operator: Greater than or equal to</li>
+<li>(*) an offset from the current time: +0 days</li>
+<li>Apply (this display)</li>
+</ol>
+</div>
+</div>
+<div class="section" id="id12">
+<h3>5.4.5. Advanced: No Results Behavior</h3>
+<ol class="arabic simple">
+<li>Click on Global: Text area</li>
+<li>For This block (override)</li>
+<li>Edit text to say: Nothing is scheduled for unpublishing.</li>
+<li>Apply (this display)</li>
+</ol>
+</div>
+<div class="section" id="id13">
+<h3>5.4.6. Format</h3>
+<ol class="arabic simple">
+<li>Click Settings</li>
+<li>For: This block (override) &lt;- Change this</li>
+</ol>
+<p>For the field Unpublish on:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Make is sortable</li>
+<li>Leave the default order: Ascending</li>
+<li>Set it as the (*) Default sort</li>
+</ol>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Apply (this display)</li>
+</ol>
+<p>Don&#8217;t forget to save the view!!</p>
+</div>
+</div>
+<div class="section" id="create-the-recently-unpublished-block">
+<h2>5.5. Create the Recently Unpublished block</h2>
+<p>Because of the way that data is stored, working with unpublished content requires that we access a specific revision rather than the general content type, so we&#8217;ll make several changes to accomodate that.</p>
+<ol class="arabic simple">
+<li>Clone the block you just made, Next to be unpublished</li>
+<li>Display name: Recently unpublished</li>
+</ol>
+<div class="section" id="id14">
+<h3>5.5.1. Title</h3>
+<ol class="arabic simple">
+<li>Click Next to be unpublished</li>
+<li>For: This block (override)</li>
+<li>Change the title to Recently Unpublished</li>
+<li>Apply (this display)</li>
+</ol>
+</div>
+<div class="section" id="id15">
+<h3>5.5.2. Fields</h3>
+<div class="section" id="remove-the-scheduled-unpublished-date">
+<h4>Remove the Scheduled unpublished date</h4>
+<ol class="arabic simple">
+<li>Click Scheduler: Unpublish on (Unpublish on)</li>
+<li>For: This block (override)</li>
+<li>Remove</li>
+</ol>
+</div>
+<div class="section" id="add-the-revision-title">
+<h4>Add the revision title</h4>
+<ol class="arabic simple">
+<li>add</li>
+<li>For: This block</li>
+<li>Content revision: Title</li>
+<li>Apply (this display)</li>
+</ol>
+</div>
+<div class="section" id="add-the-revision-s-updated-date">
+<h4>Add the revision&#8217;s Updated date</h4>
+<ol class="arabic simple">
+<li>add</li>
+<li>For: This block</li>
+<li>Content revision: Updated date</li>
+<li>Apply (his display)</li>
+<li>Label: Unpublished on &lt;- change to this</li>
+<li>Apply (this display)</li>
+</ol>
+</div>
+</div>
+<div class="section" id="id16">
+<h3>5.5.3. Filter Criteria</h3>
+<div class="section" id="remove-unpublish-on">
+<h4>Remove  Unpublish on</h4>
+<ol class="arabic simple">
+<li>Click Scheduler: Unpublish on (not empty)</li>
+<li>For: This block (override)</li>
+<li>Remove</li>
+</ol>
+</div>
+<div class="section" id="remove-second-unpublish-on">
+<h4>Remove second Unpublish on</h4>
+<ol class="arabic simple">
+<li>Click Scheduler: Unpublish on (&gt;= +0)</li>
+<li>For: This block (override)</li>
+<li>Remove</li>
+</ol>
+</div>
+<div class="section" id="find-the-revision-where-it-was-unpublished">
+<h4>Find the revision where it was unpublished</h4>
+<ol class="arabic simple">
+<li>add Content revision: Log message</li>
+<li>For: This block (override)</li>
+<li>Operator: Contains</li>
+<li>Value: Node unpublished by scheduler module</li>
+<li>Apply (this display)</li>
+</ol>
+</div>
+<div class="section" id="make-sure-it-was-recently-unpublished">
+<h4>Make sure it was recently unpublished</h4>
+<ol class="arabic simple">
+<li>add  Content revision: Updated date</li>
+<li>For: This block (override)</li>
+<li>Operator: Is greater than or equal to</li>
+<li>(*) An offset from the current time ...</li>
+<li>Value: -7 days</li>
+<li>Apply (this display)</li>
+</ol>
+</div>
+</div>
+<div class="section" id="id17">
+<h3>5.5.4. Advanced: No Results Behavior</h3>
+<ol class="arabic simple">
+<li>Click Global: Text area</li>
+<li>For:  This block (ioverride)</li>
+<li>Label: No results</li>
+<li>Text: No content has been unpublished in the last week.</li>
+<li>Apply (this display)</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="for-the-editors">
+<h1>6. For the editors</h1>
+<p>Make sure you get it just right before you do this clone. You did a lot of detail work that you&#8217;ll probably prefer not to repeat.</p>
+<p><em>Structure &gt; Views &gt; Scheduling for authors</em></p>
+<ol class="arabic simple">
+<li>Click the arrow next to edit.</li>
+<li>Choose clone.</li>
+<li>View name: Scheduling for editors</li>
+<li>Continute</li>
+</ol>
+<div class="section" id="id18">
+<h2>6.1. Filter Criteria</h2>
+<ol class="arabic simple">
+<li>Click (author) User: Current (Yes)</li>
+<li>Remove</li>
+</ol>
+<div class="section" id="id19">
+<h3>6.1.1. Block Settings</h3>
+<ol class="arabic simple">
+<li>Click Access: Settings</li>
+<li>For: All displays (except overrided)</li>
+<li>(*) role</li>
+<li>Apply (all displays)</li>
+<li>[√] editor</li>
+<li>Apply (all displays)</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      

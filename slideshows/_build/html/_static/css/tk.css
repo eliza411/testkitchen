@@ -1,55 +1,81 @@
 /* basic formatting */
 
-body {
-  font-size: 10pt;
-  max-width: 1024px;
-  margin-right: 100px;
+.page-type-recipe #content {
+  padding-right: 75px;
 }
 
-h1 {
- font-size: 170%;
+.documentwrapper h1 {
+  color: #000;
+  margin-top: 40px;
+  font-weight: bold;
 }
 
-h2 {
-  border-bottom: 1px solid #000;
+.documentwrapper h2 {
+  border-bottom: 1px solid #333;
+  color: #000;
+  font-size: 150%;
 }
 
-h3 {
-  border-bottom: 1px dotted #000;
+.documentwrapper h3 {
+  border-bottom: 1px dotted #333;
+  color: #000;
+  font-size: 130%;
 }
 
-h1, h2, h3, h4, h5, h6 {
- font-family: Verdana;
- clear: both;
+.documentwrapper h1, 
+.documentwrapper h2, 
+.documentwrapper h3, 
+.documentwrapper h4, 
+.documentwrapper h5, 
+.documentwrapper h6 {
+  font-family: Verdana;
+  clear: both;
 }
 
+.documentwrapper .section > p em {
+  font-style: normal;
+  font-size: 110%;
+  font-family: Monaco,"DejaVu Sans Mono",monospace,sans-serif;
+}
+
+.documentwrapper blockquote {
+  font-style: normal;
+}
 
 /* figure formatting */
 
-div.figure {
+.documentwrapper div.figure {
   overflow: hidden;
   padding: 10px;
 }
 
-.figure img {
+.documentwrapper .figure img {
   float: left;
   padding-right: 15px;
-  width: 45%;
+  width: 55%;
   max-width: 600px;
 }
 
-.figure p.caption {
+.documentwrapper .figure p.caption {
   font-weight: bold;
   margin: 0;
 }
 
+.documentwrapper .figure .legend ol {
+  padding-left: 55%;
+}
+
+.documentwrapper .users .figure .legend ol {
+  padding-left: 0;
+}
+
 /* background images */
 
-#set-permissions table {
+.documentwrapper #set-permissions table {
   font-size: 9pt;
 }
 
-div.container {
+.documentwrapper div.container {
   background: #fff;
   background-repeat: no-repeat;
   border: 1px solid #eee;
@@ -59,41 +85,45 @@ div.container {
   background-position: 10px 10px;
 }
 
-div.note-error {
+.documentwrapper div.note-error {
   background-image: url('dont_panic.png');
 }
 
-div.tip {
+.documentwrapper div.tip {
   background-image: url('note.png');
 }
 
-div.important {
+.documentwrapper div.important {
   padding-left: 45px;
   background-image: url('exclamation_point.png');
 }
 
-div.question {
+.documentwrapper div.question {
   background-image: url('question_mark.png');
   background-position: 10px 30px;
 }
     
-a.recipe-step {
+.documentwrapper a.recipe-step {
   background-image: url('videoicon.png');
   background-repeat: no-repeat;
-  background-position: top right;
+  background-position:  bottom right;
   float: right;
   margin-top: -75px;
-  margin-right: -100px;
+  margin-right: -50px;
   display: block;
   height: 100px;
   width: 80px;
+  z-index: 10;
+  text-align: right;
+  padding-right: 13px;
 }
+
 
 
 /* User figures */
 
-div.users,
-div.user-table {
+.documentwrapper div.users,
+.documentwrapper div.user-table {
   border: none;
   padding: 0 20px 20px 0;
   margin: 0;
@@ -101,13 +131,13 @@ div.user-table {
   width: 100%;
 }
 
-div.user-table {
+.documentwrapper div.user-table {
   width: 450px;
   float: left;
 }
 
-div.user-table img,
-div.users img {
+.documentwrapper div.user-table img,
+.documentwrapper div.users img {
   width: 100px;
   height: 100px;
   float: left;
@@ -115,6 +145,16 @@ div.users img {
   padding-right: 20px;
 }
 
-body ol.arabic {
-    list-style: decimal inside none;
+.documentwrapper blockquote table {
+  margin: 0px 50px;
+  width: 80%;
+}
+
+.documentwrapper .figure .highlight-python pre {
+  overflow: hidden;
+  font-size: 10pt;
+}
+
+.section .section {
+  padding-left: 35px;
 }

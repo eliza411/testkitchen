@@ -1,0 +1,43 @@
+Project Set Up Steps
+********************
+#. cp -r template projectname
+
+#. vi projectname/conf.py
+
+#. :%s/Template/Project Name/
+
+#. :%s/template/projectname/
+
+#. vi projectname/index.txt <- change the project name to the proper filename, e.g., exactly what you named the project folder.  This is required for the stripping script to work.
+
+#. mv template.txt projectname.txt
+
+
+About the setup
+---------------
+In order to make the output of Sphinx line up with Drupal, we have the following structure:
+
+
+#. Actual image files are located in Sphinx/sites/default/files/recipes
+
+#. This is sym_linked inside of Sphinx/_static which has the actual stylesheets we're using. sites -> ../sites
+
+#. Sphinx/_static is a symlink inside each project: _static -> ../_static. This is created by copying the template.
+
+#. strip_header.py is located in Sphinx and symlinked inside the projects: strip_header.py -> ../strip_header.py
+
+#. the _build/html folder has a symlink to the sites folder, too, so that the images will actually load. This, too, is created by copying the template file.  sites -> ../../../sites
+
+#. There's a substitution at the beginning of each file, \|sandbox-setup\| that is stored in the conf.py, which in turn pulls from the master symlink. To update this text for every project, edit the Sphinx/global.inc file. Presumably this will be used for other global substitutions in the future.
+
+
+Working on the Project
+======================
+
+#. Document written steps. 
+#. Minimal screen captures.
+
+
+
+ 
+

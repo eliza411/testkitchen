@@ -1,0 +1,192 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+        <param name="Window Styles" value="0x801227">
+        <param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Create Slideshows and Galleries 7.x-1.x-dev documentation">
+    <param name="Local" value="index.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Ingredients">
+    <param name="Local" value="slideshows.html">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Staple">
+    <param name="Local" value="slideshows.html#staple">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Theme">
+    <param name="Local" value="slideshows.html#theme">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Speciality">
+    <param name="Local" value="slideshows.html#speciality">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Build the form for creating galleries">
+    <param name="Local" value="slideshows.html#build-the-form-for-creating-galleries">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Add a new content type called Gallery">
+    <param name="Local" value="slideshows.html#add-a-new-content-type-called-gallery">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Add an image field">
+    <param name="Local" value="slideshows.html#add-an-image-field">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Add new field">
+    <param name="Local" value="slideshows.html#add-new-field">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Field Settings">
+    <param name="Local" value="slideshows.html#field-settings">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Gallery Settings">
+    <param name="Local" value="slideshows.html#gallery-settings">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Gallery Image Field Settings">
+    <param name="Local" value="slideshows.html#gallery-image-field-settings">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Create proper paths">
+    <param name="Local" value="slideshows.html#create-proper-paths">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Create a test gallery">
+    <param name="Local" value="slideshows.html#create-a-test-gallery">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Hide the default display of images">
+    <param name="Local" value="slideshows.html#hide-the-default-display-of-images">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Create custom image sizes">
+    <param name="Local" value="slideshows.html#create-custom-image-sizes">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Main gallery image">
+    <param name="Local" value="slideshows.html#main-gallery-image">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Gallery thumbnails">
+    <param name="Local" value="slideshows.html#gallery-thumbnails">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Gallery index thumbnails">
+    <param name="Local" value="slideshows.html#gallery-index-thumbnails">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Create the galleries">
+    <param name="Local" value="slideshows.html#create-the-galleries">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Create the actual gallery display">
+    <param name="Local" value="slideshows.html#create-the-actual-gallery-display">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="A. Add Fields">
+    <param name="Local" value="slideshows.html#a-add-fields">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="B. Format">
+    <param name="Local" value="slideshows.html#b-format">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="C. Advanced">
+    <param name="Local" value="slideshows.html#c-advanced">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Place and configure the block">
+    <param name="Local" value="slideshows.html#place-and-configure-the-block">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Create an index of all galleries">
+    <param name="Local" value="slideshows.html#create-an-index-of-all-galleries">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Add a new view">
+    <param name="Local" value="slideshows.html#add-a-new-view">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Intro screen">
+    <param name="Local" value="slideshows.html#intro-screen">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Fields">
+    <param name="Local" value="slideshows.html#fields">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="A brief detour">
+    <param name="Local" value="slideshows.html#a-brief-detour">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Auto-generate galleries">
+    <param name="Local" value="slideshows.html#auto-generate-galleries">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Style the Gallery">
+    <param name="Local" value="slideshows.html#style-the-gallery">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Open footheme.css">
+    <param name="Local" value="slideshows.html#open-footheme-css">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Arrange thumbnails beneath the main image">
+    <param name="Local" value="slideshows.html#arrange-thumbnails-beneath-the-main-image">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Format the controls">
+    <param name="Local" value="slideshows.html#format-the-controls">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Place title text over the main image">
+    <param name="Local" value="slideshows.html#place-title-text-over-the-main-image">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Set and test permissions">
+    <param name="Local" value="slideshows.html#set-and-test-permissions">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Set permissions">
+    <param name="Local" value="slideshows.html#set-permissions">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Test Author privileges">
+    <param name="Local" value="slideshows.html#test-author-privileges">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+    <param name="Name" value="Test Editor privileges">
+    <param name="Local" value="slideshows.html#test-editor-privileges">
+</OBJECT>
+</UL>
+</UL></BODY></HTML>

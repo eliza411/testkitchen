@@ -1,0 +1,2 @@
+.. |sandbox-setup| replace:: Test kitchen recipes are based on our sandbox setup, which includes pre-installed modules used every time. See http://training.opensourcery.com/sandbox/setup to configure your own environment to match these instructions.
+

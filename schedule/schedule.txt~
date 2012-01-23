@@ -1,0 +1,635 @@
+Ingredients
+***********
+
+|sandbox-setup|
+
+Staple
+======
+
+#. http://drupal.org/project/ctools - Enable Chaos Tools
+#. http://drupal.org/project/views - Enable Views and Views UI
+#. http://drupal.org/project/date - Enable Date and Date Popup
+#. http://drupal.org/project/scheduler - Enable Scheduler
+#. http://drupal.org/project/diff - Enable Diff
+
+**Drush users:**
+
+::
+
+  drush dl ctools views date scheduler diff 
+  drush en ctools views views_ui date_api date date_popup scheduler -y
+
+Configure the Date module
+*************************
+
+Date API and Date Popup
+=======================
+In order to allow use of the a popup calendar for scheduling, you'll need to enable the Date API and the Date Popup modules. Once you have, you'll immediately see an error message warning you that you must configure the date module.
+
+.. container:: note_error
+
+   The module and status pages will show warnings and display instructions for initially configuring Date module.
+
+Configure Regional Settings
+===========================
+*Configuration > Regional and language: Regional settings*
+
+**Locale**
+
+#. Default country: United States
+#. First day of the week: Sunday
+#. [ ] Use ISO-8601 week numbers <- Leave unchecked
+
+**Time Zones**
+
+For this recipe, the calendar represents events happening in a single geographical location, so we won't be using timezone settings.
+
+#. Default time zone: America/Los Angeles
+#. [ ] Users may set their own timezones <- Uncheck this
+
+Configure Date and Time
+=======================
+
+Initial Date Module Configuration
+---------------------------------
+*Configuration > Regional and language: Date and time*
+
+#. Accept the default date formats or choose your own.
+#. Click Save configuration. This provides the initial configuration for the date module and removes the warning on the modules page.
+
+
+The latest content approach
+***************************
+
+Pros: Content is still visible if a user reaches it via a link from elsewhere or a search engine.
+
+Cons: The article is still visible.
+
+Create content to work with
+===========================
+*Configuration > Development: Generate Content*
+
+#. [√] Check Article
+#. [ ] Uncheck Basic Page
+#. Generate 50 articles, going back in time for a year.
+#. Generate
+
+Create a page with newest articles
+==================================
+*Structure > Views > +Add a new view*
+
+Intro screen
+------------
+
+#. View name: Articles
+#. Show: Content of type Article
+#. [√] Create a page
+#. Path: articles
+#. Display format: Unformatted list of Teasers without links without comments
+#. Items to display: 25
+#. [√] Use pager
+#. Create a menu link > Menu: Main Menu
+#. Link text: Articles
+#. Include an RSS feed <-usually a good idea 
+#. Continue & edit
+
+Filter Criteria
+---------------
+
+#. add > Content: Post date
+#. Operator: Is greater than or equal to
+#. (*) An offset from the current time: -30 days
+#. Add (all displays)
+
+Advanced
+--------
+
+#. No results behavior: add > Global: Text area
+#. No results
+#. In the unlabeled text area, enter: No articles have been published in the last 30 days. 
+#. Add (all displays)
+#. Save
+
+It's possible that your automatically-generated content isn't in the r
+
+Create an archive
+=================
+*Structure > Views > +Add a new view*
+
+
+Intro screen
+------------
+
+#. View name: Archives
+#. Show: Content of type Article
+#. [√] Create a page
+#. Path: archives
+#. Display format: Table of fields
+#. Items to display: 25
+#. [√] Use pager
+#. Create a menu link > Menu: Main Menu
+#. Link text: Archives
+#. [ ] Include an RSS feed  
+#. Continue & edit
+
+Fields
+------
+This is the visible post date. We're accepting the default values.
+
+#. add > Content: Post Date
+#. [√] Create label: Posted on
+#. [ ] Exclude from display
+#. Date format: Long format
+#. Add (all displays)
+
+
+This is a hidden field that will allow us to group our results by month.
+
+#. add > Content: Post Date
+#. [ ] Create label: Month Year
+#. [√] Exclude from display
+#. Date format: Custom
+#. Custom Date Format: F Y
+#. Add (all displays)
+ 
+Filter Criteria
+--------------- 
+#. add > Content: Post date
+#. Operator: Is less than or equal to
+#. (*) An offseet from the current time: -31 days  
+#. Apply (all displays)
+
+Advanced: No results behavior
+-----------------------------
+#. add > Global: Text area
+#. Label: No results
+#. In the unlabeled text area enter: No articles are older than 30 days.
+#. Apply (all displays)
+
+Format: Settings
+----------------
+#. Make all columns sortable
+#. Grouping field: Content: Post date
+#. Apply: All displays.
+#. Save
+
+Explicit Content Scheduling
+***************************
+
+Configure Scheduler Module
+==========================
+
+Let contributors use a popup calendar to schedule
+--------------------------------------------------
+*Configuration > Content Authoring > Scheduler module settings: Settings*
+
+In my experience having the calendar to verify the day of the week makes content editors much happier.
+
+#. Enable the Date Popup field. 
+#. Save
+
+Look at the Lightweight Cron
+----------------------------
+*Configuration > Content Authoring > Scheduler module settings: Lightweight Cron (tab)*
+
+An automated process called a cron job runs at fixed intervals, and it is this process that triggers the scheduling or unscheduling of content. If you schedule an article to be published at 5:00 am, but the cron job only runs once a day at midnight, your article won't actually be published until midnight the next day.
+
+Drupal 7 has a built-in sitewide cron job. Running it indexes your site for search, clears your cache, and is definintely overkill if you want fine-grained control over schedling. 
+
+
+#. On the Lightweight Cron tab, read the text
+#. Add this page to your shortcut bar by clicking the + to the right of the title. 
+
+We'll use the Run Scheduler's cron now button during our testing.
+
+Verify the server time
+----------------------
+
+There's nothing to change here. It's a place where you can verify that your server time is consistent with what you expect. Any changes to the server time must be made by a server administrator.
+
+
+Optional: Configure your crontab
+--------------------------------
+Sure, why not? Using sFTP or shell.
+
+
+Configure Articles for Publishing
+=================================
+*Structure > Content types > Article:  edit*
+
+Publishing Options
+------------------
+The first step, ensuring that Articles are not published by default, is critical for publishing to work. Everything else can be set as you prefer.
+
+#. [ ] Published <- It's critical that this is not checked
+#. [√] Promote to home page <- Optional
+#. [ ] Sticky at top of lists <- Optional
+3. [ ] Create new revision <- Optional
+
+Scheduler Settings
+------------------
+Locate the Scheduler settings at the bottom of the vertical tabs.
+
+**Publishing Settings**
+
+#. [ Enable scheduled publishing
+#. [√] Enable Alter published time
+#. [ ] Publishing date/time required <- Leave unchecked
+#. [√] Create a new revision on publishing <- This provides an easily located record of the actual publication time
+
+**Unpublishing Settings**
+
+#. [√] Enable scheduled unpublishing
+#. [ ] Unpublishing date/time required <- Leave unchecked
+#. [√] Create a new revision on unpublishing
+#. Save content type
+
+
+Repeat for Basic pages, if desired. Use cases for unpublishing major navigational pages vary.
+
+
+Schedule an article for publishing
+----------------------------------
+*Add content > Article*
+
+#. Title: Publish in two minutes
+#. Scheduling options: Schedule Publish on: for 2 minutes from now.  IMPORTANT: You have to enter the hour, minute AND second for the story to be scheduled.
+#. Save
+
+Run Lightweight Cron
+--------------------
+*Configuration > Content Authoring: Scheduler module settings > Lightweight Cron*
+
+#. Click the button
+Your article should stay unpublished. If you didn't add the Lightweight Cron page to your shortcut bar, it's at Configure > Content Authoring: Schedular Module settings > Lightweight cron (tab). 
+#. When two minutes has passed, run lightweight cron again.
+#. Verify that your article was published.
+
+
+Schedule an article for publishing
+----------------------------------
+*Add content > Article*
+
+#. Title: Unpublish in two minutes
+#. Scheduling options: Schedule Unpublish on: for 2 minutes from now.  IMPORTANT: You have to enter the hour, minute AND second for the story to be scheduled.
+#. Save
+
+
+Run Lightweight Cron
+--------------------
+*Configuration > Content Authoring: Scheduler module settings > Lightweight Cron*
+#. Your Article should stay published.
+#. When two minutes has passed, run lightweight cron again.
+#. Verify that your article was unpublished.
+
+
+Create admininstrative views for authors
+**************************************** 
+
+Give your content editors the ability to track the flow of publishing can increase confidence in what you've built, reduce support, and ensure that if something does go wrong, people will notice!
+
+Create the Next to be published block
+=====================================
+*Structure > Views > +Add a new view*
+
+Intro Screen
+------------
+
+#. View name: Scheduling for Authors
+#. Show: Content of type Article
+#. [ ] Create a page
+#. [√] Create a block
+#. Title: Next to be published
+#. Display format: Table of fields
+#. Items per page: 5
+#. [ ] Use pager
+#. Continue & edit
+
+Block details
+-------------
+#. Click Block
+#. Display name: Next to be published
+#. Apply (this display)
+
+Advanced: Relationships
+-----------------------
+Because we want to work with information about content authors, we'll add this relationship. That will make the data available when we add fields and filter critera.
+
+#. add > Content: Author
+#. Apply (all displays) <-We're accepting the default configuration
+#. Apply (all displays)
+
+Fields
+------
+
+Edit the title
+^^^^^^^^^^^^^^
+#. Click Content: Title (Title)
+#. Apply (all displays)
+#. [√] Create label
+#. Label: Title
+#. Apply (all displays)
+
+Add the user name
+^^^^^^^^^^^^^^^^^
+#. add > User: Name
+#. Apply (all displays)  <- We're accepting the defaults here.
+#. Apply (all displays)
+
+
+Add the scheduled publishing date
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. add > Scheduler: Publish on
+#. Apply (all displays)  <- We're accepting the defaults here.
+#. Apply (all displays)
+
+Add the current publication status
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. add > Content: Published
+#. Apply (all displays)
+#. Label: Status (change from the default, Published)
+#. Output format: Published/Not published <- I consider this an important kind of redundancy. Just because we build a view and we think it displays unpublished work doesn't mean our filter is correct. 
+#. Apply (all displays)
+   
+Filter Criteria
+---------------
+
+Remove the default filter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+#. Click Published (Yes)
+#. Remove
+#. Apply (all displays)
+
+Make sure the content is scheduled at all
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+#. add > Scheduler: Publish on
+#. Apply (all displays)
+#. Operator: Is not empty (NOT NULL)
+#. Apply (all displays)
+
+Make sure the publish date is in the future
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. add > Scheduler: Publish on
+#. Apply (all displays)
+#. Operator: Is greater than or equal to
+#. (*) An offset from the current time: +0 days
+#. Apply (all displays)
+
+Limit to content authored by the currently logged in user
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. add > User: Current
+#. Apply (all displays)
+#. Is logged in user: (*) Yes <- Select this.
+#. Apply (all displays)
+   
+Format
+------
+
+#. Click Settings
+#. Make all columns sortable
+#. Set Publish on to to be the default sort.
+#. Leave its default order set to Ascending
+#. Apply (all displays)
+
+Advanced: No Results
+--------------------
+
+#. add 
+#. [√] Global: Text area
+#. Apply (all displays)
+#. Label: No results
+#. Text: No content is scheduled for publishing.
+#. Apply: (all displays)
+
+Sort Criteria
+-------------
+#. CLick Content: Post date (desc)
+#. Remove
+#. Apply (all displays)
+
+Block settings
+--------------
+#. Click View published content
+#. For: All displays 
+#. Permissions View own unpublished content
+
+You must explicitly grant one or more roles the right to view their own unpublished content; otherwise they won't be able to see anything that's on this block. We've given that role to our contributors. We'll base the permissions for this block on a user having that permission. Then, if you add more roles in the future, they'll automatically be allowed to see this block.
+
+Place the block
+===============
+*Structure > Blocks > View: Scheduling for Authors: configure*
+
+#. Region settings for Seven (administration theme)
+#. Dashboard (main)
+#. Save block
+
+Schedule an article for publishing
+==================================
+*Content > +add Content > Article*
+
+#. Title: Publish in one day
+#. Scheduling options: Publish on: for tomorrow.  IMPORTANT: You have to enter the hour, minute AND second for the story to be scheduled.
+#. Save.
+#. Visit your dashboard again to verify the article appears.
+
+Create the Next Content to be Unpublished block
+===============================================
+
+Block details
+-------------
+#. Clone the block you just made, Next to be unpublished
+#. Display name: Next to be unpublished
+#. Apply
+
+Title
+-----
+#. Click Next to be published
+#. For: This block (override) < DON'T MISS THIS STEP
+#. Title: Next to be unpublished
+#. Apply (this display)
+
+
+Fields
+------
+
+Remove Publish on
+^^^^^^^^^^^^^^^^^
+#. Click Scheduler: Publish on (Publish on)
+#. For: this block (override)
+#. Remove
+
+Add the Unpublish date
+^^^^^^^^^^^^^^^^^^^^^^
+#. add > Scheduler: Unpublish on
+#. Apply (this display)
+#. For: this block (override)
+#. Apply (this display)
+
+
+Filter Criteria
+---------------
+Leave both the Content type and User: Current filters as they are and make the change from when content will be published to when it will be unpublished.
+
+Remove the Publish on filter
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. Click on Scheduler: Publish on (>= +0 days) 
+#. For: This block (override)
+#. Remove
+#. Apply (this display)
+
+
+Filter by the scheduled Unpublish date
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. Add Scheduler: Unpublish on 
+#. For: This block (override)
+#. Operator: Greater than or equal to
+#. (*) an offset from the current time: +0 days
+#. Apply (this display)
+
+
+Advanced: No Results Behavior
+-----------------------------
+#. Click on Global: Text area
+#. For This block (override)
+#. Edit text to say: Nothing is scheduled for unpublishing.
+#. Apply (this display)
+
+
+Format
+------
+#. Click Settings
+#. For: This block (override) <- Change this
+
+For the field Unpublish on:
+
+  #. Make is sortable
+  #. Leave the default order: Ascending
+  #. Set it as the (*) Default sort
+
+3. Apply (this display)
+
+
+Don't forget to save the view!!
+
+Create the Recently Unpublished block
+=====================================
+Because of the way that data is stored, working with unpublished content requires that we access a specific revision rather than the general content type, so we'll make several changes to accomodate that.
+
+
+#. Clone the block you just made, Next to be unpublished
+#. Display name: Recently unpublished
+ 
+Title
+-----
+
+#. Click Next to be unpublished
+#. For: This block (override)
+#. Change the title to Recently Unpublished
+#. Apply (this display)
+
+
+Fields
+------
+
+Remove the Scheduled unpublished date
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. Click Scheduler: Unpublish on (Unpublish on) 
+#. For: This block (override)
+#. Remove
+
+
+
+Add the revision title
+^^^^^^^^^^^^^^^^^^^^^^
+#. add 
+#. For: This block 
+#. Content revision: Title
+#. Apply (this display)
+
+
+
+Add the revision's Updated date
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. add 
+#. For: This block 
+#. Content revision: Updated date
+#. Apply (his display)
+#. Label: Unpublished on <- change to this
+#. Apply (this display)
+
+
+Filter Criteria
+---------------
+
+Remove  Unpublish on
+^^^^^^^^^^^^^^^^^^^^
+
+#. Click Scheduler: Unpublish on (not empty) 
+#. For: This block (override)
+#. Remove
+
+Remove second Unpublish on
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Click Scheduler: Unpublish on (>= +0)
+#. For: This block (override)
+#. Remove
+
+
+Find the revision where it was unpublished
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. add Content revision: Log message 
+#. For: This block (override)
+#. Operator: Contains
+#. Value: Node unpublished by scheduler module
+#. Apply (this display)
+
+Make sure it was recently unpublished
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. add  Content revision: Updated date
+#. For: This block (override)
+#. Operator: Is greater than or equal to
+#. (*) An offset from the current time ...
+#. Value: -7 days 
+#. Apply (this display)
+
+Advanced: No Results Behavior
+-----------------------------
+
+#. Click Global: Text area
+#. For:  This block (ioverride)
+#. Label: No results
+#. Text: No content has been unpublished in the last week.
+#. Apply (this display)
+
+
+For the editors
+***************
+
+Make sure you get it just right before you do this clone. You did a lot of detail work that you'll probably prefer not to repeat.
+
+Clone what you just built for authors
+-------------------------------------
+*Structure > Views > Scheduling for authors*
+
+#. Click the arrow next to edit.
+#. Choose clone.
+#. View name: Scheduling for editors
+#. Continute
+
+
+Filter Criteria
+===============
+#. Click (author) User: Current (Yes) 
+#. Remove
+
+
+Block Settings
+--------------
+#. Click Access: Settings
+#. For: All displays (except overrided)
+#. (*) role
+#. Apply (all displays)
+#. [√] editor
+#. Apply (all displays)
+
