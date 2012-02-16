@@ -14,3 +14,6 @@ with open('_build/html/%s.html' % cwd) as f:
 
 with open('_build/html/%s.inc' % cwd, 'w') as f:
     f.write(body)
+
+with open('/var/www/training/docroot/sites/all/sphinx/%s.inc' % cwd, 'w') as f:
+    f.write(body)

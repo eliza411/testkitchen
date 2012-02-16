@@ -1,11 +1,11 @@
 @media print {
-    border: none;
- .documentwrapper h1 {
+ 
+.documentwrapper h1 {
      page-break-before: always;
   }
 
   .documentwrapper div.user-table {
-    width: 50%;
+    width: 75%;
     float: left;
   } 
 
@@ -14,9 +14,8 @@
   }
   
     .documentwrapper .no-break {
-    page-break-after: avoid;
+    page-break-before: avoid;
   }
-
 
   .documentwrapper #figure img {
     width: 35%;
@@ -41,6 +40,11 @@
   .highlight-python pre {
   font-size: 8pt;
   } 
+
+  ol, ul, li {
+  orphans: 3;
+  widows: 3;
+  }
 
 }
 

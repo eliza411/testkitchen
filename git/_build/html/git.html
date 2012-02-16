@@ -7,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1. Ingredients &mdash; Git 7.x-1.x-dev documentation</title>
+    <title>1. Introduction &mdash; Git 7.x-1.x-dev documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -42,99 +42,84 @@
       <div class="documentwrapper">
           <div class="body">
             
-  <div class="section" id="ingredients">
-<h1>1. Ingredients</h1>
-<p>Test kitchen recipes are based on our sandbox setup, which includes pre-installed modules used every time. See <a class="reference external" href="http://training.opensourcery.com/sandbox/setup">http://training.opensourcery.com/sandbox/setup</a> to configure your own environment to match these instructions.</p>
-<div class="section" id="staple">
-<h2>1.1. Staple</h2>
+  <div class="section" id="introduction">
+<h1>1. Introduction</h1>
+<p>I&#8217;m writing this assuming that you&#8217;ve never used version control before and may never even have heard the words. You&#8217;re good at what you do: graphic design, CSS, Drupal site building, even writing php.</p>
+<p>It&#8217;s likely that you&#8217;ve just begun working on a team that uses Git, or your site is hosted on a platform that requires you to use Git to deploy even the smallest change. Maybe you&#8217;re applying for a job that requires exerience with Git and you&#8217;re trying to learn enough to be intelligent about it during the interview.</p>
+<p>If you <em>have</em> used version control before, you are probably be better off with one of the excellent developer resources out there <a class="footnote-reference" href="#f1" id="id1">[1]</a> . If you&#8217;re looking for a way to explain Git to people who don&#8217;t code, then read on.</p>
 </div>
-<div class="section" id="theme">
-<h2>1.2. Theme</h2>
-<p><strong>Drush users:</strong></p>
-<div class="highlight-python"><pre>drush dl
-drush en -y</pre>
+<div class="section" id="why-use-version-control">
+<h1>2. Why use version control?</h1>
+<ol class="arabic simple">
+<li>You don&#8217;t overwrite the work of other people on a team</li>
+<li>You have a record of changes</li>
+<li>You can quickly move back in time to a known working version of software.</li>
+</ol>
+<p>There are additional features that distinguish Git from other systems, and you can learn about them at <a class="reference external" href="http://">http://</a></p>
+</div>
+<div class="section" id="before-you-begin">
+<h1>3. Before you begin:</h1>
+<div class="section" id="using-the-command-line">
+<span id="no-gui"></span><h2>3.1. Using the command line</h2>
+<p>There are several graphical tools that can be used with Git, but we&#8217;re going to teach the command line for several reasons:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The directions are the same on every platform</li>
+<li>We remove an intermediate troubleshooting layer</li>
+<li>You&#8217;ll be focused on Git itself, and not some particular user interface</li>
+<li>You&#8217;ll be empowered to use Git on remote servers</li>
+<li>It&#8217;s not feasible to keep documentation for all the tools up-to-date</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="installing-git">
+<h2>3.2. Installing Git</h2>
+<p>You will need to install Git on each computer where you work.</p>
+<p>Git downloads are available at <a class="reference external" href="http://git-scm.com/">http://git-scm.com/</a></p>
+</div>
+<div class="section" id="windows-msysgit">
+<h2>3.3. Windows - msysgit:</h2>
+<p>Downlod the full installer for Official Git for windows 1.7.8
+<a class="reference external" href="http://code.google.com/p/msysgit/downloads/list?can=3">http://code.google.com/p/msysgit/downloads/list?can=3</a></p>
+<p>Once you&#8217;ve downloaded Git, run Git Bash to follow the steps in this tutorial. Why not use Git GUI? See <a class="reference internal" href="#no-gui"><em>Using the command line</em></a></p>
+</div>
+<div class="section" id="where-is-your-web-site">
+<h2>3.4. Where is your web site?</h2>
+<p>Make sure you know where the document root of your development web site is located. This varies depending on your platform and particular configuration. Some common defaults include:</p>
+<p>MAMP - /Applications/MAMP/htdocs
+WAMP - C:wampwww
+Ubuntu - /var/www</p>
 </div>
 </div>
-<div class="section" id="speciality">
-<h2>1.3. Speciality</h2>
+<div class="section" id="use-cases">
+<h1>4. Use cases</h1>
+<p>Each of the use cases below will provide concrete steps that introduce fundamental concepts.</p>
+<div class="section" id="keep-your-own-work-straight">
+<h2>4.1. Keep your own work straight</h2>
+<p>If you keep mulitple copies of files and have ever become confused about which copy was working, etc.</p>
 </div>
-</div>
-<div class="section" id="section-2">
-<h1>2. Section 2</h1>
-<div class="section" id="section-2-1">
-<h2>2.1. Section 2.1</h2>
-<p><em>Structure &gt; Content types &gt; +Add new content type</em></p>
-<a href="http://www.youtube.com/v/4FynfGen1qI" class="colorbox-load recipe-step">Watch this step</a></div>
-</div>
-<div class="section" id="set-and-test-permissions">
-<h1>3. Set and test permissions</h1>
-<p><em>People &gt; Permissions</em></p>
-<p>If you are not using the Test Kitchen Install Profile or if you are new to the idea of users, roles, permissions or masquerade, see <a class="reference external" href="http://training.opensourcery.com/basics">http://training.opensourcery.com/basics</a></p>
-<div class="section" id="set-permissions">
-<h2>3.1. Set permissions</h2>
-<p>Set permissions as follows:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="32%" />
-<col width="33%" />
-<col width="35%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Author</th>
-<th class="head">Editor</th>
-<th class="head">Admin</th>
-</tr>
-</thead>
+<div class="section" id="your-host-requires-you-to-use-git">
+<h2>4.2. Your host requires you to use Git</h2>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr class="row-even"><td>[√] Gallery: Create new content</td>
-<td>[√] Gallery: Create new content</td>
-<td>[√] Gallery: Create new content</td>
-</tr>
-<tr class="row-odd"><td>[√]  Gallery: Edit own content</td>
-<td>[ ]  Gallery: Edit own content</td>
-<td>[√] Gallery: Edit own content</td>
-</tr>
-<tr class="row-even"><td>[ ]   Gallery: Edit any content</td>
-<td>[√] Gallery: Edit any content</td>
-<td>[√] Gallery: Edit any content</td>
-</tr>
-<tr class="row-odd"><td>[√]  Gallery: Delete own content</td>
-<td>[ ]  Gallery: Delete own content</td>
-<td>[√] Gallery: Delete own content</td>
-</tr>
-<tr class="row-even"><td>[ ]   Gallery: Delete any content</td>
-<td>[√]  Gallery: Delete any content</td>
-<td>[√] Gallery: Delete any content</td>
-</tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Developer Guides to Git
+#. <a class="reference external" href="https://git.wiki.kernel.org/articles/g/i/t/GitSvnCrashCourse_512d.html">https://git.wiki.kernel.org/articles/g/i/t/GitSvnCrashCourse_512d.html</a>
+#. <a class="reference external" href="http://betterexplained.com/articles/intro-to-distributed-version-control-illustrated/">http://betterexplained.com/articles/intro-to-distributed-version-control-illustrated/</a></td></tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="test-author-privileges">
-<h2>3.2. Test Author privileges</h2>
-<p>Masquerade as Test Author and ensure you CAN:</p>
-<ol class="arabic simple">
-<li>Create a gallery</li>
-<li>Edit that gallery</li>
-<li>Delete that gallery</li>
-</ol>
-<p>Ensure you CANNOT:</p>
-<ol class="arabic simple">
-<li>Edit galleries you didn’t create</li>
-<li>Delete galleries you didn’t create</li>
-</ol>
-<p>When you’re done, remember to Switch back</p>
 </div>
-<div class="section" id="test-editor-privileges">
-<h2>3.3. Test Editor privileges</h2>
-<p>Masquerade as Test Editor and ensure you CAN:</p>
-<ol class="arabic simple">
-<li>Create a gallery</li>
-<li>Edit that gallery</li>
-<li>Delete that gallery</li>
-<li>Edit a gallery you didn’t create</li>
-<li>Delete a gallery you didn’t create</li>
-</ol>
-</div>
+<div class="section" id="glossary">
+<h1>5. Glossary</h1>
+<p>It&#8217;s okay to skim this part and focus on the concrete examples below, returning here as needed for expansion</p>
+<p>VCS = Version Control System
+DVCS = Distributed Version Control
+Clone = Make a new copy of an existing repository from somewhere else
+Checkout = Restore a copy of one or more file.
+Commit = Put changes in your repo
+Push = Send changes to another repository.
+Pull = Get changes from a repository</p>
 </div>
 
 

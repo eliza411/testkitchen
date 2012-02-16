@@ -2,7 +2,7 @@
       <div class="documentwrapper">
           <div class="body">
             
-  <div class="section" id="ingredients">
+  <div class="no-break section" id="ingredients">
 <h1>1. Ingredients</h1>
 <p>Test kitchen recipes are based on our sandbox setup, which includes pre-installed modules used every time. See <a class="reference external" href="http://training.opensourcery.com/sandbox/setup">http://training.opensourcery.com/sandbox/setup</a> to configure your own environment to match these instructions.</p>
 <div class="section" id="staple">
@@ -12,8 +12,8 @@
 <li><a class="reference external" href="http://drupal.org/project/views">http://drupal.org/project/views</a> - Views: Enable Views and Views UI</li>
 <li><a class="reference external" href="http://drupal.org/project/date">http://drupal.org/project/date</a> - Date: Enable Date, Date API, Date Repeat, Date Popup</li>
 <li><a class="reference external" href="http://drupal.org/project/fullcalendar">http://drupal.org/project/fullcalendar</a> - FullCalendar: Enable FullCalendar, FullCalendar Colors</li>
-<li><a class="reference external" href="http://drupal.org/project/colorsrs">http://drupal.org/project/colorsrs</a> API - Other: Enable Colors (install the dev version)</li>
-<li><a class="reference external" href="http://drupal.org/project/colorboxbox">http://drupal.org/project/colorboxbox</a> - Other: Enable Colorbox</li>
+<li><a class="reference external" href="http://drupal.org/project/colors">http://drupal.org/project/colors</a> API - Other: Enable Colors (install the dev version)</li>
+<li><a class="reference external" href="http://drupal.org/project/colorbox">http://drupal.org/project/colorbox</a> - Other: Enable Colorbox</li>
 </ol>
 <p><strong>Drush users:</strong></p>
 <div class="highlight-python"><pre>drush dl ctools views date date_api fullcalendar fullcalendar_colors colors colorbox
@@ -38,7 +38,7 @@ fullcalendar fullcalendar_colors colors colorbox -y</pre>
 </ol>
 </div>
 </div>
-<div class="section" id="build-a-way-to-create-events">
+<div class="no-break section" id="build-a-way-to-create-events">
 <h1>2. Build a way to create events</h1>
 <div class="section" id="add-a-new-content-type-called-event">
 <h2>2.1. Add a new content type called Event</h2>
@@ -47,21 +47,21 @@ fullcalendar fullcalendar_colors colors colorbox -y</pre>
 <p>Description: Create an event for display on the site calendar</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="34%" />
-<col width="66%" />
+<col width="42%" />
+<col width="58%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Submission Form Settings</td>
 <td>Title field label: Event</td>
 </tr>
 <tr class="row-even"><td>Publishing Options</td>
-<td>[√] Published (Check only this option; uncheck others)</td>
+<td>[√] Published  uncheck others</td>
 </tr>
 <tr class="row-odd"><td>Display Settings</td>
-<td>[ ] Display author and date information (Uncheck this)</td>
+<td>[ ] Display author and date information</td>
 </tr>
 <tr class="row-even"><td>Comment Settings</td>
-<td>Closed (Select Closed)</td>
+<td>Closed</td>
 </tr>
 <tr class="row-odd"><td>Menu Settings</td>
 <td>[ ] Uncheck all menus</td>
@@ -87,7 +87,7 @@ The module and status pages will show warnings and display instructions for init
 <li>[ ] Users may set their own timezones (Uncheck this)</li>
 </ol>
 </div>
-<div class="section" id="configure-date-and-time">
+<div class="page-break section" id="configure-date-and-time">
 <h2>2.3. Configure Date and Time</h2>
 <p><em>Configuration &gt; Regional and language &gt; Date and time</em></p>
 <p>Initial Date Module Configuration</p>
@@ -105,7 +105,6 @@ The module and status pages will show warnings and display instructions for init
 <li>+Add date type</li>
 <li>Date type: Block-short &lt;- this is just a label, you can choose any formatting you like.</li>
 <li>Date format: Choose the example of the new format from the bottom of the select list: 14 Nov 2011</li>
-<li>Save with: Add date type</li>
 </ol>
 <div class="tip container">
 Note: If you make a mistake with the format but don&#8217;t notice until later, you can edit a date format by returning to <em>Configuration &gt; Regional and Language: Date and Time &gt; Formats</em> and clicking the edit link for the format in question. Unfortuantely this will cause the format to be unassigned from its Date type. Visit the Types tab and re-select the format from the dropdown list where appropriate.  If you forget this last step, the date field won&#8217;t be automatically updated throughout your site.</div>
@@ -258,7 +257,7 @@ For the drag and drop functionality to work when you switch pages, you MUST expa
 </ol>
 </div>
 </div>
-<div class="section" id="filter-criteria">
+<div class="page-break section" id="filter-criteria">
 <h3>4.1.3. Filter Criteria</h3>
 <div class="section" id="filter-to-future-dates">
 <h4>Filter to future dates</h4>
@@ -431,18 +430,29 @@ Sidebar Second</dd>
 <div class="section" id="create-a-pre-filtered-option">
 <h2>7.2. Create a pre-filtered option</h2>
 <p>We&#8217;re going to filter the calendar so that it only shows one kind of event and the user cannot change this. Organizations with complex structures  may prefer to shield their users from the selection porcess and choose instead to place these calendars in department areas.</p>
+<div class="section" id="page-details">
+<h3>7.2.1. Page details</h3>
 <ol class="arabic simple">
 <li>clone page</li>
 </ol>
+</div>
+<div class="section" id="block-details">
+<h3>7.2.2. Block details</h3>
 <ol class="arabic simple">
 <li>Display name: Filtered by Page</li>
 <li>Apply</li>
 </ol>
+</div>
+<div class="section" id="block-settings">
+<h3>7.2.3. Block settings</h3>
 <ol class="arabic simple">
 <li>Click calendar</li>
 <li>calendar/%</li>
 <li>Apply</li>
 </ol>
+</div>
+<div class="section" id="advanced-contextual-filters">
+<h3>7.2.4. Advanced: Contextual Filters</h3>
 <ol class="arabic simple">
 <li>add</li>
 <li>For: This page (override)</li>
@@ -457,6 +467,7 @@ Sidebar Second</dd>
 <p><strong>Why create a second display?</strong></p>
 <p>You might wonder why we&#8217;ve created a second display instead of just adding the contextual filter to the first Page display and putting the % wildcard at the end of its Path.</p>
 <p>The wildcard prevents putting the calendar on the menu, so we had a choice. We could add all of the calendar links to the menu manually and create a single display, or we can create the main display and duplicate it. I chose the second because I wanted the main calendar view to contain the drop down filter that I did not want to place on the other views.</p>
+</div>
 </div>
 </div>
 <div class="section" id="add-our-filtered-views-to-the-main-menu">

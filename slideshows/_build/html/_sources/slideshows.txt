@@ -1,7 +1,6 @@
 .. image:: sites/default/files/recipes/slideshows/balloons.png
    :alt: A completed gallery
 
-
 Ingredients
 ***********
 |sandbox-setup|
@@ -192,8 +191,8 @@ Create the actual gallery display
 =================================
 *Structure > Views > +Add new view*
 
-On the introductory Views page:
-
+Intro page
+----------
 
 .. figure:: sites/default/files/recipes/slideshows/slideshows-gallery-intro.png
    :alt: Image of the Views Intro Screen
@@ -205,7 +204,7 @@ On the introductory Views page:
    #. [] Uncheck Page
    #. [√] Check Block
    #. Block title: Gallery
-   #. Display fomat: Slideshow of fields
+   #. Display format: Slideshow of fields
    #. Items per page: (Make this blank)
    #. Continue & Edit
 
@@ -214,63 +213,63 @@ On the introductory Views page:
   
    In main Views interface, we'll configure three areas:
 
-   | A) available fields
-   | B) row style settings,
-   | C) the contextual filter.
+   | A) Fields
+   | B) Format
+   | C) Advanced: Contextual filters
 
    We’ll set them up in this order because they depend upon each other, even though they’re visually in a different order.
 
-A. Add Fields
--------------
+A. Fields
+---------
 
-First, add the main gallery image:
+Add the main gallery image
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. raw:: html
 
-     <a href="http://www.youtube.com/v/XKXVWo0_uaI" class="recipe-step colorbox-load" title="Watch this step">Watch</a> 
+     <a href="http://www.youtube.com/v/XKXVWo0_uaI?fs=1" class="recipe-step colorbox-load" title="Watch this step">Watch</a> 
 
-#. Fields: add
-#. From the popup, select: Content: Gallery image
-#. [ ] Remove the check in the box Create a label
-#. Set the Image style to gallery_main.
-#. Multiple Field Settings: [ ] Uncheck Display all values in the same row
+#. add: Content: Gallery image
+#. [ ] Create a label <- Uncheck this
+#. Image style: gallery_main.
+#. Multiple Field Settings: [ ] Display all values in the same row <- Uncheck this
 #. Apply (All displays)
 
-Second, add the thumbnail gallery images. Much like the first step:
-
+Add the thumbnail gallery images
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. raw:: html
 
-     <a href="http://www.youtube.com/v/WNsXVJ8Z_FY" class="colorbox-load recipe-step" title="Watch this step">Watch</a> 
+     <a href="http://www.youtube.com/v/WNsXVJ8Z_FY" class="recipe-step" title="Watch this step">Watch</a> 
 
-#. Fields: add
-#. From the popup, select: Content: Gallery image
-#. [ ] Remove the check in the box Create a label
-#. [√] Check Exclude from display
-#. Set the Image style to gallery_thumb.
-#. Multiple Field Settings: [ ] Uncheck Display all values in the same row
+#. add > Content: Gallery image
+#. [ ] Create a label <- Remove check
+#. [√] Exclude from display <- Check this
+#. Image style: gallery_thumb.
+#. Multiple Field Settings: [ ] Display all values in the same row <- Uncheck this
 #. Apply (All displays)
 
-Next, add the Alt title.
+Add the Alt text
+^^^^^^^^^^^^^^^^
 
 .. raw:: html
 
-     <a href="http://www.youtube.com/v/HHqg_3v9x2A" class="colorbox-load recipe-step" title="Watch this step">Watch</a> 
+     <a href="http://www.youtube.com/v/HHqg_3v9x2A?fs=1" class="recipe-step" title="Watch this step">Watch</a> 
 
-#. Fields: add
-#. From the popup, select:Content: Gallery image
-#. [ ] Remove the check in the box Create a label
+#. add > Content: Gallery image
+#. [ ] Create a label <- Uncheck this
 #. Leave other visible settings at their default
-#. Multiple Field Settings: [ ] Uncheck Display all values in the same row
+#. Multiple Field Settings: [ ] Display all values in the same row <- Uncheck this
 #. Expand Rewrite Results
-#. [√] Rewrite the output of this field
-#. In the text field, enter [field_gallery_image_2-alt] (View the available patterns by expanding Replacement Patterns.)
+#. [√] Rewrite the output of this field <- Check this
+#. In the text field, enter [field_gallery_image_2-alt] <- View the available patterns by expanding Replacement Patterns.)
 #. Apply (all displays)
 
 You now have three fields, all named the same thing but configured differently: the main image, the thumbnails, and the text.
 
-Finally, remove the Content Title since it redundantly displays the name of the gallery.
+Remove the title
+^^^^^^^^^^^^^^^^
 
-#. Click the link Content: Title
+#. Content: Title <- Click the words
 #. Scroll and click Remove
 
 B. Format
@@ -278,23 +277,23 @@ B. Format
 
 .. raw:: html
 
-     <a href="http://www.youtube.com/v/hntqtWq3fH4" class="colorbox-load recipe-step" title="Watch this step">Watch</a> 
+     <a href="http://www.youtube.com/v/hntqtWq3fH4?fs=1" class="recipe-step" title="Watch this step">Watch</a> 
  
 #. Format: Settings
 #. In the Top Widgets section, check Controls.
 #. In the Bottom Widgets section, check Pager and choose the middle instance of Content: Gallery Image. This will provide the thumbnail images for the pager.
 #. Apply (All displays)
 
-C. Advanced
------------
+C. Advanced: Contextual filter
+------------------------------
 
 .. raw:: html
 
-     <a href="http://www.youtube.com/v/KmnDpv8vWKg" class="colorbox-load recipe-step" title="Watch this step">Watch</a> 
+     <a href="http://www.youtube.com/v/KmnDpv8vWKg" class="recipe-step" title="Watch this step">Watch</a> 
 
-#. Contextual Filter (Add)
-#. Content: Nid
-#. (∙) Provide a default value > Type: Content ID from URL
+#. add > Content: Nid
+#. (∙) Provide a default value
+#  [√] Type: Content ID from URL
 #. Apply (All displays)
 
 Be sure to save the view!
@@ -306,8 +305,8 @@ Place and configure the block
 Configuring the block to display only on Gallery nodes prevents it from being called on a view, and listing it only on specific pages prevents it from appearing on the Edit tab.
 
 #. Block title:  <none>
-#. Footheme (default theme): Content <- Select from dropdown
-#. Save blcok
+#. Footheme (default theme): Content <- Select from drop-down
+#. Save block
 
 **Visibility Settings**
 
@@ -330,7 +329,7 @@ Add a new view
 
 .. raw:: html
 
-     <a href="http://www.youtube.com/v/8RJ0l4juOZY" class="colorbox-load recipe-step" title="Watch this step">Watch</a> 
+     <a href="http://www.youtube.com/v/8RJ0l4juOZY?fs=1" class="recipe-step" title="Watch this step">Watch</a> 
 
 Intro screen
 ------------
@@ -350,11 +349,11 @@ Fields
 
 .. raw:: html
 
-     <a href="http://www.youtube.com/v/4FynfGen1qI" class="colorbox-load recipe-step" title="Watch this step">Watch</a> 
+     <a href="http://www.youtube.com/v/4FynfGen1qI" class="recipe-step" title="Watch this step">Watch</a> 
 
 #. add
 #. For: All displays
-#. [√] Conent: Gallery image
+#. [√] Content: Gallery image
 #. [ ] Create a label 
 #. Formatter: Image (no change)
 #. Image style: gallery_index
@@ -407,7 +406,7 @@ Style the Gallery
 
    ..
 
-   We're nearly there. The thumbnails present and you can click them to change the image, but they are taking up way too much screen realestate. We have text controls, but they kind of run together. There's text, but it's below our main image.
+   We're nearly there. The thumbnails present and you can click them to change the image, but they are taking up way too much screen real estate. We have text controls, but they kind of run together. There's text, but it's below our main image.
    
    To solve these issues, we will edit the our custom theme's css file to style the gallery.
 
@@ -418,8 +417,6 @@ Open footheme.css
 You can edit your stylesheet any way that is comfortable for you. If you need more support connecting than the username and password for your sandbox, see Connecting to your sandbox with sFTP at http://training.opensourcery.com/basics/sftp
 
 Open sites/all/modules/footheme/css/footheme.css  If you're connecting to a sandbox, it will be located inside of www/drupal. You'll find comments at the top, but it's otherwise empty. Place the CSS for each step at the bottom of this file, save, and reload a gallery page to see the changes.
-
-.. cssclass:: page-break
 
 Arrange thumbnails beneath the main image
 =========================================
@@ -482,8 +479,8 @@ Format the controls
      }
     
 
-Place title text over the main image
-====================================
+Place alt text over the main image
+==================================
 *Structure > Views > Gallery: edit*
 
 
@@ -492,18 +489,7 @@ Place title text over the main image
 
    ..
 
-   Placing opaque text on a transparent background requires some special setup. If the text is placed inside the transparent container, it will inherit the transparency. Instead, it must be placed parallel to the container and positioned.
-
-   #. Edit the third instance of the filed content: Galley image
-
-   #. Expand Rewrite Results and edit to match:
-
-   :: 
-       
-   <div class="transparency"></div>
-   <div class="overlay">[field_gallery_image_2-alt]</div>
-
-   3. Apply (all displays)
+   Notice that we use background, not background color, and that we're defining it twice. The first uses rgb as a fallback to provide a background color to browsers that don't support the alpha transparency in the next. We're also using background rather than background-color to ensure that a background is present in Internet Explorer. For a full discussion of this technique, see http://css-tricks.com/rgba-browser-support/
 
    #. Add the styling to footheme.css:
 
@@ -514,27 +500,18 @@ Place title text over the main image
        position: relative;
      }
 
-     .transparency {
-       position: absolute;
-       bottom: -10px;
-       left: 0px;
-       width: 640px;
-       height: 75px;
-       background: #000;  
-       margin: 20px;
-       filter:alpha(opacity=70);
-       opacity: 0.7;
-       -moz-opacity:0.7;
-     }
-
-     .overlay {
-       color: #fff;
-       position: absolute;
-       bottom : 0px;
-       left: 0px;
-       height: 75px;
-       padding: 0 30px 0 30px;
-     }
+    .views-field-field-gallery-image-2 div.field-content {
+      position: absolute;
+      bottom: -10px;
+      left: 0px;
+      width: 610px;
+      height: 45px;
+      margin: 20px;
+      padding: 15px;
+      color: #FFF;
+      background: rgb(10,10,10);
+      background: rgba(10,10,10,.7);
+    }
 
 Set and test permissions
 ************************
@@ -584,3 +561,5 @@ Masquerade as Test Editor and ensure you CAN:
 
 #. Edit a gallery you didn’t create
 #. Delete a gallery you didn’t create
+
+

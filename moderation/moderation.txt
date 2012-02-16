@@ -23,6 +23,8 @@ Does your organization require content review before the content gets published?
       
       Peggy has been assigned the Publisher role. This is the only role that will be able to make content live on the site. Publishers can do everything that editors and contributors can do.
 
+.. cssclass :: no-break 
+
 Ingredients
 ***********
 |sandbox-setup|
@@ -31,16 +33,17 @@ Staple
 ======
 
 #. http://drupal.org/project/ctools - Enable Chaos tools
-#. http://drupal.org/project/views - Views: Enable Views and Views UI
+#. http://drupal.org/project/views - Enable Views and Views UI
+#. http://drupal.org/project/advanced_help - Enable Advanced Help
 #. http://drupal.org/project/workbench - Enable Workbench
-#. http://drupal.org/project/workbench_moderation - Enable Workbench Moderation
+#. http://drupal.org/project/workbench_moderation - Use the development version. Enable Workbench Moderation
 #. http://drupal.org/project/diff - Enable Diff
 
 **Drush users:**
 
 ::
 
-  drush dl ctools views workbench workbench_moderation diff
+  drush dl ctools views workbench workbench_moderation-7.x-1.x-dev diff
   drush en ctools views views_ui workbench workbench_moderation diff -y
 
 .. cssclass:: no-break
@@ -49,9 +52,7 @@ Users and permissions
 *********************
 *People > Permissions*
    
-We're working with three pre-created users, each of whom is assigned to one of the three pre-created roles that will be used in the workflow. Creating users and roles is routine, but permissions are one of the trickiest things to get right, so that's where we'll begin.
-
-
+We're working with three pre-created users, each of which is assigned to one of the three pre-created roles that will be used in the workflow. Creating users and roles is routine, but permissions are one of the trickiest things to get right, so that's where we'll begin.
 
 Node permissions
 ================
@@ -85,9 +86,9 @@ Basic page: Edit own content   [√]         [√]    [√]
 
 Basic page: Edit any content   [ ]         [√]    [√] 
 
-Basic page: Delete own content [ ]         [ ]    [√]
+Basic page: Delete own content [ ]         [ ]    [ ]
  
-Basic page: Delete any content [ ]         [ ]    [√]      
+Basic page: Delete any content [ ]         [ ]    [ ]      
 ============================== =========== ====== =========
    
 Configure workbench moderation
@@ -97,7 +98,7 @@ Review configuration
 ====================
 *Configuration > Workbench: Workbench Moderation*
 
-.. image :: ites/default/files/recipes/moderation/workflow_simple.png
+.. image :: sites/default/files/recipes/moderation/workflow_simple.png
    :align: left
 
 We will start by using the default states provided by Workbench Moderation and later add new ones. These states are adequate for the simple workflow pictured here. When we add a third role for review prior to publication, then we'll need to make adjustments.
@@ -111,14 +112,16 @@ Enable the workflow for content types
    Although we don't cover this today, it is possible to moderate content on a per-content-type basis. This gets complex very quickly! See http://drupal.org/node/1206854#comment-5241230 for how to enable this.
 
 #. Publishing options
-#. [ ] Published (Uncheck this)
-#. [√] Promoted to front page (Leave checked)
-#. [ ] Sticky at top of lists (Leave unchecked)
-#. [√] Create a new revision (Check this!)
-#. [√] Enable moderation of revisions (Can only be checked once the item above is checked. Check this).
+#. [ ] Published <-Uncheck this
+#. [√] Promoted to front page <- Leave checked
+#. [ ] Sticky at top of lists <- Leave unchecked
+#. [√] Create a new revision <- Check this!
+#. [√] Enable moderation of revisions <- Can only be checked once the item above is checked. Check this).
 #. Default moderation state: Draft
 #. Save content type
-#. Repeat for the Basic page content type (although don't promote pages to the front page)
+#. Repeat for the Basic page content type, although don't promote pages to the front page)
+
+.. cssclass :: page-break
 
 Set the Workbench Moderation permissions
 ========================================
@@ -162,7 +165,7 @@ Moderate all content from  Needs Review to Draft    [ ]         [√]    [√]
 Moderate all content from Needs Review to Published [ ]         [√]    [√] 
 =================================================== =========== ====== =========
 
-\* It's oddly worded, but you must grant this permission to the Contributor. It really means "Moderate all content types to Needs review." It is limited in scope by your particular permissions for each content type. The Contributor role is only allowed to edit its own Articles and Basic Pages, so it Cathy Contributor won't be able to Moderate other peoples' work.
+\* You must grant this permission to the Contributor. It is limited in scope by the specific node permissions for each content type. In our case, the Contributor role is only allowed to edit its own Articles and Basic Pages, so a user with that role can only move their own content from Draft to Needs review. Cathy Contributor won't be able to moderate other peoples' work.
 
 Check your permissions 
 ======================
@@ -170,16 +173,17 @@ Check your permissions
 
 Workbench has a great feature to help ensure you've set up your transitions properly. Test both to be sure that each role can do what you want and also that no roles can do things they're not supposed to.
 
-
-
 Watch Contributor > Editor Moderation in Action
 ***********************************************
-*Home*
 
-We're going to set up in two separate browsers, once for Cathy Contributor and one for Eli Editor so that we can watch as content progresses through the workflow.
+We're going to set up in two separate browsers, one for Cathy Contributor and one for Eli Editor so that we can watch as content progresses through the workflow.
+
+
+.. _faq:
 
 Create an article as Cathy Contributor
 ======================================
+*Add content > Article*
 
 .. container :: users
 
@@ -187,7 +191,7 @@ Create an article as Cathy Contributor
   
      ..
 
-     #. In the first browser, log in as admin and masquerade as Cathy Contributor. 
+     #. In the first browser, logged in as admin, masquerade as Cathy Contributor. 
      #. Create a new article titled Contributor FAQ
      #. Note the message that the draft will be placed in moderation. 
 
@@ -203,9 +207,11 @@ View Eli Editor's Worbench
 
      To save yourself the tedium of logging in and out or even masquerading back and forth, we recommend you install a second browser on your system, if you don't already have one.
      
-     #. In the second browser, log in as admin and masquerade as Eli Editor. 
+     #. In the second browser, logged in as admin, masquerade as Eli Editor. 
      #. View My Workbench > Needs Review (tab)
      #. You shouldn't see anything yet.
+     
+.. cssclass :: page-break  
 
 Move Cathy's work to Needs Review
 =================================
@@ -223,11 +229,9 @@ Move Cathy's work to Needs Review
      * On the Moderate tab, where the entire revision history is available
      * From the My Drafts page
 
-     Her work will be visible to no one but an administrator until she moves it to the Needs Review state. 
+     Her work will will enter the workflow when she moves it to the Needs Review state. 
 
-     #. Move the article created in 3.1, Contributor FAQ, into the Needs Review state.
-
-.. cssclass :: page-break 
+     #. Move the article we created, Contributor FAQ, into the Needs Review state.
           
      2. Note that it disappears from Drafts and reappears on the My content page in My Edits. If Cathy bookmarks the page, she can still edit this while it's in the Needs review state, good for fixing that last typo. 
      
@@ -259,6 +263,8 @@ As Cathy, review the published work
      #. Edit the Contributor FAQ
      #. Note that the officially-approved content stays published while this draft goes into moderation.
      
+.. cssclass :: page-break  
+     
 Experiment
 ==========
 
@@ -270,6 +276,23 @@ Experiment
 .. container :: question
 
    What if Eli would like to return the article to Cathy because it needs work? He can send it back by setting it to Draft, but out of the box, it's difficult to add a message to the page. We'll fix that as best we can in the section :ref:`views`. There is a feature request to make it easier to add comments at http://drupal.org/node/1257650.
+   
+.. cssclass :: no-break
+   
+View the differences between revisions
+**************************************
+
+We're working with the development version of Workbench Moderation in order to demonstrate how to highlight differences between two revisions. The dev version incorporates output from the diff module, which was installed at the beginning on the recipe. 
+
+.. image :: sites/default/files/recipes/moderation/diff.png
+
+#. Diff <- Click the workd
+#. Select a radio button in each column
+#. Show Diff
+
+   You can follow plans for an improved user interface in the 2.x version at http://drupal.org/node/1404642. 
+
+.. cssclass :: no-break
 
 Expanding the Workflow
 **********************
@@ -278,16 +301,15 @@ Add a new state
 ===============
 *Configuration > Workbench: Workbench Moderation*
 
-.. figure :: sites/default/files/recipes/moderation/workflow.png
+.. image :: sites/default/files/recipes/moderation/workflow.png
+   :align: left
 
-   ..
-    
-   To add the publisher into the mix, we need a state for content that has been approved by the editor and needs a final review by the publisher.
+To add the publisher into the mix, we need a state for content that has been approved by the editor and needs a final review by the publisher.
      
    On the main screen, add a state:
 
      #. Name: Needs Final Review 
-     #. Description: Ready for Publication
+     #. Description: Ready for publication
      #. Arrange them in order using the grabber  
  
          +  Draft
@@ -304,7 +326,9 @@ Add a new state
    
    Depending on the changes you have made it may be necessary to reconfigure Views that leverage Workbench Moderation such as workbench_moderation. 
   
-   In the section :ref:`views` will address the customizations necessary to take advantage of our new state.
+   The section :ref:`views` will address the customizations necessary to take advantage of our new state.
+   
+.. cssclass :: page-break 
    
 Enable the transitions
 ======================
@@ -327,7 +351,6 @@ Allow us to give the publisher permission to publish.
 #. Needs Final Review > Published
 #. Save
 
-.. cssclass :: page-break 
 
 Remove an editor's ability to publish without final review.
 
@@ -356,7 +379,6 @@ Moderate all content from Needs Final Review to Published    [ ]         [ ]    
 
 Adjust the views
 ****************
-Since we added our own state, we'll need to create another tab that is visible to the Publisher.
 
 Add an administration page for publishers
 =========================================
@@ -367,22 +389,22 @@ Displays
 --------
 This is a critically important step. Be sure you're working with the display you think you are!
 
-#. Click Needs Review Page
+#. Click Needs Review Page <- even if it's already selected I never skip this step.
 
 Needs Review Page details
 -------------------------
 
-#. Click the arrow next to view needs review page
-#. Choose clone needs review page
+#. Click the arrow next to 'view needs review page'
+#. Choose 'clone needs review page'
 #. Display Name: Needs Review Page <- click the words
-#. Name: Needs Final Review 
+#. Name: Needs Final Review Page
 #. Apply
 
 Title
 -----
 #. Click Needs Review
-#. For this page (override)
-#. Change to say Needs Final Review
+#. For: this page (override)
+#. Needs Final Review
 #. Apply (this display)
 
 Filter Criteria
@@ -408,8 +430,10 @@ Menu:
 #. (*) Menu tab <- leave selected
 #. Title: Needs Final Review
 #. Menu: Navigation
-#. Weight: 99
+#. Weight: 100
 #. Apply
+
+.. cssclass :: page-break  
 
 Access:
 ^^^^^^^
@@ -419,44 +443,42 @@ Access:
 #. Apply (this display)
 #. [√] publisher
 #. Apply (this display)
-#. Save the view
 
 Fields
 ------
 
-It's difficult to find view and edit links until something is actually published, yet that's the only way to leave a log message. Here we add edit and view links.
+The only way to leave a log message is to edit the node, but it can be difficult to find an edit link until content is published, so we'll add one to all the displays of this view.
 
 Create a link to make leaving log messages easier
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. add > Content: Nid
 #. Apply (all displays)
-#. Aggregation type: Group results together
+#. Aggregation type: Group results together <- this is the default
 #. Apply and continue
-#. Label: Change from Nid to Action
+#. Label: Action <- The default was Nid
 #. Expand Rewrite results
-#. [√] Rewrite the output of this field
-
-   .. 
-      <a href="/node/[nid]/edit">edit</a> | <a href="/node/[nid]">view</a>
-   
+#. [√] Rewrite the output of this field <- Check this
+#. Text: edit
+#. [√] Output this field as a link
+#. Link path: node/[nid]/edit
 #. Apply (all displays)
-#. Save the view
 
 Advanced: No Results Behavior
 -----------------------------
 
-#. Click Global: Text area
+#. Global: Text area <- Click the words
 #. For: This page (override)
 #. Change "Needs Review" in the text area so it says "Needs Final Review" 
 #. Apply (this display) 
+#. Save the view
 
 Watch Editor/Publisher Moderation in Action
 *******************************************
 
 Create an article as Eli Editor
 ===============================
-*Home*
+*Add content > Article*
 
 .. container :: users
 
@@ -464,12 +486,13 @@ Create an article as Eli Editor
   
       ..
 
-      #. In the first browser, log in as admin and masquerade as Eli Editor. 
+      #. In the first browser, logged in as admin, masquerade as Eli Editor. 
       #. Create a new article
-         Title: Editorial Policies
-         Body:  Just because you *can* move your work without review by another editor may not mean you should.
+      #. Title: Editorial Policies
+      #. Body:  Just because you *can* move your work without review by another editor may not mean you should.
       #. Save
-      #. Move it directly to Needs Final Review
+      #. Move it Needs Review
+      #. Move it to Needs Final Review
 
 View Peggy Publisher's Workbench
 ================================
@@ -481,10 +504,11 @@ View Peggy Publisher's Workbench
   
       ..
 
-      #. In the second browser, log in as admin and masquerade as Peggy Publisher. 
+      #. In the second browser, logged in as admin, masquerade as Peggy Publisher. 
       #. View My Workbench > Needs Final Review (tab)
       #. Publish Eli's Editorial Policies article. 
 
+.. cssclass :: no-break
 
 Design your own workflow
 ************************
@@ -494,13 +518,3 @@ Extend your understanding by working on one of the following:
 #. Allow the publisher to unpublish content.
 #. Alter the workflow to fit your organization
 #. Add features to the workbench views.
-
-
-
-
-
-
-
-
-
-

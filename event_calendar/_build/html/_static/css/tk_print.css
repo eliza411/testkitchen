@@ -1,40 +1,22 @@
 @media print {
-    border: none;
- .documentwrapper h1 {
+ 
+.documentwrapper h1 {
      page-break-before: always;
   }
 
   .documentwrapper div.user-table {
-    width: 50%;
+    width: 75%;
     float: left;
   } 
 
-  .documentwrapper div.page-break {
+  .documentwrapper .page-break {
     page-break-after: always;
   }
-
-  .documentwrapper #ingredients h1 {
-    page-break-before: always;
-  } 
-
-/*  .documentwrapper #format-the-controls h2,
-  .documentwrapper #arrange-thumbnails-beneath-the-main-image h2,
-  .documentwrapper #place-and-configure-the-block h2,
-  .documentwrapper #hide-the-default-display-of-images h2, */
-  .documentwrapper #build-image-galleries-and-slideshows #create-proper-paths h4,
-  .documentwrapper #build-image-galleries-and-slideshows #place-and-configure-the-block h4 {
-    page-break-before: always;
-  }
-
-  .documentwrapper #perfecting-permissions-editorial-workflow #ingredients h1{
+  
+    .documentwrapper .no-break {
     page-break-before: avoid;
   }
 
-  .documentwrapper #specialty h2 {
-    page-break-after: avoid;  
-  }
-
-  
   .documentwrapper #figure img {
     width: 35%;
   }
@@ -58,6 +40,11 @@
   .highlight-python pre {
   font-size: 8pt;
   } 
+
+  ol, ul, li {
+  orphans: 3;
+  widows: 3;
+  }
 
 }
 

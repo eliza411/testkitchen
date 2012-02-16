@@ -1,3 +1,5 @@
+.. cssclass :: no-break
+
 Ingredients
 ***********
 
@@ -9,8 +11,8 @@ Staple
 #. http://drupal.org/project/views - Views: Enable Views and Views UI
 #. http://drupal.org/project/date - Date: Enable Date, Date API, Date Repeat, Date Popup
 #. http://drupal.org/project/fullcalendar - FullCalendar: Enable FullCalendar, FullCalendar Colors
-#. http://drupal.org/project/colorsrs API - Other: Enable Colors (install the dev version)
-#. http://drupal.org/project/colorboxbox - Other: Enable Colorbox
+#. http://drupal.org/project/colors API - Other: Enable Colors (install the dev version)
+#. http://drupal.org/project/colorbox - Other: Enable Colorbox
 
 **Drush users:**
 
@@ -37,6 +39,8 @@ ColorBox Library
 #. Download Current version
 #. Unzip it straight into sites/all/libraries (e.g., sites/all/libraries/colorbox)
 
+.. cssclass :: no-break
+
 Build a way to create events
 ****************************
 Add a new content type called Event
@@ -47,13 +51,13 @@ Name: Event
 
 Description: Create an event for display on the site calendar
 
-============================ ======================================================
+============================ =======================================
 Submission Form Settings     Title field label: Event
-Publishing Options           [√] Published (Check only this option; uncheck others)
-Display Settings             [ ] Display author and date information (Uncheck this)
-Comment Settings             Closed (Select Closed)
+Publishing Options           [√] Published  uncheck others
+Display Settings             [ ] Display author and date information 
+Comment Settings             Closed 
 Menu Settings                [ ] Uncheck all menus
-============================ ======================================================
+============================ =======================================
 
 Configure Region and Language Settings
 ======================================
@@ -78,6 +82,8 @@ For this recipe, the calendar represents events happening in a single geographic
 #. Default time zone: America/Los Angeles
 #. [ ] Users may set their own timezones (Uncheck this)
 
+.. cssclass :: page-break
+
 Configure Date and Time
 =======================
 *Configuration > Regional and language > Date and time*
@@ -99,7 +105,6 @@ Add a new date format
 #. +Add date type
 #. Date type: Block-short <- this is just a label, you can choose any formatting you like.
 #. Date format: Choose the example of the new format from the bottom of the select list: 14 Nov 2011
-#. Save with: Add date type
 
 .. container:: tip
 
@@ -252,6 +257,7 @@ Add the date field
 #. Don't change anything in the collapsed field groups.
 #. Apply (All displays)
 
+.. cssclass :: page-break
 
 Filter Criteria
 ---------------
@@ -416,22 +422,22 @@ Create a pre-filtered option
 We're going to filter the calendar so that it only shows one kind of event and the user cannot change this. Organizations with complex structures  may prefer to shield their users from the selection porcess and choose instead to place these calendars in department areas.
 
 Page details
-^^^^^^^^^^^^
+------------
 #. clone page
 
 Block details
-^^^^^^^^^^^^^
+-------------
 #. Display name: Filtered by Page
 #. Apply
 
 Block settings
-^^^^^^^^^^^^^^
+--------------
 #. Click calendar
 #. calendar/%
 #. Apply
 
 Advanced: Contextual Filters
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------
 #. add
 #. For: This page (override)
 #. [√] Content: Has taxonomy term ID

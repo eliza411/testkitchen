@@ -5,7 +5,7 @@
   }
 
   .documentwrapper div.user-table {
-    width: 50%;
+    width: 75%;
     float: left;
   } 
 
@@ -14,9 +14,8 @@
   }
   
     .documentwrapper .no-break {
-    page-break-after: avoid;
+    page-break-before: avoid;
   }
-
 
   .documentwrapper #figure img {
     width: 35%;

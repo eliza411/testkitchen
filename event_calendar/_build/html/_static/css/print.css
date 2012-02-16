@@ -212,9 +212,10 @@ form {
   width: 80%;
 }
 
-.document .figure img {
+/* .document .figure img {
   width: 50%;
 }
+*/
 
 .document .figure .legend {
   width: 35%

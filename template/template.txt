@@ -33,28 +33,24 @@ Section 2.1
 
 Set and test permissions
 ************************
-*People > Permissions*
 
 If you are not using the Test Kitchen Install Profile or if you are new to the idea of users, roles, permissions or masquerade, see http://training.opensourcery.com/basics
 
 Set permissions
 ===============
+*People > Permissions*
 
 Set permissions as follows:
 
-================================= ================================== ====================================
-Author                            Editor                             Admin                               
-================================= ================================== ====================================
-[√] Gallery: Create new content   [√] Gallery: Create new content    [√] Gallery: Create new content     
-
-[√]  Gallery: Edit own content    [ ]  Gallery: Edit own content     [√] Gallery: Edit own content        
-
-[ ]   Gallery: Edit any content   [√] Gallery: Edit any content      [√] Gallery: Edit any content       
-
-[√]  Gallery: Delete own content  [ ]  Gallery: Delete own content   [√] Gallery: Delete own content      
- 
-[ ]   Gallery: Delete any content [√]  Gallery: Delete any content   [√] Gallery: Delete any content     
-================================= ================================== ====================================
+============================= =========== ====== =============
+Permission                    Contributor Editor Administrator
+============================= =========== ====== =============
+Gallery: Create new content     [√]         [√]    [√]
+Gallery: Edit own content       [√]         [ ]    [√]
+Gallery: Edit any content       [ ]         [√]    [√]
+Gallery: Delete own content     [√]         [ ]    [√]  
+Gallery: Delete any content     [ ]         [√]    [√]
+============================= =========== ====== =============
 
 
 Test Author privileges

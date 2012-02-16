@@ -133,8 +133,9 @@
 }
 
 .documentwrapper div.user-table {
-  width: 450px;
+  width: 75%;
   float: left;
+  padding-left: 40px;
 }
 
 .documentwrapper div.user-table img,
@@ -164,6 +165,5 @@
     margin: 8px 15px;
     background-color: #fffce5;
     color: #884400;
-    background-image: url('message-24-warning.png');
     border-color: #ed5; 
   }

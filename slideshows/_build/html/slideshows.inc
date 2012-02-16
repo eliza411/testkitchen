@@ -214,7 +214,8 @@ drush en ctools views views_ui libraries views_slideshow views_slideshow_cycle -
 <div class="section" id="create-the-actual-gallery-display">
 <h2>4.1. Create the actual gallery display</h2>
 <p><em>Structure &gt; Views &gt; +Add new view</em></p>
-<p>On the introductory Views page:</p>
+<div class="section" id="intro-page">
+<h3>4.1.1. Intro page</h3>
 <div class="figure">
 <img alt="Image of the Views Intro Screen" src="sites/default/files/recipes/slideshows/slideshows-gallery-intro.png" />
 <div class="legend">
@@ -224,7 +225,7 @@ drush en ctools views views_ui libraries views_slideshow views_slideshow_cycle -
 <li>[] Uncheck Page</li>
 <li>[√] Check Block</li>
 <li>Block title: Gallery</li>
-<li>Display fomat: Slideshow of fields</li>
+<li>Display format: Slideshow of fields</li>
 <li>Items per page: (Make this blank)</li>
 <li>Continue &amp; Edit</li>
 </ol>
@@ -235,70 +236,76 @@ drush en ctools views views_ui libraries views_slideshow views_slideshow_cycle -
 <p class="caption">In main Views interface, we&#8217;ll configure three areas:</p>
 <div class="legend">
 <div class="line-block">
-<div class="line">A) available fields</div>
-<div class="line">B) row style settings,</div>
-<div class="line">C) the contextual filter.</div>
+<div class="line">A) Fields</div>
+<div class="line">B) Format</div>
+<div class="line">C) Advanced: Contextual filters</div>
 </div>
 <p>We’ll set them up in this order because they depend upon each other, even though they’re visually in a different order.</p>
 </div>
 </div>
-<div class="section" id="a-add-fields">
-<h3>4.1.1. A. Add Fields</h3>
-<p>First, add the main gallery image:</p>
-<a href="http://www.youtube.com/v/XKXVWo0_uaI" class="recipe-step colorbox-load" title="Watch this step">Watch</a><ol class="arabic simple">
-<li>Fields: add</li>
-<li>From the popup, select: Content: Gallery image</li>
-<li>[ ] Remove the check in the box Create a label</li>
-<li>Set the Image style to gallery_main.</li>
-<li>Multiple Field Settings: [ ] Uncheck Display all values in the same row</li>
+</div>
+<div class="section" id="a-fields">
+<h3>4.1.2. A. Fields</h3>
+<div class="section" id="add-the-main-gallery-image">
+<h4>Add the main gallery image</h4>
+<a href="http://www.youtube.com/v/XKXVWo0_uaI?fs=1" class="recipe-step colorbox-load" title="Watch this step">Watch</a><ol class="arabic simple">
+<li>add: Content: Gallery image</li>
+<li>[ ] Create a label &lt;- Uncheck this</li>
+<li>Image style: gallery_main.</li>
+<li>Multiple Field Settings: [ ] Display all values in the same row &lt;- Uncheck this</li>
 <li>Apply (All displays)</li>
 </ol>
-<p>Second, add the thumbnail gallery images. Much like the first step:</p>
-<a href="http://www.youtube.com/v/WNsXVJ8Z_FY" class="colorbox-load recipe-step" title="Watch this step">Watch</a><ol class="arabic simple">
-<li>Fields: add</li>
-<li>From the popup, select: Content: Gallery image</li>
-<li>[ ] Remove the check in the box Create a label</li>
-<li>[√] Check Exclude from display</li>
-<li>Set the Image style to gallery_thumb.</li>
-<li>Multiple Field Settings: [ ] Uncheck Display all values in the same row</li>
+</div>
+<div class="section" id="add-the-thumbnail-gallery-images">
+<h4>Add the thumbnail gallery images</h4>
+<a href="http://www.youtube.com/v/WNsXVJ8Z_FY" class="recipe-step" title="Watch this step">Watch</a><ol class="arabic simple">
+<li>add &gt; Content: Gallery image</li>
+<li>[ ] Create a label &lt;- Remove check</li>
+<li>[√] Exclude from display &lt;- Check this</li>
+<li>Image style: gallery_thumb.</li>
+<li>Multiple Field Settings: [ ] Display all values in the same row &lt;- Uncheck this</li>
 <li>Apply (All displays)</li>
 </ol>
-<p>Next, add the Alt title.</p>
-<a href="http://www.youtube.com/v/HHqg_3v9x2A" class="colorbox-load recipe-step" title="Watch this step">Watch</a><ol class="arabic simple">
-<li>Fields: add</li>
-<li>From the popup, select:Content: Gallery image</li>
-<li>[ ] Remove the check in the box Create a label</li>
+</div>
+<div class="section" id="add-the-alt-text">
+<h4>Add the Alt text</h4>
+<a href="http://www.youtube.com/v/HHqg_3v9x2A?fs=1" class="recipe-step" title="Watch this step">Watch</a><ol class="arabic simple">
+<li>add &gt; Content: Gallery image</li>
+<li>[ ] Create a label &lt;- Uncheck this</li>
 <li>Leave other visible settings at their default</li>
-<li>Multiple Field Settings: [ ] Uncheck Display all values in the same row</li>
+<li>Multiple Field Settings: [ ] Display all values in the same row &lt;- Uncheck this</li>
 <li>Expand Rewrite Results</li>
-<li>[√] Rewrite the output of this field</li>
-<li>In the text field, enter [field_gallery_image_2-alt] (View the available patterns by expanding Replacement Patterns.)</li>
+<li>[√] Rewrite the output of this field &lt;- Check this</li>
+<li>In the text field, enter [field_gallery_image_2-alt] &lt;- View the available patterns by expanding Replacement Patterns.)</li>
 <li>Apply (all displays)</li>
 </ol>
 <p>You now have three fields, all named the same thing but configured differently: the main image, the thumbnails, and the text.</p>
-<p>Finally, remove the Content Title since it redundantly displays the name of the gallery.</p>
+</div>
+<div class="section" id="remove-the-title">
+<h4>Remove the title</h4>
 <ol class="arabic simple">
-<li>Click the link Content: Title</li>
+<li>Content: Title &lt;- Click the words</li>
 <li>Scroll and click Remove</li>
 </ol>
 </div>
+</div>
 <div class="section" id="b-format">
-<h3>4.1.2. B. Format</h3>
-<a href="http://www.youtube.com/v/hntqtWq3fH4" class="colorbox-load recipe-step" title="Watch this step">Watch</a><ol class="arabic simple">
+<h3>4.1.3. B. Format</h3>
+<a href="http://www.youtube.com/v/hntqtWq3fH4?fs=1" class="recipe-step" title="Watch this step">Watch</a><ol class="arabic simple">
 <li>Format: Settings</li>
 <li>In the Top Widgets section, check Controls.</li>
 <li>In the Bottom Widgets section, check Pager and choose the middle instance of Content: Gallery Image. This will provide the thumbnail images for the pager.</li>
 <li>Apply (All displays)</li>
 </ol>
 </div>
-<div class="section" id="c-advanced">
-<h3>4.1.3. C. Advanced</h3>
-<a href="http://www.youtube.com/v/KmnDpv8vWKg" class="colorbox-load recipe-step" title="Watch this step">Watch</a><ol class="arabic simple">
-<li>Contextual Filter (Add)</li>
-<li>Content: Nid</li>
-<li>(∙) Provide a default value &gt; Type: Content ID from URL</li>
-<li>Apply (All displays)</li>
+<div class="section" id="c-advanced-contextual-filter">
+<h3>4.1.4. C. Advanced: Contextual filter</h3>
+<a href="http://www.youtube.com/v/KmnDpv8vWKg" class="recipe-step" title="Watch this step">Watch</a><ol class="arabic simple">
+<li>add &gt; Content: Nid</li>
 </ol>
+<p>#. (∙) Provide a default value
+#  [√] Type: Content ID from URL
+#. Apply (All displays)</p>
 <p>Be sure to save the view!</p>
 </div>
 </div>
@@ -308,8 +315,8 @@ drush en ctools views views_ui libraries views_slideshow views_slideshow_cycle -
 <p>Configuring the block to display only on Gallery nodes prevents it from being called on a view, and listing it only on specific pages prevents it from appearing on the Edit tab.</p>
 <ol class="arabic simple">
 <li>Block title:  &lt;none&gt;</li>
-<li>Footheme (default theme): Content &lt;- Select from dropdown</li>
-<li>Save blcok</li>
+<li>Footheme (default theme): Content &lt;- Select from drop-down</li>
+<li>Save block</li>
 </ol>
 <p><strong>Visibility Settings</strong></p>
 <table border="1" class="docutils">
@@ -340,7 +347,7 @@ galleries*</td>
 <p>You could create the gallery index page in the same view as the gallery block by adding a Page display, but the settings are different enough that they don’t gain a lot by sharing defaults, so we’ll create this as a separate view.</p>
 <div class="section" id="add-a-new-view">
 <h2>5.1. Add a new view</h2>
-<a href="http://www.youtube.com/v/8RJ0l4juOZY" class="colorbox-load recipe-step" title="Watch this step">Watch</a><div class="section" id="intro-screen">
+<a href="http://www.youtube.com/v/8RJ0l4juOZY?fs=1" class="recipe-step" title="Watch this step">Watch</a><div class="section" id="intro-screen">
 <h3>5.1.1. Intro screen</h3>
 <ol class="arabic simple">
 <li>View name: Galleries</li>
@@ -356,10 +363,10 @@ galleries*</td>
 </div>
 <div class="section" id="fields">
 <h3>5.1.2. Fields</h3>
-<a href="http://www.youtube.com/v/4FynfGen1qI" class="colorbox-load recipe-step" title="Watch this step">Watch</a><ol class="arabic simple">
+<a href="http://www.youtube.com/v/4FynfGen1qI" class="recipe-step" title="Watch this step">Watch</a><ol class="arabic simple">
 <li>add</li>
 <li>For: All displays</li>
-<li>[√] Conent: Gallery image</li>
+<li>[√] Content: Gallery image</li>
 <li>[ ] Create a label</li>
 <li>Formatter: Image (no change)</li>
 <li>Image style: gallery_index</li>
@@ -410,7 +417,7 @@ galleries*</td>
 <div class="figure">
 <img alt="Arrange the thumbnails." src="sites/default/files/recipes/slideshows/slideshows-before-theming.png" />
 <div class="legend">
-<p>We&#8217;re nearly there. The thumbnails present and you can click them to change the image, but they are taking up way too much screen realestate. We have text controls, but they kind of run together. There&#8217;s text, but it&#8217;s below our main image.</p>
+<p>We&#8217;re nearly there. The thumbnails present and you can click them to change the image, but they are taking up way too much screen real estate. We have text controls, but they kind of run together. There&#8217;s text, but it&#8217;s below our main image.</p>
 <p>To solve these issues, we will edit the our custom theme&#8217;s css file to style the gallery.</p>
 </div>
 </div>
@@ -419,7 +426,7 @@ galleries*</td>
 <p>You can edit your stylesheet any way that is comfortable for you. If you need more support connecting than the username and password for your sandbox, see Connecting to your sandbox with sFTP at <a class="reference external" href="http://training.opensourcery.com/basics/sftp">http://training.opensourcery.com/basics/sftp</a></p>
 <p>Open sites/all/modules/footheme/css/footheme.css  If you&#8217;re connecting to a sandbox, it will be located inside of www/drupal. You&#8217;ll find comments at the top, but it&#8217;s otherwise empty. Place the CSS for each step at the bottom of this file, save, and reload a gallery page to see the changes.</p>
 </div>
-<div class="page-break section" id="arrange-thumbnails-beneath-the-main-image">
+<div class="section" id="arrange-thumbnails-beneath-the-main-image">
 <h2>6.2. Arrange thumbnails beneath the main image</h2>
 <div class="figure">
 <img alt="The slideshow before theming." src="sites/default/files/recipes/slideshows/slideshows-thumbnails-arranged.png" />
@@ -472,49 +479,32 @@ galleries*</td>
 </div>
 </div>
 </div>
-<div class="section" id="place-title-text-over-the-main-image">
-<h2>6.4. Place title text over the main image</h2>
+<div class="section" id="place-alt-text-over-the-main-image">
+<h2>6.4. Place alt text over the main image</h2>
 <p><em>Structure &gt; Views &gt; Gallery: edit</em></p>
 <div class="figure">
 <img alt="The text overlay." src="sites/default/files/recipes/slideshows/slideshows-text-overlay.png" />
 <div class="legend">
-<p>Placing opaque text on a transparent background requires some special setup. If the text is placed inside the transparent container, it will inherit the transparency. Instead, it must be placed parallel to the container and positioned.</p>
+<p>Notice that we use background, not background color, and that we&#8217;re defining it twice. The first uses rgb as a fallback to provide a background color to browsers that don&#8217;t support the alpha transparency in the next. We&#8217;re also using background rather than background-color to ensure that a background is present in Internet Explorer. For a full discussion of this technique, see <a class="reference external" href="http://css-tricks.com/rgba-browser-support/">http://css-tricks.com/rgba-browser-support/</a></p>
 <ol class="arabic simple">
-<li>Edit the third instance of the filed content: Galley image</li>
-<li>Expand Rewrite Results and edit to match:</li>
-</ol>
-<div class="highlight-python"><pre>&lt;div class="transparency"&gt;&lt;/div&gt;
-&lt;div class="overlay"&gt;[field_gallery_image_2-alt]&lt;/div&gt;</pre>
-</div>
-<ol class="arabic simple" start="3">
-<li>Apply (all displays)</li>
 <li>Add the styling to footheme.css:</li>
 </ol>
-<div class="highlight-python"><pre>/* Overlay the text on the main image */
-.views-field-field-gallery-image {
-  position: relative;
-}
+<div class="highlight-python"><pre> /* Overlay the text on the main image */
+ .views-field-field-gallery-image {
+   position: relative;
+ }
 
-.transparency {
+.views-field-field-gallery-image-2 div.field-content {
   position: absolute;
   bottom: -10px;
   left: 0px;
-  width: 640px;
-  height: 75px;
-  background: #000;
+  width: 610px;
+  height: 45px;
   margin: 20px;
-  filter:alpha(opacity=70);
-  opacity: 0.7;
-  -moz-opacity:0.7;
-}
-
-.overlay {
-  color: #fff;
-  position: absolute;
-  bottom : 0px;
-  left: 0px;
-  height: 75px;
-  padding: 0 30px 0 30px;
+  padding: 15px;
+  color: #FFF;
+  background: rgb(10,10,10);
+  background: rgba(10,10,10,.7);
 }</pre>
 </div>
 </div>

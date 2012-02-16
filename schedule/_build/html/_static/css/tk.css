@@ -89,7 +89,8 @@
   background-image: url('dont_panic.png');
 }
 
-.documentwrapper div.tip {
+.documentwrapper div.tip,
+.documentwrapper div.note {
   background-image: url('note.png');
 }
 
@@ -132,8 +133,9 @@
 }
 
 .documentwrapper div.user-table {
-  width: 450px;
+  width: 75%;
   float: left;
+  padding-left: 40px;
 }
 
 .documentwrapper div.user-table img,
@@ -145,6 +147,8 @@
   padding-right: 20px;
 }
 
+
+/* General additions */
 .documentwrapper blockquote table {
   margin: 0px 50px;
   width: 80%;
@@ -156,12 +160,12 @@
 }
 
 .section .section {
-  padding-left: 40px;
+  padding-left: 35px;
 }
 
-.documentwrapper div.page-break {
-  border: none;
-  height: 0px;
-  margin: 0;
-  padding: 0;
-  background: none;}
+.documentwrapper .warning {
+    margin: 8px 15px;
+    background-color: #fffce5;
+    color: #884400;
+    border-color: #ed5; 
+  }
