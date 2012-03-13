@@ -26,6 +26,7 @@ Peggy has been assigned the Publisher role. This is the only role that will be a
 <div class="no-break section" id="ingredients">
 <h1>1. Ingredients</h1>
 <p>Test kitchen recipes are based on our sandbox setup, which includes pre-installed modules used every time. See <a class="reference external" href="http://training.opensourcery.com/sandbox/setup">http://training.opensourcery.com/sandbox/setup</a> to configure your own environment to match these instructions.</p>
+<p>The sandboxes for this recipe contain additional configuration strictly to make testing and teaching easier. Three Bartik subthemes are color-coded and the Theme Key module is used to assign the color-coded themes based on the user role so that the role of the user logged into the site is very clear. The steps for this additional configuration are available at <a class="reference external" href="http://training.opensourcery.com/recipes/moderation-sandbox">http://training.opensourcery.com/recipes/moderation-sandbox</a></p>
 <div class="section" id="staple">
 <h2>1.1. Staple</h2>
 <ol class="arabic simple">
@@ -138,16 +139,66 @@ drush en ctools views views_ui workbench workbench_moderation diff -y</pre>
 </table>
 </div>
 </div>
+<div class="section" id="test">
+<h1>3. Test</h1>
+<p>Tedious as it seems, it&#8217;s a good idea to test that permissions are working as expected before you introduce a new layer of access. It also allows you to see what happens to existing content when you enable moderation.</p>
+<div class="section" id="create-an-article-as-eli-editor">
+<h2>3.1. Create an article as Eli Editor</h2>
+<p><em>Add content &gt; Article</em></p>
+<div class="users container">
+<div class="figure">
+<img alt="sites/default/files/recipes/user_icons/editor.png" src="sites/default/files/recipes/user_icons/editor.png" />
+<div class="legend">
+<ol class="arabic simple">
+<li>In the first browser, logged in as admin, masquerade as Eli Editor.</li>
+<li>Create a new article titled &#8220;Eli Before Workflow&#8221;</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="create-an-article-as-cathy-contributor">
+<h2>3.2. Create an article as Cathy Contributor</h2>
+<p><em>Add content &gt; Article</em></p>
+<div class="users container">
+<div class="figure">
+<img alt="sites/default/files/recipes/user_icons/contributor.png" src="sites/default/files/recipes/user_icons/contributor.png" />
+<div class="legend">
+<ol class="arabic simple">
+<li>In the first browser, logged in as admin, masquerade as Cathy Contributor.</li>
+<li>Create a new article titled &#8220;Cathy Before Workflow&#8221;</li>
+<li>Verify that Cathy cannot edit Eli&#8217;s article.</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="check-peggy-publisher">
+<h2>3.3. Check Peggy Publisher</h2>
+<p><em>Add content</em></p>
+<div class="users container">
+<div class="figure">
+<img alt="sites/default/files/recipes/user_icons/publisher.png" src="sites/default/files/recipes/user_icons/publisher.png" />
+<div class="legend">
+<ol class="arabic simple">
+<li>Verify that Peggy has links to add articles and pages.</li>
+<li>Verify that she can edit Eli&#8217;s article.</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="configure-workbench-moderation">
-<h1>3. Configure workbench moderation</h1>
+<h1>4. Configure workbench moderation</h1>
 <div class="section" id="review-configuration">
-<h2>3.1. Review configuration</h2>
+<h2>4.1. Review configuration</h2>
 <p><em>Configuration &gt; Workbench: Workbench Moderation</em></p>
 <img alt="sites/default/files/recipes/moderation/workflow_simple.png" class="align-left" src="sites/default/files/recipes/moderation/workflow_simple.png" />
 <p>We will start by using the default states provided by Workbench Moderation and later add new ones. These states are adequate for the simple workflow pictured here. When we add a third role for review prior to publication, then we&#8217;ll need to make adjustments.</p>
 </div>
 <div class="section" id="enable-the-workflow-for-content-types">
-<h2>3.2. Enable the workflow for content types</h2>
+<h2>4.2. Enable the workflow for content types</h2>
 <p><em>Structure &gt; Content types &gt; Article: edit</em></p>
 <div class="tip container">
 Although we don&#8217;t cover this today, it is possible to moderate content on a per-content-type basis. This gets complex very quickly! See <a class="reference external" href="http://drupal.org/node/1206854#comment-5241230">http://drupal.org/node/1206854#comment-5241230</a> for how to enable this.</div>
@@ -164,8 +215,32 @@ Although we don&#8217;t cover this today, it is possible to moderate content on 
 </ol>
 </div>
 <div class="page-break section" id="set-the-workbench-moderation-permissions">
-<h2>3.3. Set the Workbench Moderation permissions</h2>
+<h2>4.3. Set the Workbench Moderation permissions</h2>
 <p><em>People &gt; Permissions</em></p>
+<p><strong>Core</strong></p>
+<p>There isn&#8217;t much to see on the toolbar until we enable Workbench, which we&#8217;ll do now to give a place for the link to My Workbench to appear. It&#8217;s likely, too, that one or more of these roles will have additional administrative privileges that will make the toolbar useful.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="66%" />
+<col width="14%" />
+<col width="8%" />
+<col width="12%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Permission</th>
+<th class="head">Contributor</th>
+<th class="head">Editor</th>
+<th class="head">Publisher</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Toolbar</td>
+<td>[√]</td>
+<td>[√]</td>
+<td>[√]</td>
+</tr>
+</tbody>
+</table>
 <p>At the bottom of the Permissions page:</p>
 <p><strong>Workbench</strong></p>
 <table border="1" class="docutils">
@@ -266,16 +341,16 @@ Although we don&#8217;t cover this today, it is possible to moderate content on 
 <p>* You must grant this permission to the Contributor. It is limited in scope by the specific node permissions for each content type. In our case, the Contributor role is only allowed to edit its own Articles and Basic Pages, so a user with that role can only move their own content from Draft to Needs review. Cathy Contributor won&#8217;t be able to moderate other peoples&#8217; work.</p>
 </div>
 <div class="section" id="check-your-permissions">
-<h2>3.4. Check your permissions</h2>
+<h2>4.4. Check your permissions</h2>
 <p><em>Configuration &gt; Workbench: Workbench Moderation &gt; Check permissions (tab)</em></p>
 <p>Workbench has a great feature to help ensure you&#8217;ve set up your transitions properly. Test both to be sure that each role can do what you want and also that no roles can do things they&#8217;re not supposed to.</p>
 </div>
 </div>
 <div class="section" id="watch-contributor-editor-moderation-in-action">
-<h1>4. Watch Contributor &gt; Editor Moderation in Action</h1>
+<h1>5. Watch Contributor &gt; Editor Moderation in Action</h1>
 <p>We&#8217;re going to set up in two separate browsers, one for Cathy Contributor and one for Eli Editor so that we can watch as content progresses through the workflow.</p>
-<div class="section" id="create-an-article-as-cathy-contributor">
-<span id="faq"></span><h2>4.1. Create an article as Cathy Contributor</h2>
+<div class="section" id="faq">
+<span id="id1"></span><h2>5.1. Create an article as Cathy Contributor</h2>
 <p><em>Add content &gt; Article</em></p>
 <div class="users container">
 <div class="figure">
@@ -291,7 +366,7 @@ Although we don&#8217;t cover this today, it is possible to moderate content on 
 </div>
 </div>
 <div class="section" id="view-eli-editor-s-worbench">
-<h2>4.2. View Eli Editor&#8217;s Worbench</h2>
+<h2>5.2. View Eli Editor&#8217;s Worbench</h2>
 <p><em>My Workbench &gt; Needs Review (tab)</em></p>
 <div class="users container">
 <div class="figure">
@@ -308,7 +383,7 @@ Although we don&#8217;t cover this today, it is possible to moderate content on 
 </div>
 </div>
 <div class="page-break section" id="move-cathy-s-work-to-needs-review">
-<h2>4.3. Move Cathy&#8217;s work to Needs Review</h2>
+<h2>5.3. Move Cathy&#8217;s work to Needs Review</h2>
 <p><em>Workbench &gt; My Drafts</em></p>
 <div class="users container">
 <div class="figure">
@@ -332,7 +407,7 @@ Although we don&#8217;t cover this today, it is possible to moderate content on 
 </div>
 </div>
 <div class="section" id="publish-cathy-s-article">
-<h2>4.4. Publish Cathy&#8217;s article</h2>
+<h2>5.4. Publish Cathy&#8217;s article</h2>
 <p><em>My Workbench &gt; Needs Review (tab)</em></p>
 <div class="users container">
 <div class="figure">
@@ -348,7 +423,7 @@ Although we don&#8217;t cover this today, it is possible to moderate content on 
 </div>
 </div>
 <div class="section" id="as-cathy-review-the-published-work">
-<h2>4.5. As Cathy, review the published work</h2>
+<h2>5.5. As Cathy, review the published work</h2>
 <p><em>My Workbench</em>:</p>
 <div class="users container">
 <div class="figure">
@@ -364,7 +439,7 @@ Although we don&#8217;t cover this today, it is possible to moderate content on 
 </div>
 </div>
 <div class="page-break section" id="experiment">
-<h2>4.6. Experiment</h2>
+<h2>5.6. Experiment</h2>
 <ol class="arabic simple">
 <li>Try routing the article between Cathy and Eli in ways your organization might use workflow.</li>
 <li>Try creating content as Eli.</li>
@@ -375,7 +450,7 @@ What if Eli would like to return the article to Cathy because it needs work? He 
 </div>
 </div>
 <div class="no-break section" id="view-the-differences-between-revisions">
-<h1>5. View the differences between revisions</h1>
+<h1>6. View the differences between revisions</h1>
 <p>We&#8217;re working with the development version of Workbench Moderation in order to demonstrate how to highlight differences between two revisions. The dev version incorporates output from the diff module, which was installed at the beginning on the recipe.</p>
 <img alt="sites/default/files/recipes/moderation/diff.png" src="sites/default/files/recipes/moderation/diff.png" />
 <ol class="arabic">
@@ -389,9 +464,9 @@ What if Eli would like to return the article to Cathy because it needs work? He 
 </ol>
 </div>
 <div class="no-break section" id="expanding-the-workflow">
-<h1>6. Expanding the Workflow</h1>
+<h1>7. Expanding the Workflow</h1>
 <div class="section" id="add-a-new-state">
-<h2>6.1. Add a new state</h2>
+<h2>7.1. Add a new state</h2>
 <p><em>Configuration &gt; Workbench: Workbench Moderation</em></p>
 <img alt="sites/default/files/recipes/moderation/workflow.png" class="align-left" src="sites/default/files/recipes/moderation/workflow.png" />
 <p>To add the publisher into the mix, we need a state for content that has been approved by the editor and needs a final review by the publisher.</p>
@@ -426,7 +501,7 @@ What if Eli would like to return the article to Cathy because it needs work? He 
 </div>
 </div>
 <div class="page-break section" id="enable-the-transitions">
-<h2>6.2. Enable the transitions</h2>
+<h2>7.2. Enable the transitions</h2>
 <p><em>Configuration &gt; Workbench: Workbench Moderation: Transitions (tab)</em></p>
 <p>Next we define the transitions:</p>
 <p>Allow us to give editors permission to advance content to publishers.</p>
@@ -444,17 +519,13 @@ What if Eli would like to return the article to Cathy because it needs work? He 
 <li>Needs Final Review &gt; Published</li>
 <li>Save</li>
 </ol>
-<p>Remove an editor&#8217;s ability to publish without final review.</p>
-<ol class="arabic simple">
-<li>Needs Review &gt; Published &lt;- Check delete</li>
-<li>Save</li>
-</ol>
 </div>
 <div class="section" id="assign-transition-permissions">
-<h2>6.3. Assign transition permissions</h2>
+<h2>7.3. Assign transition permissions</h2>
 <p><em>People &gt; Permissions</em></p>
 <p>Set permissions for the new states as follows.</p>
-<p><strong>Workbench Moderation</strong></p>
+<p><strong>Workbench Moderation</strong>
+We&#8217;ll remove the ability for editors and publishers to move content directly from Needs Review to Published and will grant appropriate permissions to the new transitions.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="70%" />
@@ -470,17 +541,22 @@ What if Eli would like to return the article to Cathy because it needs work? He 
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>Moderate all content from Needs Review to Needs Final Review</td>
+<tr class="row-even"><td>Moderate all content from Needs Review to Published</td>
+<td>[ ]</td>
+<td>[ ]</td>
+<td>[ ]</td>
+</tr>
+<tr class="row-odd"><td>Moderate all content from Needs Review to Needs Final Review</td>
 <td>[ ]</td>
 <td>[√]</td>
 <td>[√]</td>
 </tr>
-<tr class="row-odd"><td>Moderate all content from Needs Final Review to Needs Review</td>
+<tr class="row-even"><td>Moderate all content from Needs Final Review to Needs Review</td>
 <td>[ ]</td>
 <td>[ ]</td>
 <td>[√]</td>
 </tr>
-<tr class="row-even"><td>Moderate all content from Needs Final Review to Published</td>
+<tr class="row-odd"><td>Moderate all content from Needs Final Review to Published</td>
 <td>[ ]</td>
 <td>[ ]</td>
 <td>[√]</td>
@@ -490,19 +566,20 @@ What if Eli would like to return the article to Cathy because it needs work? He 
 </div>
 </div>
 <div class="section" id="adjust-the-views">
-<span id="views"></span><h1>7. Adjust the views</h1>
+<span id="views"></span><h1>8. Adjust the views</h1>
+<p>You can find detailed information about working with Workbench Moderation&#8217;s views at <a class="reference external" href="http://drupal.org/node/1171066">http://drupal.org/node/1171066</a>, including directions for how to save views as code. Doing so allows you to deploy them from a staging site to a production server more easily and track them in version control systems, protecting all your configuration effort.</p>
 <div class="section" id="add-an-administration-page-for-publishers">
-<h2>7.1. Add an administration page for publishers</h2>
+<h2>8.1. Add an administration page for publishers</h2>
 <p><em>Structure &gt; Views &gt; workbench_moderation: edit</em></p>
 <div class="section" id="displays">
-<h3>7.1.1. Displays</h3>
+<h3>8.1.1. Displays</h3>
 <p>This is a critically important step. Be sure you&#8217;re working with the display you think you are!</p>
 <ol class="arabic simple">
 <li>Click Needs Review Page &lt;- even if it&#8217;s already selected I never skip this step.</li>
 </ol>
 </div>
 <div class="section" id="needs-review-page-details">
-<h3>7.1.2. Needs Review Page details</h3>
+<h3>8.1.2. Needs Review Page details</h3>
 <ol class="arabic simple">
 <li>Click the arrow next to &#8216;view needs review page&#8217;</li>
 <li>Choose &#8216;clone needs review page&#8217;</li>
@@ -512,7 +589,7 @@ What if Eli would like to return the article to Cathy because it needs work? He 
 </ol>
 </div>
 <div class="section" id="title">
-<h3>7.1.3. Title</h3>
+<h3>8.1.3. Title</h3>
 <ol class="arabic simple">
 <li>Click Needs Review</li>
 <li>For: this page (override)</li>
@@ -521,7 +598,7 @@ What if Eli would like to return the article to Cathy because it needs work? He 
 </ol>
 </div>
 <div class="section" id="filter-criteria">
-<h3>7.1.4. Filter Criteria</h3>
+<h3>8.1.4. Filter Criteria</h3>
 <ol class="arabic simple">
 <li>Click Workbench Moderation State: Needs Review</li>
 <li>For: This page (override)</li>
@@ -531,7 +608,7 @@ What if Eli would like to return the article to Cathy because it needs work? He 
 </ol>
 </div>
 <div class="section" id="page-settings">
-<h3>7.1.5. Page Settings</h3>
+<h3>8.1.5. Page Settings</h3>
 <div class="section" id="path">
 <h4>Path:</h4>
 <ol class="arabic simple">
@@ -564,7 +641,7 @@ What if Eli would like to return the article to Cathy because it needs work? He 
 </div>
 </div>
 <div class="section" id="fields">
-<h3>7.1.6. Fields</h3>
+<h3>8.1.6. Fields</h3>
 <p>The only way to leave a log message is to edit the node, but it can be difficult to find an edit link until content is published, so we&#8217;ll add one to all the displays of this view.</p>
 <div class="section" id="create-a-link-to-make-leaving-log-messages-easier">
 <h4>Create a link to make leaving log messages easier</h4>
@@ -584,7 +661,7 @@ What if Eli would like to return the article to Cathy because it needs work? He 
 </div>
 </div>
 <div class="section" id="advanced-no-results-behavior">
-<h3>7.1.7. Advanced: No Results Behavior</h3>
+<h3>8.1.7. Advanced: No Results Behavior</h3>
 <ol class="arabic simple">
 <li>Global: Text area &lt;- Click the words</li>
 <li>For: This page (override)</li>
@@ -596,9 +673,9 @@ What if Eli would like to return the article to Cathy because it needs work? He 
 </div>
 </div>
 <div class="section" id="watch-editor-publisher-moderation-in-action">
-<h1>8. Watch Editor/Publisher Moderation in Action</h1>
-<div class="section" id="create-an-article-as-eli-editor">
-<h2>8.1. Create an article as Eli Editor</h2>
+<h1>9. Watch Editor/Publisher Moderation in Action</h1>
+<div class="section" id="id2">
+<h2>9.1. Create an article as Eli Editor</h2>
 <p><em>Add content &gt; Article</em></p>
 <div class="users container">
 <div class="figure">
@@ -618,8 +695,8 @@ What if Eli would like to return the article to Cathy because it needs work? He 
 </div>
 </div>
 <div class="section" id="view-peggy-publisher-s-workbench">
-<h2>8.2. View Peggy Publisher&#8217;s Workbench</h2>
-<p><em>My Workbench &gt; Needs Review (tab)</em></p>
+<h2>9.2. View Peggy Publisher&#8217;s Workbench</h2>
+<p><em>My Workbench &gt; Needs Final Review (tab)</em></p>
 <div class="users container">
 <div class="figure">
 <img alt="sites/default/files/recipes/user_icons/publisher.png" src="sites/default/files/recipes/user_icons/publisher.png" />
@@ -635,13 +712,17 @@ What if Eli would like to return the article to Cathy because it needs work? He 
 </div>
 </div>
 <div class="no-break section" id="design-your-own-workflow">
-<h1>9. Design your own workflow</h1>
+<h1>10. Design your own workflow</h1>
 <p>Extend your understanding by working on one of the following:</p>
 <ol class="arabic simple">
 <li>Allow the publisher to unpublish content.</li>
 <li>Alter the workflow to fit your organization</li>
 <li>Add features to the workbench views.</li>
 </ol>
+</div>
+<div class="section" id="get-involved">
+<h1>11. Get involved!</h1>
+<p>Workbench Moderation developer stevector says: There is a lot of refactoring work going into the 2.x branch. This work is mostly discussed at <a class="reference external" href="http://groups.drupal.org/node/198188">http://groups.drupal.org/node/198188</a> Among other things, the 2.x branch will address the question of log messages for node changes vs. log messages for state changes. Please encourage people to join the discussion in that g.d.o thread if there are changes or features they would like to see implemented</p>
 </div>
 
 

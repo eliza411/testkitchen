@@ -1,0 +1,116 @@
+Introduction
+************
+
+I'm writing this assuming that you've never used version control before and may never even have heard the words. You're good at what you do: graphic design, CSS, Drupal site building, even writing php.
+
+It's likely that you've just begun working on a team that uses Git, or your site is hosted on a platform that requires you to use Git to deploy even the smallest change. Maybe you're applying for a job that requires exerience with Git and you're trying to learn enough to be intelligent about it during the interview.
+
+If you *have* used version control before, you are probably be better off with one of the excellent developer resources out there [#f1]_ . If you're looking for a way to explain Git to people who don't code, then read on.
+
+Why use version control?
+************************
+
+#. You don't overwrite the work of other people on a team
+#. You have a record of changes
+#. You can quickly move back in time to a known working version of software.
+
+There are additional features that distinguish Git from other systems, and you can learn about them at http://
+
+
+Before you begin:
+*****************
+.. _no-gui: 
+
+Using the command line
+======================
+
+There are several graphical tools that can be used with Git, but we're going to teach the command line for several reasons:
+
+  - The directions are the same on every platform
+  
+  - We remove an intermediate troubleshooting layer
+  
+  - You'll be focused on Git itself, and not some particular user interface
+    
+  - You'll be empowered to use Git on remote servers
+  
+  - It's not feasible to keep documentation for all the tools up-to-date
+
+
+Installing Git
+==============
+
+You will need to install Git on each computer where you work. 
+
+Windows - msysgit: 
+==================
+
+Downlod the full installer for Official Git for windows 1.7.8
+http://code.google.com/p/msysgit/downloads/list?can=3
+
+Once you've downloaded Git, run Git Bash to follow the steps in this tutorial. Why not use Git GUI? See :ref:`no-gui` 
+
+OSX - 
+
+Linux - 
+
+
+
+The basics
+**********
+You're learning Git in relationship to Drupal, so we'll use a brand-new Drupal site in our examples.
+
+
+
+
+
+
+Where is your web site?
+=======================
+Make sure you know where the document root of your development web site is located. This varies depending on your platform and particular configuration. Some common defaults include:
+
+MAMP - /Applications/MAMP/htdocs
+WAMP - C:\wamp\www
+Ubuntu - /var/www
+
+Use cases
+*********
+
+Each of the use cases below will provide concrete steps that introduce fundamental concepts.
+
+You want to keep your own work straight
+=======================================
+
+If you keep mulitple copies of files and have ever become confused about which copy was working, etc.
+
+
+You work on a deskop and laptop machine
+=======================================
+
+It's still just you, but you work on your project in more than one place and you're looking for a way to keep your files syncronized.
+
+
+
+
+Your host requires you to use Git
+==================================
+
+
+.. [#f1] Developer Guides to Git
+   #. https://git.wiki.kernel.org/articles/g/i/t/GitSvnCrashCourse_512d.html
+   #. http://betterexplained.com/articles/intro-to-distributed-version-control-illustrated/
+
+
+Glossary
+********
+
+It's okay to skim this part and focus on the concrete examples below, returning here as needed for expansion
+
+VCS = Version Control System
+DVCS = Distributed Version Control
+Clone = Make a new copy of an existing repository from somewhere else
+Checkout = Restore a copy of one or more file. 
+Commit = Put changes in your repo
+Push = Send changes to another repository.
+Pull = Get changes from a repository
+

@@ -1,0 +1,50 @@
+@media print {
+ 
+.documentwrapper h1 {
+     page-break-before: always;
+  }
+
+  .documentwrapper div.user-table {
+    width: 75%;
+    float: left;
+  } 
+
+  .documentwrapper .page-break {
+    page-break-after: always;
+  }
+  
+    .documentwrapper .no-break {
+    page-break-before: avoid;
+  }
+
+  .documentwrapper #figure img {
+    width: 35%;
+  }
+
+  #page {
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  header, 
+  footer,
+  #tasks {
+    display: none;
+  }
+
+  .documentwrapper a.recipe-step {
+  display: none;
+  
+  }
+
+  .highlight-python pre {
+  font-size: 8pt;
+  } 
+
+  ol, ul, li {
+  orphans: 3;
+  widows: 3;
+  }
+
+}
+

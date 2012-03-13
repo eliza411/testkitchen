@@ -1,0 +1,59 @@
+Embedding YouTube Videos
+************************
+
+When you're viewing the video on YouTube, e.g.::
+http://www.youtube.com/watch?v=P8FlmTlmdzc
+
+#. Click the Share button
+
+#. Click the Embed button
+
+#. Copy the embed code.
+
+   .. image:: sites/default/files/recipes/tips/youtube.png
+      :width: 829
+      
+#. Edit the page, blog, or other content type where you want to embed the video.
+
+#. Disable the rich-text editor.
+
+   .. image:: sites/default/files/recipes/tips/disable-rich-text.png
+   
+#. Paste in the embed code.
+
+#. To avoid issues with Chrome, you'll add some information in the embed code. For example, the embed code of the video above is::
+
+  <iframe width="560" height="315" src="http://www.youtube.com/embed/P8FlmTlmdzc" frameborder="0" allowfullscreen></iframe>
+  
+  Add ?wmode=Opaque to the end of the src url, so that the code looks like::
+  
+  <iframe width="560" height="315" src="http://www.youtube.com/embed/P8FlmTlmdzc?wmode=Opaque" frameborder="0" allowfullscreen></iframe>
+
+
+#. Once you've pasted the code, you can Enable the rich-text editor. It's normal not to see the embedded video until you save, but you can still highlight the shape and move it within the text by cutting and pasting.
+
+Creating the Donor Quote pop-up
+*******************************
+
+Normally, you'll be editing the block with the Donor quote text and it will already contain the necessary HTML. Should that get deleted, you'll need to add it back in.
+
+#. Disable rich text in order to directly enter HTML. If you don't, the HTML becomes visible and doesn't do what it's supposed to.
+
+#. A link to the popup text should look like this. (You can change the visible text, Read More &gt, but not the information between angle brackets <>::
+
+   <a class="fancybox" href="#fancybox">Read More &gt;</a>
+
+#. The popup text goes between tags that look like::
+
+  <div id="fancybox" style="width:100%; display: inline-block;">
+     Text here.
+  </div>
+
+You can change the visible text, "Text here" but not the information between the angle brackets. It's okay for everything to be smooshed together.
+
+You may need to press Enter above the popup text a time or two to ensure that it is not visible within the Donor Quote box.
+
+
+
+
+

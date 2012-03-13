@@ -1,0 +1,171 @@
+/* basic formatting */
+
+.page-type-recipe #content {
+  padding-right: 75px;
+}
+
+.documentwrapper h1 {
+  color: #000;
+  margin-top: 40px;
+  font-weight: bold;
+}
+
+.documentwrapper h2 {
+  border-bottom: 1px solid #333;
+  color: #000;
+  font-size: 150%;
+}
+
+.documentwrapper h3 {
+  border-bottom: 1px dotted #333;
+  color: #000;
+  font-size: 130%;
+}
+
+.documentwrapper h1, 
+.documentwrapper h2, 
+.documentwrapper h3, 
+.documentwrapper h4, 
+.documentwrapper h5, 
+.documentwrapper h6 {
+  font-family: Verdana;
+  clear: both;
+}
+
+.documentwrapper .section > p em {
+  font-style: normal;
+  font-size: 110%;
+  font-family: Monaco,"DejaVu Sans Mono",monospace,sans-serif;
+}
+
+.documentwrapper blockquote {
+  font-style: normal;
+}
+
+/* figure formatting */
+
+.documentwrapper div.figure {
+  overflow: hidden;
+  padding: 10px;
+}
+
+.documentwrapper .figure img {
+  float: left;
+  padding-right: 15px;
+  width: 55%;
+  max-width: 600px;
+}
+
+.documentwrapper .figure p.caption {
+  font-weight: bold;
+  margin: 0;
+}
+
+.documentwrapper .figure .legend ol {
+  padding-left: 55%;
+}
+
+.documentwrapper .users .figure .legend ol {
+  padding-left: 0;
+}
+
+/* background images */
+
+.documentwrapper #set-permissions table {
+  font-size: 9pt;
+}
+
+.documentwrapper div.container {
+  background: #fff;
+  background-repeat: no-repeat;
+  border: 1px solid #eee;
+  padding: 20px 20px 20px 90px;
+  margin: 0 20px;
+  min-height: 35px;
+  background-position: 10px 10px;
+}
+
+.documentwrapper div.note-error {
+  background-image: url('dont_panic.png');
+}
+
+.documentwrapper div.tip,
+.documentwrapper div.note {
+  background-image: url('note.png');
+}
+
+.documentwrapper div.important {
+  padding-left: 45px;
+  background-image: url('exclamation_point.png');
+}
+
+.documentwrapper div.question {
+  background-image: url('question_mark.png');
+  background-position: 10px 30px;
+}
+    
+.documentwrapper a.recipe-step {
+  background-image: url('videoicon.png');
+  background-repeat: no-repeat;
+  background-position:  bottom right;
+  float: right;
+  margin-top: -75px;
+  margin-right: -50px;
+  display: block;
+  height: 100px;
+  width: 80px;
+  z-index: 10;
+  text-align: right;
+  padding-right: 13px;
+}
+
+
+
+/* User figures */
+
+.documentwrapper div.users,
+.documentwrapper div.user-table {
+  border: none;
+  padding: 0 20px 20px 0;
+  margin: 0;
+  float: left;
+  width: 100%;
+}
+
+.documentwrapper div.user-table {
+  width: 75%;
+  float: left;
+  padding-left: 40px;
+}
+
+.documentwrapper div.user-table img,
+.documentwrapper div.users img {
+  width: 100px;
+  height: 100px;
+  float: left;
+  padding-left: 0;
+  padding-right: 20px;
+}
+
+
+/* General additions */
+.documentwrapper blockquote table {
+  margin: 0px 50px;
+  width: 80%;
+}
+
+.documentwrapper .figure .highlight-python pre {
+  overflow: hidden;
+  font-size: 10pt;
+}
+
+.section .section {
+  padding-left: 35px;
+}
+
+.documentwrapper .warning {
+    margin: 8px 15px;
+    background-color: #fffce5;
+    color: #884400;
+    border-color: #ed5; 
+  }

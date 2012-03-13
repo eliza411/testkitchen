@@ -1,0 +1,25 @@
+Setting up a local development environment
+
+We're going to assume where your Website is located on your machine. If you're on OSX using MAMP, it's likely to be:
+
+MAMP:
+
+/Applications/MAMP/htdocs
+
+You can verify this by returning to the MAMP preferences panel:
+http://www.lullabot.com/videos/install-local-web-server-mac-osx
+
+# Click Apache
+# Look at the value in the Document Root
+
+WAMP
+
+
+Windows
+
+
+If you're running Windows and WAMP, it's likely to be:
+
+
+
+http://www.lullabot.com/videos/install-local-web-server-mac-osx

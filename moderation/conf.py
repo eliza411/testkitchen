@@ -201,7 +201,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'slideshows.tex', u'Template Documentation',
+  ('index', 'moderation.tex', u'Moderation Documentation',
    u'Melissa Anderson \\textless{}eliza411\\textgreater{}', 'manual'),
 ]
 

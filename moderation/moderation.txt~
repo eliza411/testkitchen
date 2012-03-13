@@ -22,12 +22,15 @@ Does your organization require content review before the content gets published?
       Peggy Publisher
       
       Peggy has been assigned the Publisher role. This is the only role that will be able to make content live on the site. Publishers can do everything that editors and contributors can do.
+      
 
 .. cssclass :: no-break 
 
 Ingredients
 ***********
 |sandbox-setup|
+
+The sandboxes for this recipe contain additional configuration strictly to make testing and teaching easier. Three Bartik subthemes are color-coded and the Theme Key module is used to assign the color-coded themes based on the user role so that the role of the user logged into the site is very clear. The steps for this additional configuration are available at http://training.opensourcery.com/recipes/moderation-sandbox
 
 Staple
 ======
@@ -46,7 +49,12 @@ Staple
   drush dl ctools views workbench workbench_moderation-7.x-1.x-dev diff
   drush en ctools views views_ui workbench workbench_moderation diff -y
 
+
+
+
+
 .. cssclass:: no-break
+
 
 Users and permissions
 *********************
@@ -90,6 +98,51 @@ Basic page: Delete own content [ ]         [ ]    [ ]
  
 Basic page: Delete any content [ ]         [ ]    [ ]      
 ============================== =========== ====== =========
+
+Test
+****
+
+Tedious as it seems, it's a good idea to test that permissions are working as expected before you introduce a new layer of access. It also allows you to see what happens to existing content when you enable moderation.
+
+Create an article as Eli Editor
+===============================
+*Add content > Article*
+
+.. container :: users
+
+  .. figure :: sites/default/files/recipes/user_icons/editor.png
+  
+     ..
+
+     #. In the first browser, logged in as admin, masquerade as Eli Editor. 
+     #. Create a new article titled "Eli Before Workflow"
+
+Create an article as Cathy Contributor
+======================================
+*Add content > Article*
+
+.. container :: users
+
+  .. figure :: sites/default/files/recipes/user_icons/contributor.png
+  
+     ..
+
+     #. In the first browser, logged in as admin, masquerade as Cathy Contributor. 
+     #. Create a new article titled "Cathy Before Workflow"
+     #. Verify that Cathy cannot edit Eli's article.
+
+Check Peggy Publisher
+=====================
+*Add content*
+
+.. container :: users
+
+  .. figure :: sites/default/files/recipes/user_icons/publisher.png
+  
+     ..
+
+     #. Verify that Peggy has links to add articles and pages.
+     #. Verify that she can edit Eli's article.
    
 Configure workbench moderation
 ******************************
@@ -166,6 +219,18 @@ Moderate all content from Needs Review to Published [ ]         [√]    [√]
 =================================================== =========== ====== =========
 
 \* You must grant this permission to the Contributor. It is limited in scope by the specific node permissions for each content type. In our case, the Contributor role is only allowed to edit its own Articles and Basic Pages, so a user with that role can only move their own content from Draft to Needs review. Cathy Contributor won't be able to moderate other peoples' work.
+
+**Core**
+
+There wasn't much to see on the toolbar until we enabled Workbench. We enable it now to give a place for the link to My Workbench to appear. It's likely, too, that one or more of these roles will have additional administrative privileges that will make the toolbar useful.
+
+=================================================== =========== ====== =========
+Permission                                          Contributor Editor Publisher
+=================================================== =========== ====== =========
+Toolbar                                             [√]         [√]    [√]      
+=================================================== =========== ====== =========
+
+
 
 Check your permissions 
 ======================
@@ -351,13 +416,6 @@ Allow us to give the publisher permission to publish.
 #. Needs Final Review > Published
 #. Save
 
-
-Remove an editor's ability to publish without final review.
-
-#. Needs Review > Published <- Check delete
-#. Save
-
-
 Assign transition permissions
 =============================
 *People > Permissions*
@@ -366,10 +424,12 @@ Set permissions for the new states as follows.
 
 
 **Workbench Moderation**
+We'll remove the ability for editors and publishers to move content directly from Needs Review to Published and will grant appropriate permissions to the new transitions.
 
 ============================================================ =========== ====== =========
 Permission                                                   Contributor Editor Publisher
 ============================================================ =========== ====== =========
+Moderate all content from Needs Review to Published          [ ]         [ ]    [ ] 
 Moderate all content from Needs Review to Needs Final Review [ ]         [√]    [√] 
 Moderate all content from Needs Final Review to Needs Review [ ]         [ ]    [√] 
 Moderate all content from Needs Final Review to Published    [ ]         [ ]    [√] 
@@ -379,6 +439,7 @@ Moderate all content from Needs Final Review to Published    [ ]         [ ]    
 
 Adjust the views
 ****************
+You can find detailed information about working with Workbench Moderation's views at http://drupal.org/node/1171066, including directions for how to save views as code. Doing so allows you to deploy them from a staging site to a production server more easily and track them in version control systems, protecting all your configuration effort.
 
 Add an administration page for publishers
 =========================================
@@ -432,6 +493,8 @@ Menu:
 #. Menu: Navigation
 #. Weight: 100
 #. Apply
+
+.. cssclass :: page-break  
 
 Access:
 ^^^^^^^
@@ -494,7 +557,7 @@ Create an article as Eli Editor
 
 View Peggy Publisher's Workbench
 ================================
-*My Workbench > Needs Review (tab)*
+*My Workbench > Needs Final Review (tab)*
 
 .. container :: users
 
@@ -516,3 +579,8 @@ Extend your understanding by working on one of the following:
 #. Allow the publisher to unpublish content.
 #. Alter the workflow to fit your organization
 #. Add features to the workbench views.
+
+Get involved!
+*************
+
+Workbench Moderation developer stevector says: There is a lot of refactoring work going into the 2.x branch. This work is mostly discussed at http://groups.drupal.org/node/198188 Among other things, the 2.x branch will address the question of log messages for node changes vs. log messages for state changes. Please encourage people to join the discussion in that g.d.o thread if there are changes or features they would like to see implemented

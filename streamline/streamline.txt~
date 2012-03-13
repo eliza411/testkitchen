@@ -1,0 +1,154 @@
+Ingredients
+***********
+
+|sandbox-setup|
+
+Prerequisite
+============
+This recipe builds on Create an Event Calendar. It includes the modules, content types, and views built in that recipe.
+
+Staple
+======
+
+#. http://drupal.org/project/references - Fields: Enable References
+#. http://drupal.org/project/cnr - Corresponding Node References
+#. http://drupal.org/project/node_reference - Node Reference
+#. http://drupal.org/project/node_clone - Other: Enable Node Clone
+
+Core: Enable: Node Reference, User Reference Automatic Node titles, Location Phone, Node Locations 
+
+Enable Location Generate (devel)
+
+Use location?
+
+**Drush users:**
+
+::
+
+  drush dl references cnr node_clone location 
+  drush en node_clone references node_reference user_reference location_cck location node_location -y
+
+Speciality
+==========
+
+Locations
+*********
+
+Configure the location module
+=============================
+*Configuration > Content authoring > Location: Main Settings*
+
+Review the settings here. The are generally usable by default.
+
+
+Create a way to enter venues
+****************************
+*Structure > Content types > +Add content type*
+
+#. Name: Location
+#. Description: Enter an location to be used when creating events
+#. Set the following values
+
+   ============================== ========================================
+   Submission Form Settings       Title field label: Location name
+   Publishing Options             [√] Published 
+   Display Settings               [ ] Display author and date information 
+   Comment Settings               Closed 
+   Locative information           [ ] Collapsed <- uncheck
+                                  Collect <- Set all to Allow
+   Menu Settings                  [ ] Uncheck all menus
+   ============================== ========================================
+#. Save and add fields
+#. 
+
+
+Create proper paths
+===================
+*Configuration > Search and Metadata: URL aliases > Patterns*
+
+Later on, we’ll be creating a landing page at /events, so we’re setting that as the path component now now.
+
+#. Pattern for all Event paths: events/[node:title]
+
+#. Save configuration
+
+
+Set and test permissions
+************************
+
+If you are not using the Test Kitchen Install Profile or if you are new to the idea of users, roles, permissions or masquerade, see http://training.opensourcery.com/basics
+
+Set permissions
+===============
+*People > Permissions*
+
+Set permissions as follows:
+
+============================= =========== ====== =============
+Permission                    Contributor Editor Administrator
+============================= =========== ====== =============
+Event: Create new content     [√]         [√]    [√]
+Event: Edit own content       [√]         [ ]    [√]
+Event: Edit any content       [ ]         [√]    [√]
+Event: Delete own content     [√]         [ ]    [√]  
+Event: Delete any content     [ ]         [√]    [√]
+============================= =========== ====== =============
+
+
+Test Author privileges
+======================
+
+Masquerade as Test Author and ensure you CAN:
+
+#. Create a Event
+#. Edit that Event
+#. Delete that Event
+
+Ensure you CANNOT:
+
+#. Edit galleries you didn’t create
+#. Delete galleries you didn’t create
+
+When you’re done, remember to Switch back
+
+Test Editor privileges
+======================
+
+Masquerade as Test Editor and ensure you CAN:
+
+#. Create a Event
+#. Edit that Event
+#. Delete that Event
+
+#. Edit a Event you didn’t create
+#. Delete a Event you didn’t create
+
+================ ====================
+Resource Key     Translation
+================ ====================
+core_file_size   Ignored
+---------------- --------------------
+data_seg_size    Ignored
+---------------- --------------------
+file_size        Ignored
+---------------- --------------------
+cpu_time         Ignored
+---------------- --------------------
+wallclock_time   -l walltime= `value`
+================ ==================== 
+
+
+============================  ===============
+Resource Key                  Translation
+============================  ===============
+core_file_size                Ignored
+----------------------------- ---------------------------
+data_seg_size                 Ignored
+-----------------------------   ---------------------------
+file_size                        Ignored
+-----------------------------   ---------------------------
+cpu_time                      Ignored
+-----------------------------   ---------------------------
+wallclock_time             -l walltime= `value`
+================  =============== 
+

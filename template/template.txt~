@@ -1,0 +1,87 @@
+Ingredients
+***********
+
+|sandbox-setup|
+
+Staple
+======
+
+Theme
+=====
+
+**Drush users:**
+
+::
+
+  drush dl 
+  drush en -y
+
+Speciality
+==========
+
+Section 2
+*********
+
+Section 2.1
+===========
+
+*Structure > Content types > +Add new content type*
+
+.. raw:: html
+
+     <a href="http://www.youtube.com/v/4FynfGen1qI" class="colorbox-load recipe-step">Watch this step</a> 
+
+Set and test permissions
+************************
+*People > Permissions*
+
+If you are not using the Test Kitchen Install Profile or if you are new to the idea of users, roles, permissions or masquerade, see http://training.opensourcery.com/basics
+
+Set permissions
+===============
+
+Set permissions as follows:
+
+================================= ================================== ====================================
+Author                            Editor                             Admin                               
+================================= ================================== ====================================
+[√] Gallery: Create new content   [√] Gallery: Create new content    [√] Gallery: Create new content     
+
+[√]  Gallery: Edit own content    [ ]  Gallery: Edit own content     [√] Gallery: Edit own content        
+
+[ ]   Gallery: Edit any content   [√] Gallery: Edit any content      [√] Gallery: Edit any content       
+
+[√]  Gallery: Delete own content  [ ]  Gallery: Delete own content   [√] Gallery: Delete own content      
+ 
+[ ]   Gallery: Delete any content [√]  Gallery: Delete any content   [√] Gallery: Delete any content     
+================================= ================================== ====================================
+
+
+Test Author privileges
+======================
+
+Masquerade as Test Author and ensure you CAN:
+
+#. Create a gallery
+#. Edit that gallery
+#. Delete that gallery
+
+Ensure you CANNOT:
+
+#. Edit galleries you didn’t create
+#. Delete galleries you didn’t create
+
+When you’re done, remember to Switch back
+
+Test Editor privileges
+======================
+
+Masquerade as Test Editor and ensure you CAN:
+
+#. Create a gallery
+#. Edit that gallery
+#. Delete that gallery
+
+#. Edit a gallery you didn’t create
+#. Delete a gallery you didn’t create
+
